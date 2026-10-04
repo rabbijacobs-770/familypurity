@@ -20,7 +20,6 @@ body='\n    '.join([
  step('Permissible times',10,'Chapter 11 - Intimate Relations; Chapter 12 - Proper Times for Marital Relations.','The times when marital relations are permissible.'),
  step('Separation dates',11,'Chapter 14 - Separation Dates (Times of Anticipated Menstruation).',
       f'On an ongoing basis, throughout married life, the dates when menstruation begins and finishes{fn(12,"Chabad custom. Others project from the beginning of menstruation to the beginning of the following one, Dates—Other Methods of Calculation.")} are recorded. From these are projected separation dates in anticipation of the upcoming menstruation.'),
- '<p class="small no-indent" style="margin-top:1.6em"><a href="../tools/mikveh-night-calculator.html">Calculate mikveh night</a> &middot; <a href="../tools/vestos-calculator.html">Calculate separation dates</a></p>',
 ])
 h=page('overview','Introduction','Overview',None,
  'A one-page overview of the Jewish family purity cycle: niddah, the hefsek tahara, the seven white days, immersion in the mikveh and separation dates.',

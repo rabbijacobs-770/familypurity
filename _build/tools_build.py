@@ -221,6 +221,7 @@ for t in TOOLS:
 {FOOT.format(r='../')}
 
 {MENU}
+<script src="../assets/fp-calc.js"></script>
 <script src="../assets/tools.js"></script>
 </body>
 </html>

@@ -40,12 +40,8 @@
     return `From sunset ${short(add(h,-1))} until sunset ${short(h)} &middot; a full day`;
   };
 
-  // Same Hebrew date next month
-  const nextSameHebrewDate=h=>{
-    const p=hebParts(h);
-    for(let i=1;i<=62;i++){const c=add(h,i),q=hebParts(c);if(q.month!==p.month&&q.day===p.day)return {date:c};}
-    return {date:null,day:p.day};
-  };
+  // Same Hebrew date in the next month (logic and tests live in fp-calc.js)
+  const nextSameHebrewDate=h=>FPCalc.nextSameHebrewDate(h);
 
   // ---------- storage helpers (per-device only) ----------
   const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -98,6 +94,7 @@
         </ol>
         ${note}
         ${[5,6].includes(mikveh.getUTCDay())?'<p class="small">Mikveh night falls on Friday night or after Shabbos. Special preparation rules apply. See Chapter 7 or ask Rabbi Jacobs.</p>':''}
+        ${FPCalc.holidayOf(add(mikveh,1))?`<p class="warn">Mikveh night falls on <b>${FPCalc.holidayOf(add(mikveh,1))}</b>. Special rules apply. Ask Rabbi Jacobs before going.</p>`:''}
         <div class="row-actions">
           <a class="btn btn-line" href="#checklist" data-fill="${iso(hef)}">Track the seven days</a>
           <button class="btn btn-line" type="button" id="mikveh-ics">Add to my calendar</button>
