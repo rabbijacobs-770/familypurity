@@ -70,6 +70,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
   <div class="pill">
     <a class="brand" href="../index.html" aria-label="Family Purity, home"><img src="../images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
     <a class="ctl hide-sm" href="../index.html#resources">All chapters</a>
+    <a class="ctl" href="../search.html" aria-label="Search the chapters"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></a>
     <div class="size" role="group" aria-label="Text size">
       <button type="button" data-size="down" aria-label="Smaller text">A</button>
       <button type="button" data-size="up" aria-label="Larger text">A</button>
@@ -97,13 +98,14 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
       <div class="btn-row">
         <a class="btn btn-solid" href="{amazon}" target="_blank" rel="noopener">Get the book</a>
         <a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>
+        <a class="btn btn-line" href="https://wa.me/?text={urllib.parse.quote(full+' · Family Purity by Rabbi Fishel Jacobs '+BASE+'/read/'+slug+'.html')}" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
     </div>
     <a class="ask" href="https://wa.me/972587921788?text={re.sub(' ','%20',html.escape(ask_text))}" target="_blank" rel="noopener">
       <img src="../images/rabbi-portrait.jpg" alt="" width="726" height="800" loading="lazy">
       <span><b>A question about this?</b><small>Ask Rabbi Jacobs privately on WhatsApp.</small></span>
     </a>
-    <p class="correction">Spotted a typo or something unclear? <a href="mailto:RabbiJacobs@FamilyPurity.com?subject={urllib.parse.quote('Correction: '+full)}">Send a correction</a></p>
+    <p class="correction">Spotted a typo or something unclear? <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-subject="Correction: {html.escape(full)}">Send a correction</a></p>
   </aside>
 </main>
 

@@ -270,3 +270,7 @@ footer small .credit{font-size:.68rem;opacity:.6;margin-left:.4rem}
 .author-note{display:grid;gap:.6rem;justify-items:start;padding:1.2rem 1.3rem;border-radius:18px;background:var(--tint);border-left:3px solid var(--gold)}
 .author-note h3{font-size:1.3rem}
 .author-note p{color:var(--muted)}
+
+/* Search box in Free resources */
+.chap-search{display:flex;gap:.5rem;max-width:34rem;width:100%;margin-top:.4rem}
+.chap-search input{flex:1;min-width:0;font:inherit;font-size:1.1rem;padding:.75rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}

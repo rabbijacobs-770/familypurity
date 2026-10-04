@@ -104,6 +104,7 @@ NAV='''<header class="top">
     <nav class="links" id="links" aria-label="Main">
       <a href="{r}index.html#books">Books</a>
       <a href="{r}index.html#resources">Free resources</a>
+      <a href="{r}search.html">Search</a>
       <a href="{r}tools.html">Tools</a>
       <a href="{r}index.html#about">About</a>
       <a href="{r}index.html#contact">Contact</a>
@@ -216,7 +217,7 @@ for t in TOOLS:
       <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
       <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
     </div>
-    <p class="correction-line">Spotted a typo or something unclear? <a href="mailto:RabbiJacobs@FamilyPurity.com?subject=Correction%3A%20{urllib.parse.quote(t['short'].replace('&amp;','&'))}">Send a correction</a></p>
+    <p class="correction-line">Spotted a typo or something unclear? <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-subject="Correction: {t['short']}">Send a correction</a></p>
   </div>
 </main>
 

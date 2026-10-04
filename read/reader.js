@@ -1,6 +1,7 @@
 // Family Purity online reader: progress bar, text size, footnote keyboard access, glossary pop-ups, calendar.
 (function(){
   const root=document.documentElement;
+  document.querySelectorAll('[data-em]').forEach(el=>{const [u,d]=el.dataset.em.split('|'),a=u+'@'+d,s=el.dataset.subject;if(el.tagName==='A')el.href='mailto:'+a+(s?'?subject='+encodeURIComponent(s):'');if(el.hasAttribute('data-em-text'))el.textContent=a;});
 
   // Reading progress
   const bar=document.querySelector('.progress');
@@ -50,4 +51,33 @@
     d.setAttribute('aria-pressed','true');
     if(info) info.innerHTML=d.dataset.info;
   }));
+
+  // Highlight search words when arriving from the search page (?q=...)
+  const q=new URLSearchParams(location.search).get('q');
+  const article=document.querySelector('.text');
+  if(q&&article){
+    const fold=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’‘]/g,"'").toLowerCase();
+    const terms=fold(q).split(/\s+/).filter(t=>t.length>1);
+    const walker=document.createTreeWalker(article,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentNode.closest('label,button,script,style,mark')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+    const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+    const hits=[];
+    nodes.forEach(n=>{
+      const f=fold(n.nodeValue); if(f.length!==n.nodeValue.length) return;
+      const ranges=[]; terms.forEach(t=>{let i=f.indexOf(t);while(i>=0){ranges.push([i,i+t.length]);i=f.indexOf(t,i+t.length);}});
+      if(!ranges.length) return;
+      ranges.sort((a,b)=>a[0]-b[0]);
+      const frag=document.createDocumentFragment(); let pos=0;
+      ranges.forEach(([a,b])=>{ if(a<pos) return; frag.append(n.nodeValue.slice(pos,a)); const m=document.createElement('mark'); m.className='hit'; m.textContent=n.nodeValue.slice(a,b); frag.append(m); hits.push(m); pos=b; });
+      frag.append(n.nodeValue.slice(pos)); n.parentNode.replaceChild(frag,n);
+    });
+    if(hits.length){
+      hits.forEach(m=>{const sn=m.closest('.sn'); if(sn&&sn.previousElementSibling&&sn.previousElementSibling.matches('.fn-t')) sn.previousElementSibling.checked=true;});
+      const bar=document.createElement('div'); bar.className='hitbar'; let k=0;
+      bar.innerHTML=`<span>${hits.length} ${hits.length===1?'match':'matches'} for “<b></b>”</span><button type="button" data-a="next">Next</button><a href="../search.html?q=${encodeURIComponent(q)}">Back to results</a>`;
+      bar.querySelector('b').textContent=q; document.body.append(bar);
+      const go=()=>{hits.forEach(h=>h.classList.remove('cur')); hits[k].classList.add('cur'); hits[k].scrollIntoView({block:'center'});};
+      bar.querySelector('[data-a=next]').addEventListener('click',()=>{k=(k+1)%hits.length;go();});
+      setTimeout(go,300);
+    }
+  }
 })();

@@ -2,6 +2,7 @@
 // Rules follow Rabbi Jacobs's texts: Family Purity ch. 5-6 and the two Times web editions.
 (function(){
   'use strict';
+  document.querySelectorAll('[data-em]').forEach(el=>{const [u,d]=el.dataset.em.split('|'),a=u+'@'+d,s=el.dataset.subject;if(el.tagName==='A')el.href='mailto:'+a+(s?'?subject='+encodeURIComponent(s):'');});
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const DAY=86400000;
