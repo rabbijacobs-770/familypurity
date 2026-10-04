@@ -58,7 +58,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
 <meta property="og:image" content="{BASE}/images/family-p-copy_orig.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Alegreya+Sans:wght@400;700;800&family=Fondamento&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
 <link rel="stylesheet" href="reader.css">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False)}</script>
 <script type="application/ld+json">{json.dumps(crumbs,ensure_ascii=False)}</script>
@@ -68,7 +68,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
 
 <header class="top">
   <div class="pill">
-    <a class="brand" href="../index.html">Family <span>Purity</span></a>
+    <a class="brand" href="../index.html" aria-label="Family Purity, home"><img src="../images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
     <a class="ctl hide-sm" href="../index.html#resources">All chapters</a>
     <div class="size" role="group" aria-label="Text size">
       <button type="button" data-size="down" aria-label="Smaller text">A</button>

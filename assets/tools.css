@@ -1,5 +1,5 @@
 .tools-hero .wrap{grid-template-columns:1fr;padding-block:clamp(7rem,12vw,8.5rem) clamp(2.5rem,5vw,3.5rem);display:grid;gap:1rem}
-.tools-hero h1{color:#fff;font:400 clamp(2.4rem,5vw,3.6rem)/1.08 var(--script)}
+.tools-hero h1{color:#fff;font:500 clamp(2.4rem,5vw,3.6rem)/1.08 var(--script)}
 .tools-hero .lede{color:#efeaff}
 .private{display:inline-flex;align-items:center;gap:.55rem;justify-self:start;padding:.5rem 1rem;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);font-weight:600;font-size:.95rem}
 .private::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--gold-light)}

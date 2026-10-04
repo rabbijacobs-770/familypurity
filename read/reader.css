@@ -8,8 +8,8 @@
   --heading:#2c2157; --shade-rgb:32,21,74;
   --rose:#f6e3e8; --rose-ink:#8a3550;
   --display:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
-  --script:"Fondamento","EB Garamond",Georgia,serif;
-  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --script:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
+  --body:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
   --reader-size:1.3rem;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -38,8 +38,8 @@ a{color:var(--violet)}
 .pill{pointer-events:auto;max-width:62rem;width:calc(100% - 28px);margin-inline:auto;display:flex;align-items:center;gap:.35rem;padding:.45rem .5rem .45rem 1.2rem;border-radius:999px;
   background:rgba(var(--shade-rgb),.66);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
   border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 30px -14px rgba(20,10,50,.55);color:#fff}
-.brand{font:400 1.4rem/1 var(--script);color:#fff;text-decoration:none;white-space:nowrap;margin-right:auto}
-.brand span{color:var(--gold-light)}
+.brand{display:block;color:#fff;text-decoration:none;margin-right:auto;line-height:0}
+.brand img{display:block;height:1.95rem;width:auto}
 .pill a.ctl,.pill button{font:700 .92rem/1 var(--body);color:#fff;background:none;border:0;padding:.6rem .8rem;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap}
 .pill a.ctl:hover,.pill button:hover{background:rgba(255,255,255,.14)}
 .pill .size{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:999px}
@@ -48,7 +48,7 @@ a{color:var(--violet)}
 .pill .size button:first-child{border-radius:999px 0 0 999px}
 .pill a.pdf{background:#fff;color:var(--violet-deep)}
 .pill a.pdf:hover{background:#f1edff}
-@media (max-width:560px){.pill .hide-sm{display:none}.brand{font-size:1.25rem}}
+@media (max-width:560px){.pill .hide-sm{display:none}.brand img{height:1.7rem}}
 
 /* Chapter opener */
 .opener{margin:12px;border-radius:28px;overflow:hidden;color:#fff;text-align:center;
@@ -79,7 +79,7 @@ a{color:var(--violet)}
 .fn:hover{background:var(--tint-2)}
 .fn-t{display:none}
 .sn{display:none;text-indent:0;font:400 .95rem/1.45 var(--body);color:var(--muted);background:var(--tint);border-radius:12px;padding:.7rem .9rem;margin:.5rem 0 .8rem}
-.sn b{font-weight:800;color:var(--violet);margin-right:.35em}
+.sn b{font-weight:700;color:var(--violet);margin-right:.35em}
 .sn em{font-style:italic}
 .fn-t:checked+.sn{display:block}
 @media (min-width:1120px){

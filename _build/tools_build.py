@@ -100,7 +100,7 @@ BY={t['slug']:t for t in TOOLS}
 
 NAV='''<header class="top">
   <div class="pill on-flowers">
-    <a class="brand" href="{r}index.html">Family <span>Purity</span></a>
+    <a class="brand" href="{r}index.html" aria-label="Family Purity, home"><img src="{r}images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
     <nav class="links" id="links" aria-label="Main">
       <a href="{r}index.html#books">Books</a>
       <a href="{r}index.html#resources">Free resources</a>
@@ -115,7 +115,7 @@ NAV='''<header class="top">
 FOOT='''<footer class="panel on-flowers" style="margin-top:3rem">
   <div class="wrap">
     <div>
-      <a class="brand" href="{r}index.html">Family <span>Purity</span></a>
+      <a class="brand" href="{r}index.html" aria-label="Family Purity, home"><img src="{r}images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
       <p>Rabbi Fishel Jacobs</p>
     </div>
     <ul>
@@ -150,7 +150,7 @@ def head(title,desc,url,r,ld):
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Fondamento:ital@0;1&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
 <link rel="stylesheet" href="{r}assets/site.css">
 <link rel="stylesheet" href="{r}assets/tools.css">
 {''.join(f'<script type="application/ld+json">{json.dumps(x,ensure_ascii=False)}</script>' for x in ld)}

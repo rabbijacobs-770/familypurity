@@ -1,5 +1,5 @@
-/* Type: Fondamento echoes the broad-pen lettering on the book covers (wordmark, headline, signature);
-   EB Garamond with small caps matches the book interior; Alegreya Sans keeps body and UI text easy to read.
+/* Type: the wordmark is the book's own hand-lettered "Family Purity" artwork (images/brand).
+   All text is EB Garamond, the closest open match to the book's Garamond Premier Pro, with small caps as in the book.
    Layout: three rounded hydrangea panels (banner, classes band, footer) frame calm white reading sections.
    A floating glass pill carries the navigation. Violet and gold come from the book covers. */
 :root{
@@ -8,8 +8,8 @@
   --violet:#4b3a8c; --violet-deep:#2c2157; --gold:#94701f; --gold-light:#ecd593;
   --heading:#2c2157; --shade-rgb:32,21,74;
   --display:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
-  --script:"Fondamento","EB Garamond",Georgia,serif;
-  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --script:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
+  --body:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
   --hebrew:"Frank Ruhl Libre","Times New Roman",serif;
   --wrap:70rem; --panel-r:28px;
 }
@@ -24,7 +24,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 1.125rem/1.55 var(--body);font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.2rem/1.6 var(--body);font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--violet)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
@@ -41,7 +41,7 @@ section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
 .head.center{text-align:center;justify-items:center}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.45rem;border-radius:999px;font:700 1rem/1 var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .15s,transform .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.45rem;border-radius:999px;font:600 1.08rem/1 var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .15s,transform .15s}
 .btn:hover{transform:translateY(-1px)}
 .btn-solid{background:var(--violet-deep);color:#fff}
 .btn-solid:hover{background:#3b2d78}
@@ -63,8 +63,8 @@ section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
 .pill{pointer-events:auto;max-width:calc(var(--wrap) - 1rem);margin-inline:auto;width:calc(100% - 48px);display:flex;align-items:center;gap:1rem;padding:.5rem .55rem .5rem 1.4rem;border-radius:999px;
   background:rgba(var(--shade-rgb),.62);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
   border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 30px -14px rgba(20,10,50,.55);position:relative}
-.brand{font:400 1.55rem/1 var(--script);color:#fff;text-decoration:none;white-space:nowrap;margin-right:auto}
-.brand span{color:var(--gold-light)}
+.brand{display:block;color:#fff;text-decoration:none;margin-right:auto;line-height:0}
+.brand img{display:block;height:2.1rem;width:auto}
 .links{display:flex;gap:.25rem}
 .links a{color:rgba(255,255,255,.88);text-decoration:none;font-weight:600;font-size:.95rem;padding:.55rem .85rem;border-radius:999px}
 .links a:hover{background:rgba(255,255,255,.12);color:#fff}
@@ -74,7 +74,7 @@ section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
 @media (max-width:860px){
   .top{top:calc(env(safe-area-inset-top,0px) + 14px)}
   .pill{width:calc(100% - 28px);padding-left:1.1rem;gap:.25rem}
-  .brand{font-size:1.35rem}
+  .brand img{height:1.8rem}
   .menu-btn{display:block}
   .links{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;padding:.5rem;border-radius:22px;
     background:rgba(var(--shade-rgb),.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18)}
@@ -90,7 +90,7 @@ section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
 .hero .eyebrow{color:var(--gold-light)}
 .dia{font-size:.8em;margin-inline:.35em;position:relative;top:-.05em}
 .hero .hebrew{font-family:var(--hebrew);letter-spacing:0;font-size:1.05em}
-.hero h1{font-family:var(--script);font-weight:400;line-height:1.08;color:#fff;font-size:clamp(2.6rem,5.6vw,4.3rem);text-shadow:0 2px 24px rgba(20,10,50,.3)}
+.hero h1{font-family:var(--script);font-weight:500;line-height:1.08;color:#fff;font-size:clamp(2.6rem,5.6vw,4.3rem);text-shadow:0 2px 24px rgba(20,10,50,.3)}
 .hero h1 em{color:var(--gold-light);font-style:italic}
 .hero .lede{color:#efeaff;font-size:1.2rem;max-width:28rem}
 .byline{display:inline-flex;align-items:center;gap:.8rem;justify-self:start;margin-top:.4rem;padding:.45rem 1.1rem .45rem .45rem;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#efeaff;text-decoration:none;font-size:.95rem;line-height:1.25;transition:background .15s}
@@ -219,6 +219,7 @@ textarea{min-height:8.5rem;resize:vertical}
 footer.panel{margin-block:0 12px;--shade:linear-gradient(rgba(var(--shade-rgb),.86),rgba(var(--shade-rgb),.86));background-position:center 70%}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem 2rem;padding-block:2.5rem}
 footer .brand{margin:0}
+footer .brand img{height:2.7rem}
 footer p{color:#e2dcf7;font-size:.95rem;margin-top:.45rem}
 footer ul{display:flex;flex-wrap:wrap;gap:.25rem}
 footer ul a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:.45rem .8rem;border-radius:999px}

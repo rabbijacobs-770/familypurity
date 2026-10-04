@@ -6,13 +6,12 @@
 <title>Page Not Found | Family Purity</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&family=Alegreya+Sans:wght@400;700&family=Fondamento&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
 <style>
 :root{--bg:#fcfbff;--fg:#221d33;--muted:#5f5976;--violet:#2c2157;--gold:#94701f}
 @media (prefers-color-scheme: dark){:root{--bg:#14111d;--fg:#ece8f7;--muted:#aaa4c0;--violet:#b0a1ef;--gold:#dcbb72}}
-body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--fg);font:400 1.125rem/1.6 "Alegreya Sans",system-ui,sans-serif;padding:1.5rem;text-align:center}
-.brand{font:400 2rem/1 Fondamento,Georgia,serif;color:var(--violet);text-decoration:none}
-.brand span{color:var(--gold)}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--fg);font:400 1.2rem/1.6 "EB Garamond",Garamond,Georgia,serif;padding:1.5rem;text-align:center}
+.brand{display:inline-block;line-height:0}.brand img{height:3rem;width:auto}
 h1{font:500 2.2rem/1.2 "EB Garamond",Georgia,serif;margin:1.5rem 0 .5rem}
 p{color:var(--muted);margin:0 0 1.5rem}
 nav{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
@@ -21,7 +20,7 @@ nav a{color:var(--violet);font-weight:700;text-decoration:none;padding:.6rem 1re
 </head>
 <body>
 <main>
-  <a class="brand" href="/">Family <span>Purity</span></a>
+  <a class="brand" href="/" aria-label="Family Purity, home"><img src="/images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
   <h1>This page has moved</h1>
   <p>The page you were looking for isn&rsquo;t here. Try one of these.</p>
   <nav><a href="/">Home</a><a href="/#resources">Free chapters</a><a href="/tools.html">Free tools</a><a href="/#contact">Contact</a></nav>
