@@ -105,7 +105,7 @@
       lastEvents=[...days.map((d,i)=>({date:d,title:`Day ${i+1} of 7`,detail:`Seven white days, day ${i+1} of 7. Examinations twice daily.`})),
         {date:mikveh,title:'Mikveh tonight',detail:'Immersion after nightfall.'}];
       $('#mikveh-ics').addEventListener('click',()=>downloadIcs('mikveh-dates.ics',lastEvents,mk.details.checked));
-      $('[data-fill]',out).addEventListener('click',ev=>{const f=$('#check-form');if(f){f.hefsek.value=ev.currentTarget.dataset.fill;f.dispatchEvent(new Event('submit'));}});
+      $('[data-fill]',out).addEventListener('click',ev=>{const f=$('#check-form');if(f){ev.preventDefault();f.hefsek.value=ev.currentTarget.dataset.fill;f.dispatchEvent(new Event('submit'));f.scrollIntoView({behavior:'smooth'});}else{ev.currentTarget.href='seven-white-days-checklist.html?h='+ev.currentTarget.dataset.fill;}});
     });
   }
 
@@ -114,7 +114,9 @@
   if(ck){
     const out=$('#check-out');
     const saved=store.get('fp-checks')||{};
-    if(saved.hefsek) ck.hefsek.value=saved.hefsek;
+    const qh=new URLSearchParams(location.search).get('h');
+    if(qh&&/^\d{4}-\d{2}-\d{2}$/.test(qh)){ck.hefsek.value=qh;if(!saved.hefsek||saved.hefsek!==qh)store.set('fp-checks',{hefsek:qh,marks:{}});}
+    else if(saved.hefsek) ck.hefsek.value=saved.hefsek;
     const render=()=>{
       if(!ck.hefsek.value){out.innerHTML='';return;}
       const hef=parse(ck.hefsek.value);

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hebrew Date Converter: English to Hebrew and Back | Family Purity</title>
+<meta name="description" content="Free Hebrew date converter. Convert English dates to Hebrew dates and Hebrew dates to English, with the after-sunset rule and leap years (Adar I and Adar II).">
+<link rel="canonical" href="https://www.familypurity.com/tools/hebrew-date-converter.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Family Purity">
+<meta property="og:title" content="Hebrew Date Converter: English to Hebrew and Back | Family Purity">
+<meta property="og:description" content="Free Hebrew date converter. Convert English dates to Hebrew dates and Hebrew dates to English, with the after-sunset rule and leap years (Adar I and Adar II).">
+<meta property="og:url" content="https://www.familypurity.com/tools/hebrew-date-converter.html">
+<meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Fondamento:ital@0;1&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hebrew date converter", "url": "https://www.familypurity.com/tools/hebrew-date-converter.html", "description": "Free Hebrew date converter. Convert English dates to Hebrew dates and Hebrew dates to English, with the after-sunset rule and leap years (Adar I and Adar II).", "applicationCategory": "LifestyleApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "name": "Rabbi Fishel Jacobs", "url": "https://www.familypurity.com/#rabbi-jacobs"}, "publisher": {"@id": "https://www.familypurity.com/#organization"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Family Purity", "item": "https://www.familypurity.com/"}, {"@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://www.familypurity.com/tools.html"}, {"@type": "ListItem", "position": 3, "name": "Hebrew dates", "item": "https://www.familypurity.com/tools/hebrew-date-converter.html"}]}</script>
+</head>
+<body>
+<header class="top">
+  <div class="pill on-flowers">
+    <a class="brand" href="../index.html">Family <span>Purity</span></a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="../index.html#books">Books</a>
+      <a href="../index.html#resources">Free resources</a>
+      <a href="../tools.html">Tools</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+    <a class="btn" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask a question</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero tools-hero panel on-flowers" style="padding-block:0">
+    <div class="wrap">
+      <p class="eyebrow">Free tool</p>
+      <h1>Hebrew date converter</h1>
+      <p class="lede">Find the Hebrew date for any day, or the English date for any Hebrew one, written in Hebrew letters too.</p>
+      <span class="private">Private: nothing you enter leaves your device</span>
+      <nav class="chips" aria-label="Other tools"><a href="mikveh-night-calculator.html">Mikveh night</a><a href="seven-white-days-checklist.html">Seven days checklist</a><a href="vestos-calculator.html">Separation dates</a><a href="hebrew-date-converter.html" aria-current="page">Hebrew dates</a><a href="sunrise-sunset-times.html">Sunrise &amp; sunset</a><a href="family-purity-glossary.html">Glossary</a></nav>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="tool" id="hebrew">
+      <div class="tool-grid">
+        <div>
+          <form id="heb-form" novalidate>
+            <label for="hb-date">English date<input id="hb-date" name="date" type="date"></label>
+            <label class="check"><input type="checkbox" name="after"> After sunset</label>
+          </form>
+        </div>
+        <div class="out" id="heb-out" role="status"></div>
+      </div>
+      <div class="tool-grid" style="margin-top:2rem">
+        <form id="heb2-form" novalidate>
+          <div class="two">
+            <label for="hb2-day">Hebrew day<input id="hb2-day" name="day" type="number" min="1" max="30" value="1" inputmode="numeric"></label>
+            <label for="hb2-month">Month
+              <select id="hb2-month" name="month">
+                <option>Tishri</option><option>Heshvan</option><option>Kislev</option><option>Tevet</option><option>Shevat</option>
+                <option>Adar</option><option>Adar I</option><option>Adar II</option><option>Nisan</option><option>Iyar</option>
+                <option>Sivan</option><option>Tamuz</option><option>Av</option><option>Elul</option>
+              </select>
+            </label>
+          </div>
+          <label for="hb2-year">Hebrew year<input id="hb2-year" name="year" type="number" min="5700" max="5900" inputmode="numeric"></label>
+          <button class="btn btn-solid" type="submit" style="justify-self:start">Find English date</button>
+        </form>
+        <div class="out" id="heb2-out" role="status" data-empty="Choose a Hebrew date to find the English date."></div>
+      </div>
+    </section>
+    <section class="how">
+      <div class="how-grid">
+        <div>
+          <h2>How it works</h2>
+          <ol><li>The Hebrew day begins at sunset. After sunset, the Hebrew date has already moved to the next day.</li><li>In a Jewish leap year there are two months of Adar: Adar I and Adar II.</li><li>The monthly separation date (<em>yom hachodesh</em>) falls on the same Hebrew date as the last period began.</li></ol>
+        </div>
+        <div class="example"><b>Example</b><p>10 Nisan 5787 is Saturday, April 17, 2027. It begins the evening before, at sunset.</p></div>
+      </div>
+    </section>
+    <section class="faq">
+      <h2>Common questions</h2>
+      <details><summary>Why does the date change at sunset?</summary><p>In Jewish law the day begins at nightfall of the evening before, so the Hebrew date starts at sunset.</p></details>
+      <details><summary>Which Adar should I choose?</summary><p>In a regular year choose Adar. In a leap year choose Adar I or Adar II.</p></details>
+    </section>
+    <section class="related">
+      <h2>Related tools</h2>
+      <div class="tool-cards"><a class="tool-card" href="../tools/vestos-calculator.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span><b>Separation dates</b><small>Monthly, average and interval dates.</small></span></a>
+<a class="tool-card" href="../tools/sunrise-sunset-times.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6.5V10M5.8 10.3l1.9 1.9M18.2 10.3l-1.9 1.9"/></svg></span><span><b>Sunrise &amp; sunset</b><small>When daytime and nighttime begin where you live.</small></span></a>
+<a class="tool-card" href="../tools/mikveh-night-calculator.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg></span><span><b>Mikveh night</b><small>From the day it began to the night of immersion.</small></span></a></div>
+      <p class="small" style="margin-top:1.2rem">Read more: <a href="../read/times-chabad.html">Times: Separation Dates</a></p>
+    </section>
+
+    <div class="disclaimer">
+      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
+      <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
+    </div>
+  </div>
+</main>
+
+<footer class="panel on-flowers" style="margin-top:3rem">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="../index.html">Family <span>Purity</span></a>
+      <p>Rabbi Fishel Jacobs</p>
+    </div>
+    <ul>
+      <li><a href="../index.html#books">Books</a></li>
+      <li><a href="../index.html#resources">Free resources</a></li>
+      <li><a href="../tools.html">Tools</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <small>&copy; Family Purity <span class="credit">Photo: Hisu Lee / Unsplash</span></small>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.querySelector('.menu-btn'), links=document.getElementById('links');
+menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'Close':'Menu'});
+</script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>

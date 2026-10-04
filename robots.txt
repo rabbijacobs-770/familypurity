@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+# Chapters are read online; keep search results pointing to those pages rather than the PDF copies.
+Disallow: /files/ch.
+Disallow: /files/overview_us_letter.pdf
+Disallow: /files/times_web_edition_
+
+Sitemap: https://www.familypurity.com/sitemap.xml

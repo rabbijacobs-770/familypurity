@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vestos Calculator: Onah Beinonis &amp; Haflagah | Family Purity</title>
+<meta name="description" content="Free vestos calculator for the onah beinonis (30th and 31st day), yom hachodesh and veses haflagah, with Chabad and other customs. Private, based on Times by Rabbi Fishel Jacobs.">
+<link rel="canonical" href="https://www.familypurity.com/tools/vestos-calculator.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Family Purity">
+<meta property="og:title" content="Vestos Calculator: Onah Beinonis &amp; Haflagah | Family Purity">
+<meta property="og:description" content="Free vestos calculator for the onah beinonis (30th and 31st day), yom hachodesh and veses haflagah, with Chabad and other customs. Private, based on Times by Rabbi Fishel Jacobs.">
+<meta property="og:url" content="https://www.familypurity.com/tools/vestos-calculator.html">
+<meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Fondamento:ital@0;1&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tools.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Vestos calculator: separation dates", "url": "https://www.familypurity.com/tools/vestos-calculator.html", "description": "Free vestos calculator for the onah beinonis (30th and 31st day), yom hachodesh and veses haflagah, with Chabad and other customs. Private, based on Times by Rabbi Fishel Jacobs.", "applicationCategory": "LifestyleApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "name": "Rabbi Fishel Jacobs", "url": "https://www.familypurity.com/#rabbi-jacobs"}, "publisher": {"@id": "https://www.familypurity.com/#organization"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Family Purity", "item": "https://www.familypurity.com/"}, {"@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://www.familypurity.com/tools.html"}, {"@type": "ListItem", "position": 3, "name": "Separation dates", "item": "https://www.familypurity.com/tools/vestos-calculator.html"}]}</script>
+</head>
+<body>
+<header class="top">
+  <div class="pill on-flowers">
+    <a class="brand" href="../index.html">Family <span>Purity</span></a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="../index.html#books">Books</a>
+      <a href="../index.html#resources">Free resources</a>
+      <a href="../tools.html">Tools</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+    <a class="btn" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask a question</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero tools-hero panel on-flowers" style="padding-block:0">
+    <div class="wrap">
+      <p class="eyebrow">Free tool</p>
+      <h1>Vestos calculator: separation dates</h1>
+      <p class="lede">Find the dates to separate in anticipation of the next period, for Chabad and other customs, from Times.</p>
+      <span class="private">Private: nothing you enter leaves your device</span>
+      <nav class="chips" aria-label="Other tools"><a href="mikveh-night-calculator.html">Mikveh night</a><a href="seven-white-days-checklist.html">Seven days checklist</a><a href="vestos-calculator.html" aria-current="page">Separation dates</a><a href="hebrew-date-converter.html">Hebrew dates</a><a href="sunrise-sunset-times.html">Sunrise &amp; sunset</a><a href="family-purity-glossary.html">Glossary</a></nav>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="tool" id="vestos">
+      <div class="tool-grid">
+        <div>
+          <form id="vestos-form" novalidate>
+            <fieldset>
+              <legend>Your custom</legend>
+              <div class="seg">
+                <label><input type="radio" name="custom" value="chabad" checked> Chabad</label>
+                <label><input type="radio" name="custom" value="other"> Other communities</label>
+              </div>
+            </fieldset>
+            <label for="vs-start">This period began on<input id="vs-start" name="start" type="date" required></label>
+            <fieldset>
+              <legend>At what time?</legend>
+              <div class="seg">
+                <label><input type="radio" name="when" value="day" checked> Daytime</label>
+                <label><input type="radio" name="when" value="evening"> After sunset</label>
+                <label><input type="radio" name="when" value="night"> After midnight</label>
+              </div>
+            </fieldset>
+            <div class="only-chabad two">
+              <label for="vs-ph">Previous hefsek tahara<input id="vs-ph" name="prevHefsek" type="date"></label>
+              <label for="vs-ch">This hefsek tahara<input id="vs-ch" name="curHefsek" type="date"></label>
+            </div>
+            <div class="only-other" hidden>
+              <label for="vs-ps">Previous period began on<input id="vs-ps" name="prevStart" type="date"></label>
+              <div class="seg" style="margin-top:.45rem">
+                <label><input type="radio" name="prevWhen" value="day" checked> Daytime</label>
+                <label><input type="radio" name="prevWhen" value="evening"> After sunset</label>
+                <label><input type="radio" name="prevWhen" value="night"> After midnight</label>
+              </div>
+            </div>
+            <label class="check only-other" hidden><input type="checkbox" name="d31" checked> Also the 31st day</label>
+            <label class="check only-other" hidden><input type="checkbox" name="oz"> Or Zarua: one extra half-day before</label>
+            <label class="check"><input type="checkbox" name="details"> Show details in calendar entries <span class="hint">off keeps entries discreet</span></label>
+            <button class="btn btn-solid" type="submit" style="justify-self:start">Calculate</button>
+          </form>
+        </div>
+        <div class="out" id="vestos-out" role="status" data-empty="Enter when this period began to see the monthly, average and interval dates."></div>
+      </div>
+    </section>
+    <section class="how">
+      <div class="how-grid">
+        <div>
+          <h2>How it works</h2>
+          <ol><li><b>Monthly cycle</b> (<em>yom hachodesh</em>): the same Hebrew date next month, in the same half of the day.</li><li><b>Average cycle</b> (<em>onah beinonis</em>): the 30th day, for a full day. Many communities also keep the 31st day.</li><li><b>Interval cycle</b> (<em>veses haflagah</em>): the same interval as last time. In the Chabad custom it is counted from the <em>hefsek tahara</em>; others count from one onset to the next.</li><li>On each date an examination is made from the hour the last period began. Only actual menstruation counts, not stains. <span class="src"><a href="../read/times-chabad.html">Times, Chabad custom</a> &middot; <a href="../read/times-major-customs.html">Major customs</a></span></li></ol>
+        </div>
+        <div class="example"><b>Half a day or a full day?</b><p>The monthly and interval dates are a half day: sunset to sunrise, or sunrise to sunset. The average cycle is a full day, from one sunset to the next.</p></div>
+      </div>
+    </section>
+    <section class="faq">
+      <h2>Common questions</h2>
+      <details><summary>What is an onah?</summary><p>A half day: daytime from sunrise to sunset, or nighttime from sunset to sunrise.</p></details>
+      <details><summary>Why does it ask what time the period began?</summary><p>After sunset the Hebrew date has already moved to the next day, and the separation is kept in the same half of the day.</p></details>
+      <details><summary>Do stains count when calculating?</summary><p>No. Only actual menstruation, or blood found through an examination, is recorded for these dates.</p></details>
+      <details><summary>What about a fixed cycle (veset kavua)?</summary><p>This calculator covers the common case. If your cycle follows a fixed pattern, ask Rabbi Jacobs.</p></details>
+    </section>
+    <section class="related">
+      <h2>Related tools</h2>
+      <div class="tool-cards"><a class="tool-card" href="../tools/mikveh-night-calculator.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg></span><span><b>Mikveh night</b><small>From the day it began to the night of immersion.</small></span></a>
+<a class="tool-card" href="../tools/hebrew-date-converter.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><text x="12" y="17.5" text-anchor="middle" font-size="15" font-family="Frank Ruhl Libre, serif" fill="currentColor" stroke="none">א</text><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/></svg></span><span><b>Hebrew dates</b><small>Convert between English and Hebrew dates.</small></span></a>
+<a class="tool-card" href="../tools/sunrise-sunset-times.html"><span class="ti"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6.5V10M5.8 10.3l1.9 1.9M18.2 10.3l-1.9 1.9"/></svg></span><span><b>Sunrise &amp; sunset</b><small>When daytime and nighttime begin where you live.</small></span></a></div>
+      <p class="small" style="margin-top:1.2rem">Read more: <a href="../read/times-chabad.html">Times: Separation Dates, Chabad Custom</a> &middot; <a href="../read/times-major-customs.html">Times: Separation Dates, Major Customs</a></p>
+    </section>
+
+    <div class="disclaimer">
+      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
+      <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
+    </div>
+  </div>
+</main>
+
+<footer class="panel on-flowers" style="margin-top:3rem">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="../index.html">Family <span>Purity</span></a>
+      <p>Rabbi Fishel Jacobs</p>
+    </div>
+    <ul>
+      <li><a href="../index.html#books">Books</a></li>
+      <li><a href="../index.html#resources">Free resources</a></li>
+      <li><a href="../tools.html">Tools</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <small>&copy; Family Purity <span class="credit">Photo: Hisu Lee / Unsplash</span></small>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.querySelector('.menu-btn'), links=document.getElementById('links');
+menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'Close':'Menu'});
+</script>
+<script src="../assets/tools.js"></script>
+</body>
+</html>
