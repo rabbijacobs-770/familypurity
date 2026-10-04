@@ -1,3 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Family Purity - Rabbi Fishel Jacobs">
+<meta property="og:description" content="Warm, clear guidance for a Jewish marriage. Books, free printable chapters, Times calendars and classes.">
+<meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
+<meta property="og:url" content="https://www.familypurity.com/">
+<meta property="og:type" content="website">
 <title>Family Purity</title>
 <meta name="description" content="Family Purity by Rabbi Fishel Jacobs: books, free resources, Times calendars, and classes on Jewish family purity (Taharat HaMishpacha).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +37,7 @@
   --on-violet:#f6f3ff; --heading:#ece8f7; color-scheme:dark}
 
 *{box-sizing:border-box}
+img{max-width:100%;height:auto}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.65 var(--body);margin:0}
@@ -108,12 +119,12 @@ nav a:hover{color:var(--violet)}
 .books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem)}
 .book{display:grid;grid-template-rows:auto 1fr;gap:1.25rem}
 .book .cover{aspect-ratio:2/3;max-width:100%;display:flex;align-items:flex-end;justify-content:center;background:var(--tint);padding:1.5rem 1.5rem 0;border-radius:14px}
-.book .cover img{max-height:100%;width:auto;box-shadow:0 14px 30px -14px rgba(30,20,80,.45)}
+.book .cover img{width:78%;height:auto;box-shadow:0 14px 30px -14px rgba(30,20,80,.45)}
 .book-body{display:grid;gap:.6rem;align-content:start}
 .book-body .meta{font-size:.88rem;color:var(--muted)}
 .book-body .btn{justify-self:start;margin-top:.4rem}
 .note{font-size:.9rem;color:var(--muted);font-style:italic}
-@media (max-width:860px){.books{grid-template-columns:1fr}.book{grid-template-columns:9rem 1fr;grid-template-rows:none;align-items:start}.book .cover{padding:0;background:none}}
+@media (max-width:860px){.books{grid-template-columns:1fr}.book{grid-template-columns:9rem 1fr;grid-template-rows:none;align-items:start}.book .cover{padding:0;background:none;aspect-ratio:auto}.book .cover img{width:100%}}
 
 /* Amazon steps */
 .how{margin-top:3rem;border:1px solid var(--line);background:var(--surface);padding:clamp(1.25rem,3vw,2rem);border-radius:16px;display:grid;gap:1.25rem}
@@ -197,6 +208,8 @@ textarea{min-height:8rem;resize:vertical}
 footer{border-top:1px solid var(--line);padding-block:2rem;color:var(--muted);font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="wrap">
@@ -537,3 +550,5 @@ document.getElementById('contactForm').addEventListener('submit',e=>{
   m.textContent='Preview only: this form will be connected to your email when the site goes live. For now, please use WhatsApp.';
 });
 </script>
+</body>
+</html>
