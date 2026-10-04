@@ -265,3 +265,8 @@ footer small .credit{font-size:.68rem;opacity:.6;margin-left:.4rem}
 .pdfs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
 .pdfs a:hover{color:var(--violet)}
 .editions .pdfs{margin-top:.2rem}
+
+/* Note from Rabbi Jacobs (About) */
+.author-note{display:grid;gap:.6rem;justify-items:start;padding:1.2rem 1.3rem;border-radius:18px;background:var(--tint);border-left:3px solid var(--gold)}
+.author-note h3{font-size:1.3rem}
+.author-note p{color:var(--muted)}

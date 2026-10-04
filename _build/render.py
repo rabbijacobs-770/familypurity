@@ -1,4 +1,4 @@
-import json, html, re, os, sys
+import json, html, re, os, sys, urllib.parse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import blocks_for, render_body, join_lines, SITE
 from pages import PAGES
@@ -103,6 +103,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
       <img src="../images/rabbi-portrait.jpg" alt="" width="726" height="800" loading="lazy">
       <span><b>A question about this?</b><small>Ask Rabbi Jacobs privately on WhatsApp.</small></span>
     </a>
+    <p class="correction">Spotted a typo or something unclear? <a href="mailto:RabbiJacobs@FamilyPurity.com?subject={urllib.parse.quote('Correction: '+full)}">Send a correction</a></p>
   </aside>
 </main>
 

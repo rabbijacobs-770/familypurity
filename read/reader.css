@@ -159,3 +159,5 @@ a{color:var(--violet)}
 .cal-grid.five{grid-template-columns:repeat(5,minmax(0,1fr))}
 .text .small,.cal .small{font:400 .95rem/1.45 var(--body);color:var(--muted)}
 .text h3+p,.text ul+p,.text .quote+p{text-indent:0}
+.correction{font-size:1rem;color:var(--muted);text-align:center}
+.correction a{font-weight:600}

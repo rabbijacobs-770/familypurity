@@ -1,5 +1,5 @@
 """Split the tools into one SEO page each (tools/<slug>.html) and rebuild tools.html as a hub."""
-import re, json, html, os
+import re, json, html, os, urllib.parse
 SITE=os.path.expanduser('~/Documents/FamilyPurity')
 B='https://www.familypurity.com'
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -160,7 +160,8 @@ def head(title,desc,url,r,ld):
 def cards(slugs,r):
     return '\n'.join(f'<a class="tool-card" href="{r}tools/{s}.html"><span class="ti">{svg(s)}</span><span><b>{BY[s]["short"]}</b><small>{BY[s]["card"]}</small></span></a>' for s in slugs)
 
-os.makedirs(f'{SITE}/tools',exist_ok=True)
+OUT=f'{SITE}/_build/hidden-tools'  # hidden until Rabbi Jacobs signs off; move to the site root to publish
+os.makedirs(f'{OUT}/tools',exist_ok=True)
 for t in TOOLS:
     url=f'{B}/tools/{t["slug"]}.html'
     app={"@context":"https://schema.org","@type":"WebApplication","name":t['h1'][:1].upper()+t['h1'][1:],"url":url,"description":t['desc'],
@@ -215,6 +216,7 @@ for t in TOOLS:
       <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
       <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
     </div>
+    <p class="correction-line">Spotted a typo or something unclear? <a href="mailto:RabbiJacobs@FamilyPurity.com?subject=Correction%3A%20{urllib.parse.quote(t['short'].replace('&amp;','&'))}">Send a correction</a></p>
   </div>
 </main>
 
@@ -228,7 +230,7 @@ for t in TOOLS:
 '''
     page=head(t['title']+('' if 'Family Purity' in t['title'] else ' | Family Purity'),t['desc'],url,'../',[app,crumbs])+body
     page=page.replace('href="#checklist"','href="seven-white-days-checklist.html"')
-    open(f'{SITE}/tools/{t["slug"]}.html','w').write(page)
+    open(f'{OUT}/tools/{t["slug"]}.html','w').write(page)
     print('wrote tools/'+t['slug']+'.html')
 
 # Hub
@@ -263,4 +265,4 @@ hub=head('Free Family Purity Calculators & Tools | Family Purity','Free, private
 </body>
 </html>
 '''
-open(f'{SITE}/tools.html','w').write(hub); print('wrote tools.html hub')
+open(f'{OUT}/tools.html','w').write(hub); print('wrote tools.html hub')
