@@ -224,6 +224,7 @@ footer ul{display:flex;flex-wrap:wrap;gap:.25rem}
 footer ul a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:.45rem .8rem;border-radius:999px}
 footer ul a:hover{background:rgba(255,255,255,.12)}
 footer small{flex-basis:100%;color:#cfc7ee;font-size:.82rem}
+footer small .credit{font-size:.68rem;opacity:.6;margin-left:.4rem}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.path:hover,.btn:hover,.year:hover,.edition:hover{transform:none}}
 [hidden]{display:none!important}
@@ -254,3 +255,12 @@ footer small{flex-basis:100%;color:#cfc7ee;font-size:.82rem}
 .c-card.feature .price{font-size:1.05rem;color:var(--gold-light)}
 .c-card.feature .price b{font:500 2.2rem/1 var(--display);color:#fff;margin-right:.2rem}
 @media (max-width:760px){.consult{grid-template-columns:1fr}}
+
+/* Chapters: reading online first, PDF second */
+.chap h4 a{color:inherit;text-decoration:none}
+.chap h4 a:hover{color:var(--violet)}
+.files a.online{justify-content:space-between}
+.pdfs{margin:0;font-size:.82rem;color:var(--muted);line-height:1.5}
+.pdfs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+.pdfs a:hover{color:var(--violet)}
+.editions .pdfs{margin-top:.2rem}
