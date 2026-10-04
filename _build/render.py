@@ -7,7 +7,7 @@ from pages import PAGES
 ORDER=[('overview','Introduction','Overview'),('from-the-rebbe','Introduction','From the Rebbe'),
  ('perfect-marriage','Chapter 1','Perfect Marriage'),('niddah','Chapter 2','Niddah'),('source-of-niddah','Chapter 2','Source of Niddah'),
  ('gynecological-considerations','Chapter 2','Gynecological Considerations'),('stains','Chapter 3','Stains'),
- ('making-sure-menstruation-ended','Chapter 5','Making Sure Menstruation Ended'),('seven-white-days','Chapter 6','The Seven White Days'),
+ ('making-sure-menstruation-has-finished','Chapter 5','Making Sure Menstruation Has Finished'),('seven-white-days','Chapter 6','The Seven White Days'),
  ('times-chabad','Times','Separation Dates · Chabad Custom'),('times-major-customs','Times','Separation Dates · Major Customs')]
 BASE='https://www.familypurity.com'
 AMAZON_FP='https://www.amazon.com/dp/B0DGGB859Z'; AMAZON_TIMES='https://www.amazon.com/dp/B0DC713M2P'

@@ -31,7 +31,7 @@ PAGES={
  'ch._3_-_stains':{'slug':'stains','num':'Chapter 3','title':'Stains','pdf':'ch._3_-_stains.pdf','add_italics':True,
    'desc':'Chapter 3 of Family Purity: the laws of stains (kesamim), the three conditions, minimum size, and how to approach a rabbi with a question.',
    'drop_lines':PRINT_LINES},
- 'ch._5_-_making_sure_menstruation':{'slug':'making-sure-menstruation-ended','num':'Chapter 5','title':'Making Sure Menstruation Ended','pdf':'ch._5_-_making_sure_menstruation.pdf','add_italics':True,
+ 'ch._5_-_making_sure_menstruation':{'slug':'making-sure-menstruation-has-finished','num':'Chapter 5','title':'Making Sure Menstruation Has Finished','pdf':'ch._5_-_making_sure_menstruation.pdf','add_italics':True,
    'desc':'Chapter 5 of Family Purity: the hefsek tahara, the five minimum days, and why the timing matters, with an interactive example.',
    'diagram_sizes':[6.4,7.3],'diagram_bold':True,'diagram_html':FIVE_DAYS,'drop_lines':PRINT_LINES,'fix_html':{r'<p>(And this is the law when she ceases to notice blood, after seeing it for a few days\.)</p>\s*<blockquote class="quote"><p>':r'<blockquote class="quote"><p>\1 '}},
  'times_web_edition_chabad':{'slug':'times-chabad','num':'Times','title':'Separation Dates','sub':'Chabad custom','pdf':'times_web_edition_chabad.pdf','add_italics':True,'skip_pages':[1],
