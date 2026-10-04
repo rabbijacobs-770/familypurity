@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap">
 <style>
-/* Layout: a book-cover language. Violet hydrangea band down the left of the hero, gold calligraphic accents, white pages for reading. Sections stack; resources read like a table of contents. */
+/* Layout: welcoming first. The books and a clear headline lead, visitors pick their path, and the rabbi's portrait and story close the page before Contact. Violet and gold from the book covers; rounded, soft shapes for warmth. */
 :root{
   --bg:#fbfaff; --surface:#ffffff; --tint:#f1eef9;
   --fg:#231f33; --muted:#5d5873; --line:#dcd6ea;
@@ -53,43 +53,61 @@ nav a:hover{color:var(--violet)}
 @media (max-width:760px){nav{width:100%;overflow-x:auto;padding-bottom:.6rem}nav ul{flex-wrap:nowrap}nav a{white-space:nowrap}}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.3rem;border-radius:3px;font:700 .98rem/1 var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.3rem;border-radius:999px;font:700 .98rem/1 var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer}
 .btn-primary{background:var(--violet-deep);color:var(--on-violet)}
 .btn-primary:hover{background:#3a2c73}
+.btn{padding:.85rem 1.4rem}
 .btn-gold{background:transparent;border-color:var(--gold);color:var(--gold)}
 .btn-gold:hover{background:color-mix(in srgb,var(--gold) 12%,transparent)}
 .btn-row{display:flex;flex-wrap:wrap;gap:.75rem}
 
-/* Hero */
-.hero{padding-block:0;border-bottom:1px solid var(--line)}
-.hero .wrap{display:grid;grid-template-columns:3.25rem 1fr minmax(0,18rem);gap:clamp(1.25rem,4vw,3.5rem);align-items:center;padding-block:clamp(2.5rem,6vw,4.5rem)}
-.band{align-self:stretch;border-radius:2px;background:
-  radial-gradient(circle at 50% 12%,#e8d77a 0 3px,transparent 4px),
-  radial-gradient(circle at 50% 46%,#e8d77a 0 3px,transparent 4px),
-  radial-gradient(circle at 50% 80%,#e8d77a 0 3px,transparent 4px),
-  radial-gradient(ellipse 70% 14% at 30% 20%,#8f80d6 0,transparent 70%),
-  radial-gradient(ellipse 70% 14% at 70% 54%,#8f80d6 0,transparent 70%),
-  radial-gradient(ellipse 70% 14% at 35% 88%,#8f80d6 0,transparent 70%),
-  linear-gradient(#5a46a8,#3b2c7c 50%,#5a46a8)}
+/* Hero: the rabbi's portrait carries both warmth and authority */
+.hero{padding-block:clamp(2rem,5vw,4rem);background:linear-gradient(180deg,var(--tint),var(--bg))}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);align-items:center}
 .hero-copy{display:grid;gap:1.25rem;min-width:0}
-.hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:500;color:var(--fg)}
-.hero h1 em{color:var(--gold);font-style:italic}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.2rem);font-weight:600;color:var(--heading)}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:500}
+.hero .greet{font-size:1.2rem;max-width:34rem}
 .hebrew{font-family:var(--hebrew);color:var(--muted);font-size:1.1rem;direction:rtl}
-.hero-book{position:relative}
-.hero-book img{display:block;width:100%;border-radius:2px;box-shadow:0 1px 2px rgba(20,10,50,.18),0 18px 40px -12px rgba(30,20,80,.35)}
-.hero-book figcaption{font-size:.88rem;color:var(--muted);margin-top:.75rem;text-align:center}
-@media (max-width:820px){.hero .wrap{grid-template-columns:1.25rem 1fr}.hero-book{grid-column:2;max-width:14rem}}
+.covers{display:flex;justify-content:center;align-items:flex-end;padding-block:1rem;min-width:0}
+.covers a{flex:0 1 10.5rem;min-width:0;position:relative;transition:transform .2s}
+.covers a+a{margin-left:-2.25rem}
+.covers img{display:block;width:100%;border-radius:4px;box-shadow:0 2px 4px rgba(20,10,50,.15),0 20px 40px -16px rgba(30,20,80,.45)}
+.covers a:nth-child(1){transform:rotate(-6deg) translateY(.6rem)}
+.covers a:nth-child(2){flex-basis:13rem;z-index:2;transform:translateY(-.5rem)}
+.covers a:nth-child(3){transform:rotate(6deg) translateY(.6rem)}
+.covers a:hover{z-index:3}
+.covers a:nth-child(2):hover{transform:translateY(-1rem)}
+@media (prefers-reduced-motion:reduce){.covers a{transition:none}}
+.portrait{margin:0}
+.portrait img{display:block;width:100%;border-radius:18px;box-shadow:0 24px 50px -24px rgba(30,20,80,.45)}
+.rabbi{background:var(--tint)}
+.about-copy .greet{font-size:1.2rem}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.covers{max-width:24rem;margin-inline:auto}}
 
-/* Audience strip */
-.audience{background:var(--tint);padding-block:2.5rem}
-.audience .wrap{display:grid;gap:1rem}
-.chips{display:flex;flex-wrap:wrap;gap:.5rem}
-.chip{padding:.45rem .85rem;border:1px solid var(--line);background:var(--surface);border-radius:999px;font-size:.94rem;font-weight:600;color:var(--fg)}
+/* Journey: send each visitor to what fits them */
+.journey .couple{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.jcard{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--fg);transition:transform .15s,box-shadow .15s}
+.jcard:hover{transform:translateY(-2px);box-shadow:0 16px 30px -18px rgba(30,20,80,.4)}
+.jcard img{width:100%;height:100%;object-fit:cover;max-width:100%}
+.jcard .jb{padding:1.3rem 1.4rem;display:grid;gap:.45rem;align-content:center;min-width:0}
+.jcard h3{font-size:1.6rem;color:var(--heading)}
+.jcard p{color:var(--muted);font-size:.97rem}
+.go{font-weight:700;color:var(--violet);font-size:.95rem}
+.leaders-label{margin:2.25rem 0 1rem}
+.leaders{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.lcard{display:grid;gap:.4rem;align-content:start;padding:1.2rem;border-radius:14px;background:var(--tint);text-decoration:none;color:var(--fg);border:1px solid transparent}
+.lcard:hover{border-color:var(--violet)}
+.lcard h3{font-size:1.3rem;color:var(--heading)}
+.lcard p{font-size:.92rem;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.jcard{transition:none}.jcard:hover{transform:none}}
+@media (max-width:900px){.journey .couple{grid-template-columns:1fr}.leaders{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.jcard{grid-template-columns:7rem minmax(0,1fr)}.leaders{grid-template-columns:1fr}}
 
 /* Books */
 .books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem)}
 .book{display:grid;grid-template-rows:auto 1fr;gap:1.25rem}
-.book .cover{aspect-ratio:2/3;max-width:100%;display:flex;align-items:flex-end;justify-content:center;background:var(--tint);padding:1.5rem 1.5rem 0;border-radius:2px}
+.book .cover{aspect-ratio:2/3;max-width:100%;display:flex;align-items:flex-end;justify-content:center;background:var(--tint);padding:1.5rem 1.5rem 0;border-radius:14px}
 .book .cover img{max-height:100%;width:auto;box-shadow:0 14px 30px -14px rgba(30,20,80,.45)}
 .book-body{display:grid;gap:.6rem;align-content:start}
 .book-body .meta{font-size:.88rem;color:var(--muted)}
@@ -98,7 +116,7 @@ nav a:hover{color:var(--violet)}
 @media (max-width:860px){.books{grid-template-columns:1fr}.book{grid-template-columns:9rem 1fr;grid-template-rows:none;align-items:start}.book .cover{padding:0;background:none}}
 
 /* Amazon steps */
-.how{margin-top:3rem;border:1px solid var(--line);background:var(--surface);padding:clamp(1.25rem,3vw,2rem);border-radius:4px;display:grid;gap:1.25rem}
+.how{margin-top:3rem;border:1px solid var(--line);background:var(--surface);padding:clamp(1.25rem,3vw,2rem);border-radius:16px;display:grid;gap:1.25rem}
 .how ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;counter-reset:s}
 .how li{counter-increment:s;display:grid;gap:.35rem;align-content:start;min-width:0}
 .how li::before{content:counter(s);font:600 1.9rem/1 var(--display);color:var(--gold)}
@@ -124,7 +142,7 @@ nav a:hover{color:var(--violet)}
 .toc a[href]:hover .t{color:var(--violet);text-decoration:underline}
 .toc .k{font:600 .75rem/1.6 var(--body);color:var(--muted);letter-spacing:.06em;flex:none}
 .side{display:grid;gap:1.5rem;align-content:start}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.4rem;display:grid;gap:.9rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;display:grid;gap:.9rem}
 .years{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
 .year{display:grid;gap:.1rem;padding:.7rem .8rem;border:1px solid var(--line);border-radius:3px;text-decoration:none;color:var(--fg);font-variant-numeric:tabular-nums}
 .year:hover{border-color:var(--violet)}
@@ -140,7 +158,7 @@ nav a:hover{color:var(--violet)}
 .classes .lede{color:#cfc7ee}
 .classes .eyebrow{color:var(--gold-soft)}
 .class-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.class-card{border:1px dashed rgba(246,243,255,.35);border-radius:4px;padding:1.3rem;display:grid;gap:.5rem;align-content:start}
+.class-card{border:1px dashed rgba(246,243,255,.35);border-radius:14px;padding:1.3rem;display:grid;gap:.5rem;align-content:start}
 .class-card .when{font:600 .8rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft)}
 .class-card h3{font-size:1.4rem;color:var(--on-violet)}
 .class-card p{color:#cfc7ee;font-size:.95rem}
@@ -149,8 +167,8 @@ nav a:hover{color:var(--violet)}
 @media (max-width:860px){.class-list{grid-template-columns:1fr}}
 
 /* About */
-.about-grid{display:grid;grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);align-items:start}
-.about-grid img{width:100%;border-radius:2px}
+.about-grid{display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);align-items:start}
+
 .about-copy{display:grid;gap:1.1rem;max-width:40rem}
 .about-copy .sig{font:italic 500 1.6rem/1 var(--display);color:var(--gold)}
 .timeline{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.75rem;border-left:2px solid var(--line)}
@@ -159,8 +177,8 @@ nav a:hover{color:var(--violet)}
 @media (max-width:760px){.about-grid{grid-template-columns:1fr}.about-grid img{max-width:14rem}.timeline li{grid-template-columns:4.5rem 1fr}}
 
 /* Blog */
-.blog{background:var(--tint)}
-.post{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:clamp(1.25rem,3vw,2rem);display:grid;gap:.75rem;max-width:44rem}
+.blog{border-top:1px solid var(--line)}
+.post{background:var(--tint);border:1px solid var(--line);border-radius:16px;padding:clamp(1.25rem,3vw,2rem);display:grid;gap:.75rem;max-width:44rem}
 .post time{color:var(--muted);font-size:.9rem}
 
 /* Contact */
@@ -185,11 +203,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
     <a class="brand" href="#top">Family <span>Purity</span></a>
     <nav aria-label="Main">
       <ul>
+        <li><a href="#start">Start here</a></li>
         <li><a href="#books">Books</a></li>
         <li><a href="#resources">Free Resources</a></li>
         <li><a href="#classes">Classes</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#blog">Blog</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -199,39 +218,56 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <div class="band" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Rabbi Fishel Jacobs &middot; Since 1998</p>
-        <h1>Building a vibrant Jewish home <em>shouldn&rsquo;t be hard.</em> It isn&rsquo;t.</h1>
-        <p class="hebrew" lang="he">טהרת המשפחה</p>
-        <p class="lede">Clear, practical guidance on Taharat HaMishpacha for couples before and during marriage, and for the teachers and rabbis who guide them. Books, free printable chapters, Times calendars, and classes.</p>
+        <p class="eyebrow">Taharat HaMishpacha &middot; <span class="hebrew" lang="he" style="color:inherit;font-size:1.05em">טהרת המשפחה</span></p>
+        <h1>Warm, clear guidance for a <em>Jewish marriage</em></h1>
+        <p class="greet">Books, free printable chapters, Times calendars and classes, for couples before and during marriage and for the teachers and rabbis who guide them.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#books">Order the books</a>
-          <a class="btn btn-gold" href="#resources">Free resources</a>
+          <a class="btn btn-primary" href="#resources">Free resources</a>
+          <a class="btn btn-gold" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask a question</a>
         </div>
       </div>
-      <figure class="hero-book" style="margin:0">
-        <a href="https://www.amazon.com/dp/B0DGGB859Z" target="_blank" rel="noopener"><img src="images/family-p-copy_orig.jpg" alt="Cover of Family Purity: A Guide to Marital Fulfillment by Rabbi Fishel Jacobs" width="500" height="748"></a>
-        <figcaption>Tap the cover to order on Amazon</figcaption>
-      </figure>
+      <div class="covers">
+        <a href="https://www.amazon.com/dp/B0DC713M2P" target="_blank" rel="noopener"><img src="images/times-cover-2024-2030-copy_orig.jpg" alt="Times 2024–2030, order on Amazon" width="404" height="577"></a>
+        <a href="https://www.amazon.com/dp/B0DGGB859Z" target="_blank" rel="noopener"><img src="images/family-p-copy_orig.jpg" alt="Family Purity, order on Amazon" width="500" height="748"></a>
+        <a href="#books"><img src="images/study-guide-cover_orig.jpg" alt="Study Guide for Choson and Kallah" width="504" height="800"></a>
+      </div>
     </div>
   </section>
 
-  <div class="audience">
+  <section class="journey" id="start">
     <div class="wrap">
-      <p class="eyebrow">Written for</p>
-      <div class="chips">
-        <span class="chip">People preparing for marriage</span>
-        <span class="chip">Married couples</span>
-        <span class="chip">College students &amp; campus couples</span>
-        <span class="chip">Communities</span>
-        <span class="chip">Teachers &amp; kallah teachers</span>
-        <span class="chip">Educators</span>
-        <span class="chip">Rabbis</span>
-        <span class="chip">Anyone curious</span>
+      <div class="sec-head">
+        <p class="eyebrow">Start here</p>
+        <h2>Where are you on your journey?</h2>
+      </div>
+      <div class="couple">
+        <a class="jcard" href="#books">
+          <img src="images/ring.jpg" alt="A gold wedding band on white silk" width="720" height="480">
+          <div class="jb">
+            <h3>Preparing for marriage</h3>
+            <p>Engaged, or a college couple thinking ahead? Start with the Study Guide and the free chapters, then join a class.</p>
+            <span class="go">See the books &rarr;</span>
+          </div>
+        </a>
+        <a class="jcard" href="#resources">
+          <img src="images/kiddush.jpg" alt="Wine bottle and silver kiddush cup on a Shabbat table" width="445" height="800">
+          <div class="jb">
+            <h3>Married couples</h3>
+            <p>Track dates with the Times calendar, review a chapter, or ask a question privately.</p>
+            <span class="go">Calendars &amp; chapters &rarr;</span>
+          </div>
+        </a>
+      </div>
+      <p class="eyebrow leaders-label">For those who teach and lead</p>
+      <div class="leaders">
+        <a class="lcard" href="#resources"><h3>Teachers &amp; kallah teachers</h3><p>Free printable chapters you may copy and hand out.</p><span class="go">Materials &rarr;</span></a>
+        <a class="lcard" href="#classes"><h3>Campuses</h3><p>A class series for college students and couples.</p><span class="go">Classes &rarr;</span></a>
+        <a class="lcard" href="#contact"><h3>Communities</h3><p>Invite Rabbi Jacobs to teach your shul or group.</p><span class="go">Get in touch &rarr;</span></a>
+        <a class="lcard" href="#resources"><h3>Rabbis</h3><p>Times web editions for each community&rsquo;s custom.</p><span class="go">Web editions &rarr;</span></a>
       </div>
     </div>
-  </div>
+  </section>
 
   <section id="books">
     <div class="wrap">
@@ -405,25 +441,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
     </div>
   </section>
 
-  <section id="about">
-    <div class="wrap about-grid">
-      <img src="images/5n1a9921-copy_orig.jpg" alt="Rabbi Fishel Jacobs" width="726" height="800">
-      <div class="about-copy">
-        <p class="eyebrow">About</p>
-        <h2>Shalom, I&rsquo;m Rabbi Jacobs</h2>
-        <p>For over four decades, my passion has been strengthening Jewish family values. I have no greater joy than seeing happy couples and happy families.</p>
-        <ul class="timeline">
-          <li><b>1992</b><span>Trained as a rabbinic attorney, helping women in Israeli rabbinical courts obtain a get from husbands who refused.</span></li>
-          <li><b>1998</b><span>Ordained by the Chief Rabbis of Israel and went on to specialize in the laws of family life.</span></li>
-          <li><b>20 years</b><span>Published eight acclaimed books on practical Talmudic law, used worldwide.</span></li>
-          <li><b>2009&ndash;now</b><span>Responding rabbi for leading family purity websites.</span></li>
-        </ul>
-        <p>This is my purpose: seeing couples grow together and raise wholesome, loving families. Use the free resources here, and contact me anytime. I&rsquo;m happy to help.</p>
-        <p class="sig">Rabbi Fishel Jacobs</p>
-      </div>
-    </div>
-  </section>
-
   <section id="blog" class="blog">
     <div class="wrap">
       <div class="sec-head">
@@ -436,6 +453,30 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
         <h3>New site, with a blog</h3>
         <p>For decades I&rsquo;ve been writing in halacha, book after book. Over the years many rabbonim have shaped my life through their personal relationships with me. This blog shares the more personal, practical, experiential side of my decades in family purity, in the hope it benefits others.</p>
       </article>
+    </div>
+  </section>
+
+  <section id="about" class="rabbi">
+    <div class="wrap about-grid">
+      <figure class="portrait">
+        <img src="images/rabbi-portrait.jpg" alt="Rabbi Fishel Jacobs smiling at his desk with an open book" width="726" height="800">
+      </figure>
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2>Shalom, I&rsquo;m Rabbi Jacobs</h2>
+        <p class="greet">For over four decades, my passion has been strengthening Jewish family values. I have no greater joy than seeing happy couples and happy families.</p>
+        <ul class="timeline">
+          <li><b>1992</b><span>Trained as a rabbinic attorney, helping women in Israeli rabbinical courts obtain a get from husbands who refused.</span></li>
+          <li><b>1998</b><span>Ordained by the Chief Rabbis of Israel and went on to specialize in the laws of family life.</span></li>
+          <li><b>20 years</b><span>Published eight acclaimed books on practical Talmudic law, used worldwide.</span></li>
+          <li><b>2009&ndash;now</b><span>Responding rabbi for leading family purity websites.</span></li>
+        </ul>
+        <p>This is my purpose: seeing couples grow together and raise wholesome, loving families. Use the free resources here, and contact me anytime. I&rsquo;m happy to help.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs</a>
+        </div>
+        <p class="sig">Rabbi Fishel Jacobs</p>
+      </div>
     </div>
   </section>
 
