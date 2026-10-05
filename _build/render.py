@@ -114,6 +114,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
 </nav>
 
 <script src="reader.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "e8bc2fc425c042159999a4b01f919dea"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 '''

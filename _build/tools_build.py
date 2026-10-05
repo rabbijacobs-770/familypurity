@@ -226,6 +226,7 @@ for t in TOOLS:
 {MENU}
 <script src="../assets/fp-calc.js"></script>
 <script src="../assets/tools.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "e8bc2fc425c042159999a4b01f919dea"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 '''
@@ -263,6 +264,7 @@ hub=head('Free Family Purity Calculators & Tools | Family Purity','Free, private
 {FOOT.format(r='')}
 
 {MENU}
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "e8bc2fc425c042159999a4b01f919dea"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 '''
