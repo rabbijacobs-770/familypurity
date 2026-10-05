@@ -2,7 +2,7 @@
    Type follows the printed book: EB Garamond text with small-caps headings and the ❧ fleuron.
    Sources sit in the margin like a sefer page on wide screens and open on tap on phones. */
 :root{
-  --bg:#fcfbff; --surface:#ffffff; --tint:#f2effa; --tint-2:#e9e4f6;
+  --bg:#ffffff; --surface:#ffffff; --tint:#f2effa; --tint-2:#e9e4f6;
   --fg:#221d33; --muted:#5f5976; --line:#e0daee;
   --violet:#4b3a8c; --violet-deep:#2c2157; --gold:#94701f; --gold-light:#ecd593;
   --heading:#2c2157; --shade-rgb:32,21,74;

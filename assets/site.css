@@ -3,7 +3,7 @@
    Layout: three rounded hydrangea panels (banner, classes band, footer) frame calm white reading sections.
    A floating glass pill carries the navigation. Violet and gold come from the book covers. */
 :root{
-  --bg:#fcfbff; --surface:#ffffff; --tint:#f2effa; --tint-2:#e9e4f6;
+  --bg:#ffffff; --surface:#ffffff; --tint:#f2effa; --tint-2:#e9e4f6;
   --fg:#221d33; --muted:#5f5976; --line:#e0daee;
   --violet:#4b3a8c; --violet-deep:#2c2157; --gold:#94701f; --gold-light:#ecd593;
   --heading:#2c2157; --shade-rgb:32,21,74;
@@ -132,7 +132,7 @@ section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
 @media (max-width:420px){.path{grid-template-columns:7rem minmax(0,1fr)}.path h3{font-size:1.35rem}}
 
 /* Books */
-.books-sec{background:var(--tint)}
+.books-sec{background:var(--bg)}
 .books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.25rem,3vw,2.25rem)}
 .book{display:grid;gap:1.1rem;align-content:start}
 .stage{display:flex;justify-content:center;align-items:center;padding:2.25rem 1rem;border-radius:22px;background:var(--surface);border:1px solid var(--line)}
