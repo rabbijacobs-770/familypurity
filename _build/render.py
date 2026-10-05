@@ -8,9 +8,11 @@ ORDER=[('overview','Introduction','Overview'),('from-the-rebbe','Introduction','
  ('perfect-marriage','Chapter 1','Perfect Marriage'),('niddah','Chapter 2','Niddah'),('source-of-niddah','Chapter 2','Source of Niddah'),
  ('gynecological-considerations','Chapter 2','Gynecological Considerations'),('stains','Chapter 3','Stains'),
  ('making-sure-menstruation-has-finished','Chapter 5','Making Sure Menstruation Has Finished'),('seven-white-days','Chapter 6','The Seven White Days'),
+ ('preparing-for-immersion','Chapter 7','Preparing for Immersion'),
  ('times-chabad','Times','Separation Dates · Chabad Custom'),('times-major-customs','Times','Separation Dates · Major Customs')]
 BASE='https://www.familypurity.com'
-AMAZON_FP='https://www.amazon.com/dp/B0DGGB859Z'; AMAZON_TIMES='https://www.amazon.com/dp/B0DC713M2P'
+AMAZON_FP='https://www.amazon.com/dp/B0DGGB859Z'
+NOTIFY='https://wa.me/972587921788?text=Shalom%20Rabbi%20Jacobs%2C%20please%20let%20me%20know%20when%20the%20expanded%20edition%20of%20Family%20Purity%20is%20published.'; AMAZON_TIMES='https://www.amazon.com/dp/B0DC713M2P'
 
 def nav(slug):
     i=[o[0] for o in ORDER].index(slug)
@@ -27,7 +29,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
     ld={"@context":"https://schema.org","@type":"Article","headline":full,"description":desc,
         "author":{"@type":"Person","name":"Rabbi Fishel Jacobs","url":BASE+"/#rabbi-jacobs"},
         "publisher":{"@type":"Organization","name":"Family Purity","url":BASE+"/"},
-        "isPartOf":{"@type":"Book","name":book,"author":{"@type":"Person","name":"Rabbi Fishel Jacobs"}},
+        "isPartOf":{"@type":"Book","name":book,"author":{"@type":"Person","name":"Rabbi Fishel Jacobs"},**({"bookEdition":"First expanded edition (forthcoming)"} if expanded else {})},
         "inLanguage":"en","mainEntityOfPage":f"{BASE}/read/{slug}.html","image":BASE+"/images/family-p-copy_orig.jpg"}
     crumbs={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"Family Purity","item":BASE+"/"},
@@ -41,6 +43,12 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
     <cite>{epi[1]}</cite>
   </blockquote>'''
     ask_text=f'Shalom Rabbi Jacobs, I have a question about {full}: '
+    if expanded:
+        end_h='A preview from the expanded edition'
+        end_p='This chapter is from the forthcoming first expanded edition of <em>Family Purity: A Guide to Marital Fulfillment</em>. The current edition is available now.'
+    else:
+        end_h='The full guide, with calendars, is in the book' if is_times else 'The chapter continues in the book'
+        end_p='From <em>Times</em> by Rabbi Fishel Jacobs.' if is_times else 'This is an excerpt from <em>Family Purity: A Guide to Marital Fulfillment</em>.'
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -75,7 +83,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
       <button type="button" data-size="down" aria-label="Smaller text">A</button>
       <button type="button" data-size="up" aria-label="Larger text">A</button>
     </div>
-    <a class="ctl pdf" href="../files/{pdf}" target="_blank" rel="noopener">PDF</a>
+    {f'<a class="ctl pdf" href="../files/{pdf}" target="_blank" rel="noopener">PDF</a>' if pdf else ''}
   </div>
 </header>
 
@@ -93,11 +101,11 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
   <aside class="end">
     <span class="fleuron" aria-hidden="true">&#10087;</span>
     <div class="end-card">
-      <h2>{'The full guide, with calendars, is in the book' if is_times else 'The chapter continues in the book'}</h2>
-      <p>{'From <em>Times</em> by Rabbi Fishel Jacobs.' if is_times else 'This is an excerpt from <em>Family Purity: A Guide to Marital Fulfillment</em>.'}</p>
+      <h2>{end_h}</h2>
+      <p>{end_p}</p>
       <div class="btn-row">
-        <a class="btn btn-solid" href="{amazon}" target="_blank" rel="noopener">Get the book</a>
-        <a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>
+        <a class="btn btn-solid" href="{amazon}" target="_blank" rel="noopener">{'Get the current edition' if expanded else 'Get the book'}</a>
+        {f'<a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>' if pdf else f'<a class="btn btn-line" href="{NOTIFY}" target="_blank" rel="noopener">Notify me when it&rsquo;s published</a>'}
         <a class="btn btn-line" href="https://wa.me/?text={urllib.parse.quote(full+' · Family Purity by Rabbi Fishel Jacobs '+BASE+'/read/'+slug+'.html')}" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
     </div>

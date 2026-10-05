@@ -168,3 +168,8 @@ mark.hit.cur{outline:2px solid var(--gold)}
 .hitbar{position:fixed;z-index:25;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .9rem;padding:.6rem 1rem;border-radius:999px;background:rgba(var(--shade-rgb),.92);color:#fff;font:400 1rem var(--body);box-shadow:0 12px 30px -14px rgba(20,10,50,.55);max-width:calc(100% - 28px)}
 .hitbar button{font:600 1rem var(--body);background:#fff;color:var(--violet-deep);border:0;border-radius:999px;padding:.35rem .9rem;cursor:pointer}
 .hitbar a{color:var(--gold-light);font-weight:600}
+
+/* Diagrams from the book (black line art, kept on white in dark mode too) */
+.text .diagram{margin:1.6em auto;padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:12px;text-indent:0;max-width:max-content}
+.text .diagram img{margin-inline:auto}
+.text li .more{display:block;margin-top:.35em}

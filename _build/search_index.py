@@ -2,7 +2,7 @@
 import re, html, json, os
 SITE=os.path.expanduser('~/Documents/FamilyPurity')
 ORDER=['overview','from-the-rebbe','perfect-marriage','niddah','source-of-niddah','gynecological-considerations','stains',
-       'making-sure-menstruation-has-finished','seven-white-days','times-chabad','times-major-customs']
+       'making-sure-menstruation-has-finished','seven-white-days','preparing-for-immersion','times-chabad','times-major-customs']
 clean=lambda s: re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>','',s))).strip()
 out=[]
 for slug in ORDER:
