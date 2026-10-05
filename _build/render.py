@@ -19,7 +19,7 @@ def nav(slug):
     b=f'<a href="{nxt[0]}.html" style="text-align:right">{nxt[1]} &rarr;<small>{nxt[2]}</small></a>' if nxt else '<a href="../index.html#resources" style="text-align:right">All chapters &rarr;<small>Free resources</small></a>'
     return a+'\n  '+b
 
-def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
+def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expanded=False):
     full=f'{title} · {sub}' if sub else title
     head_title=(seo or full)+' | Family Purity'
     book='Times' if is_times else 'Family Purity: A Guide to Marital Fulfillment'
@@ -82,7 +82,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None):
 <header class="opener">
   <p class="num">{html.escape(num)}</p>
   <span class="fleuron" aria-hidden="true">&#10087;</span>
-  <h1>{html.escape(title)}</h1>{f'{chr(10)}  <p class="opener-sub">{html.escape(sub)}</p>' if sub else ''}{epi_html}
+  <h1>{html.escape(title)}</h1>{chr(10)+'  <p class="opener-sub">From the forthcoming expanded edition</p>' if expanded else ''}{f'{chr(10)}  <p class="opener-sub">{html.escape(sub)}</p>' if sub else ''}{epi_html}
 </header>
 
 <main class="page">
@@ -137,7 +137,7 @@ if __name__=='__main__':
             for extra in reversed(lead): blocks.insert(0,extra)
         body_html=render_body(blocks,fns,body,cfg)
         for a,z in cfg.get('fix_html',{}).items(): body_html=re.sub(a,z,body_html,flags=re.S)
-        h=page(cfg['slug'],cfg['num'],cfg['title'],cfg.get('sub'),cfg['desc'],cfg['pdf'],epi,body_html,is_times=name.startswith('times'),seo=cfg.get('seo'))
+        h=page(cfg['slug'],cfg['num'],cfg['title'],cfg.get('sub'),cfg['desc'],cfg['pdf'],epi,body_html,is_times=name.startswith('times'),seo=cfg.get('seo'),expanded=cfg.get('expanded',False))
         open(os.path.join(out_dir,cfg['slug']+'.html'),'w').write(h)
         left=re.findall(r'\x00|\x01|\x02|\x03',body_html)
         placed=body_html.count('class="fn"')

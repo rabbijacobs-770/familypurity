@@ -276,3 +276,8 @@ footer small .credit{font-size:.68rem;opacity:.6;margin-left:.4rem}
 .chap-search input{flex:1;min-width:0;font:inherit;font-size:1.1rem;padding:.75rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
 .more-about{font-size:1.1rem}
 .more-about a{font-weight:600}
+
+/* Expanded edition note (Books) */
+.expanded-note{margin-top:.8rem;padding:.75rem .9rem;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:1rem;color:var(--muted)}
+.expanded-note b{color:var(--heading);font-weight:600}
+.expanded-note a{font-weight:600;white-space:nowrap}
