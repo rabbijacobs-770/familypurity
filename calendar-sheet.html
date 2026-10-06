@@ -33,6 +33,16 @@
 .controls p{margin:0;color:var(--muted);font-size:1rem;flex-basis:100%}
 button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);cursor:pointer}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a.act{display:inline-flex;align-items:center;text-decoration:none;font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent)}
+a.act:first-child{background:var(--accent);color:var(--paper)}
+.seg{border:0;margin:0;padding:0;display:flex;gap:.3rem 1rem;align-items:center}
+.seg legend{font-weight:600;color:var(--heading);padding:0;margin-bottom:.2rem;float:left;width:100%}
+.seg label{display:flex!important;gap:.35rem;align-items:center;font-weight:400}
+.pdfview{display:grid;gap:.6rem}
+.pdfview p{margin:0}
+.pdf-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+#pdf-note{color:var(--muted);font-size:1rem}
+#pdf-object{width:100%;height:min(80vh,1100px);border:1px solid var(--line);border-radius:6px;background:#fff}
 select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* The sheet is always black on white, like paper. */
 .paper{background:#fff;color:#111;border:1px solid var(--line);border-radius:6px;padding:18px;overflow-x:auto}
@@ -101,10 +111,19 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <label for="year">Hebrew year<select id="year"></select></label>
     <label for="half">Months<select id="half"><option value="tishrei">Tishrei to Adar</option><option value="nisan">Nissan to Elul</option></select></label>
     <label for="paper">Paper<select id="paper"><option value="letter">Letter (8.5 &times; 11 in)</option><option value="a4">A4 (210 &times; 297 mm)</option></select></label>
+    <fieldset class="seg"><legend>Show it</legend>
+      <label><input type="radio" name="format" value="online" checked> Online</label>
+      <label><input type="radio" name="format" value="pdf"> PDF</label>
+    </fieldset>
     <button type="button" class="act" id="print">Print or save as PDF</button>
     <p id="print-note">In the print window, choose &ldquo;Save as PDF&rdquo; to keep a copy. Fits one page.</p>
   </div>
-  <div class="paper"><div class="sheet" id="sheet"></div></div>
+  <div class="pdfview no-print" id="pdfview" hidden>
+    <p class="pdf-actions"><a class="act" id="pdf-download" download>Download PDF</a> <a class="act" id="pdf-open" target="_blank" rel="noopener">Open in a new tab</a></p>
+    <p id="pdf-note"></p>
+    <object id="pdf-object" type="application/pdf" aria-label="The half-year sheet as a PDF"><p>This browser cannot show the PDF here. Use &ldquo;Download PDF&rdquo; or &ldquo;Open in a new tab&rdquo;.</p></object>
+  </div>
+  <div class="paper" id="online"><div class="sheet" id="sheet"></div></div>
 
   </div>
 </main>
@@ -284,6 +303,7 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
   // extend: let the last Gregorian date run on below the last block, to its next midnight (used for a single sample block).
   function ribbon(days, theme, extend) {
     const t = THEMES[theme || 'book'], n = days.length, H = extend ? n * PITCH + NIGHT_Y + 4 : (n - 1) * PITCH + 96;
+    const flat = days[0] && days[0].big;   // the printed sheet: plain fills (gradients make PDFs about three times larger and print the same)
     // The groove cut into the side (c1–c2): a deep shaded left wall, a narrow lit right wall, and the strip set inside (x1–x2).
     // Light comes from the upper left, so inside a groove the left and top walls are in shadow and the right and bottom catch light.
     const c1 = 217, c2 = 251, x1 = c1 + 4.5, x2 = 249.6, xm = (x1 + x2) / 2;          // a thin left wall; the groove runs out to the side's back edge
@@ -299,7 +319,7 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
       `<linearGradient id="${id}s" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>` +
       `<linearGradient id="${id}l" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs>` +
       `<path d="${quad(c1, c2, startY, boxEnd)}" fill="${t.floor}"/>` +                                   // the floor of the groove (seen in the gaps at midnight)
-      `<path d="${quad(c1, x1, startY, boxEnd)}" fill="url(#${id})"/>` +                                // its deep left wall, in shadow
+      `<path d="${quad(c1, x1, startY, boxEnd)}" fill="${flat ? t.wallLight : `url(#${id})`}"/>` +                                // its deep left wall, in shadow
       `<path d="M${c1} ${startY(c1)}V${boxEnd(c1)}" stroke="${t.tick}" stroke-width=".8"/>`;   // the cut edge, drawn light (the right side is the block's own edge)
     for (let k = 0; k < n; k++) {
       const d = days[k].date;
@@ -309,7 +329,7 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
       if (b1 - a1 < 4) continue;
       const odd = Math.floor(d.getTime() / 864e5) % 2;
       out += `<path d="M${x1} ${a1}L${x2} ${a2}V${b2}L${x1} ${b1}Z" fill="${odd ? t.face2 : t.face1}"/>` +
-             `<path d="M${x1} ${a1}H${x1 + 5}V${b1}H${x1}Z" fill="url(#${id}l)"/>` +                                         // shadow cast from the left wall
+             (flat ? '' : `<path d="M${x1} ${a1}H${x1 + 5}V${b1}H${x1}Z" fill="url(#${id}l)"/>`) +                                         // shadow cast from the left wall
              `<path d="M${x1} ${b1}V${a1}L${x2} ${a2}" fill="none" stroke="${t.shadow}" stroke-width="1" stroke-linejoin="round"/>` +   // its shaded top and left edges
              `<path d="M${x2} ${b2}L${x1} ${b1}" fill="none" stroke="${t.lite}" stroke-width="1"/>`;      // its lit lower edge (no bright right edge: it was too loud)
       const ta = (a1 + a2) / 2, tb = (b1 + b2) / 2, mid = (ta + tb) / 2;
@@ -394,9 +414,37 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
   try{ if(!/^en-(US|CA)|^es-MX/.test(navigator.language)&&navigator.language) $('#paper').value='a4'; }catch(e){}
   paper();
   $('#print').addEventListener('click',()=>window.print());
+
+  // Online (the sheet drawn here) or PDF (ready-made files on the website, one per year, half and paper size).
+  const PDF_BASE='files/calendar/', PDF_FIRST=5780, PDF_LAST=5800;
+  function format(){
+    const pdf=document.querySelector('input[name=format]:checked').value==='pdf';
+    $('#online').hidden=pdf; $('#print').hidden=pdf||window.self!==window.top; $('#print-note').hidden=pdf; $('#pdfview').hidden=!pdf;
+    if(pdf){
+      const y=+$('#year').value, ok=y>=PDF_FIRST&&y<=PDF_LAST;
+      const url=`${PDF_BASE}half-year-${y}-${$('#half').value}-${$('#paper').value}.pdf`;
+      $('#pdf-download').hidden=!ok; $('#pdf-open').hidden=!ok; $('#pdf-object').hidden=!ok;
+      $('#pdf-note').textContent=ok?'':`Ready-made PDFs are available for ${PDF_FIRST} to ${PDF_LAST}. For ${y}, choose Online, then print or save as PDF.`;
+      if(ok){ $('#pdf-download').href=url; $('#pdf-download').setAttribute('download',url.split('/').pop()); $('#pdf-open').href=url;
+        if($('#pdf-object').getAttribute('data')!==url) $('#pdf-object').setAttribute('data',url); }
+    }
+    // Keep the choices in the address, so a link opens the same sheet.
+    try{ const q=new URLSearchParams({year:$('#year').value,half:$('#half').value,paper:$('#paper').value,format:pdf?'pdf':'online'});
+      history.replaceState(null,'','?'+q); }catch(e){}
+  }
+  document.querySelectorAll('input[name=format]').forEach(r=>r.addEventListener('change',format));
+  ['#year','#half','#paper'].forEach(s=>$(s).addEventListener('change',format));
+  // Choices from the address (e.g. ?year=5787&half=tishrei&paper=a4&format=pdf).
+  try{ const q=new URLSearchParams(location.search), qy=q.get('year');
+    if(qy&&/^\d{4}$/.test(qy)){ if(![...$('#year').options].some(o=>o.value===qy)) $('#year').insertAdjacentHTML('beforeend',`<option value="${qy}">${qy} · ${gem(+qy)}</option>`); $('#year').value=qy; }
+    if(['tishrei','nisan'].includes(q.get('half'))) $('#half').value=q.get('half');
+    if(['letter','a4'].includes(q.get('paper'))) $('#paper').value=q.get('paper');
+    if(q.get('format')==='pdf') document.querySelector('input[name=format][value=pdf]').checked=true;
+  }catch(e){}
+  paper();
   // Inside a preview frame the browser blocks printing, so the button is hidden there.
   if(window.self!==window.top){ $('#print').hidden=true; $('#print-note').textContent='Printing works on the website. Here, choose the paper size to preview the layout.'; }
-  render();
+  render(); format();
 })();
 
 </script>

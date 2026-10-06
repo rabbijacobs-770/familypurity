@@ -95,6 +95,7 @@
   // extend: let the last Gregorian date run on below the last block, to its next midnight (used for a single sample block).
   function ribbon(days, theme, extend) {
     const t = THEMES[theme || 'book'], n = days.length, H = extend ? n * PITCH + NIGHT_Y + 4 : (n - 1) * PITCH + 96;
+    const flat = days[0] && days[0].big;   // the printed sheet: plain fills (gradients make PDFs about three times larger and print the same)
     // The groove cut into the side (c1–c2): a deep shaded left wall, a narrow lit right wall, and the strip set inside (x1–x2).
     // Light comes from the upper left, so inside a groove the left and top walls are in shadow and the right and bottom catch light.
     const c1 = 217, c2 = 251, x1 = c1 + 4.5, x2 = 249.6, xm = (x1 + x2) / 2;          // a thin left wall; the groove runs out to the side's back edge
@@ -110,7 +111,7 @@
       `<linearGradient id="${id}s" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>` +
       `<linearGradient id="${id}l" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs>` +
       `<path d="${quad(c1, c2, startY, boxEnd)}" fill="${t.floor}"/>` +                                   // the floor of the groove (seen in the gaps at midnight)
-      `<path d="${quad(c1, x1, startY, boxEnd)}" fill="url(#${id})"/>` +                                // its deep left wall, in shadow
+      `<path d="${quad(c1, x1, startY, boxEnd)}" fill="${flat ? t.wallLight : `url(#${id})`}"/>` +                                // its deep left wall, in shadow
       `<path d="M${c1} ${startY(c1)}V${boxEnd(c1)}" stroke="${t.tick}" stroke-width=".8"/>`;   // the cut edge, drawn light (the right side is the block's own edge)
     for (let k = 0; k < n; k++) {
       const d = days[k].date;
@@ -120,7 +121,7 @@
       if (b1 - a1 < 4) continue;
       const odd = Math.floor(d.getTime() / 864e5) % 2;
       out += `<path d="M${x1} ${a1}L${x2} ${a2}V${b2}L${x1} ${b1}Z" fill="${odd ? t.face2 : t.face1}"/>` +
-             `<path d="M${x1} ${a1}H${x1 + 5}V${b1}H${x1}Z" fill="url(#${id}l)"/>` +                                         // shadow cast from the left wall
+             (flat ? '' : `<path d="M${x1} ${a1}H${x1 + 5}V${b1}H${x1}Z" fill="url(#${id}l)"/>`) +                                         // shadow cast from the left wall
              `<path d="M${x1} ${b1}V${a1}L${x2} ${a2}" fill="none" stroke="${t.shadow}" stroke-width="1" stroke-linejoin="round"/>` +   // its shaded top and left edges
              `<path d="M${x2} ${b2}L${x1} ${b1}" fill="none" stroke="${t.lite}" stroke-width="1"/>`;      // its lit lower edge (no bright right edge: it was too loud)
       const ta = (a1 + a2) / 2, tb = (b1 + b2) / 2, mid = (ta + tb) / 2;

@@ -45,6 +45,7 @@ def site_sheet(root):
     css = style[style.index('.controls{'):]
     body = sheet[sheet.index('  <div class="controls no-print">'):sheet.index('</main>')]
     js = sheet[sheet.index('<script>') + 8:sheet.rindex('</script>')]
+    js = js.replace("'__PDF_BASE__'.startsWith('__')?'files/calendar/':'__PDF_BASE__'", repr(root + 'files/calendar/'))
     return (read('half-year-site-src.html').replace('{ROOT}', root).replace('/*SHEET_CSS*/', css)
             .replace('<!--SHEET_BODY-->', body).replace('/*SHEET_JS*/', js))
 
