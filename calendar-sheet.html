@@ -3,68 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Purity Calendar: Five Days, Hefsek Tahara &amp; Seven White Days | Family Purity</title>
-<meta name="description" content="Free purity calendar by Rabbi Fishel Jacobs. Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night, on a Hebrew calendar. Private: nothing leaves your device.">
-<link rel="canonical" href="https://www.familypurity.com/calendar.html">
+<title>Half-Year Hebrew Calendar Sheet to Print | Family Purity</title>
+<meta name="description" content="Print a half-year Hebrew calendar sheet, Tishrei to Adar or Nissan to Elul, for any year, on Letter or A4 paper. Hebrew dates with the Gregorian dates beside them, Yom Tov marked, and boxes for recording. By Rabbi Fishel Jacobs.">
+<link rel="canonical" href="https://www.familypurity.com/calendar-sheet.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Family Purity">
-<meta property="og:title" content="Purity Calendar | Family Purity">
-<meta property="og:description" content="Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night.">
-<meta property="og:url" content="https://www.familypurity.com/calendar.html">
+<meta property="og:title" content="Half-Year Calendar Sheet | Family Purity">
+<meta property="og:description" content="Print a half-year Hebrew calendar sheet for any year, on Letter or A4 paper.">
+<meta property="og:url" content="https://www.familypurity.com/calendar-sheet.html">
 <meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-:root{--accent:var(--violet);--paper:var(--surface)}
+:root{--accent:var(--violet);--paper:var(--surface);--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--serif:"Times New Roman",Times,serif}
 [hidden]{display:none!important}
 .cal-hero .wrap{grid-template-columns:1fr;display:grid;gap:.8rem;padding-block:clamp(7rem,12vw,8.5rem) clamp(2.2rem,5vw,3rem)}
 .cal-hero h1{color:#fff;font:500 clamp(2.2rem,5vw,3.3rem)/1.08 var(--display);margin:0;text-wrap:balance}
 .cal-hero .lede{color:#efeaff;font-size:1.2rem;max-width:40rem;margin:0}
-.cal-hero .private{justify-self:start;display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;color:#efeaff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.35rem .85rem}
-.cal{display:grid;gap:1.3rem;padding-block:2.2rem 1rem}
-.cal section{padding-block:0}                        /* the site gives sections a lot of space; the calendar's months and notes don't need it */
-.cal .soon{padding-top:1rem}
-
-.key{display:grid;gap:.7rem;padding:1.1rem 1.2rem;border-radius:16px;background:var(--tint)}
-.key p{margin:0;font-size:1.25rem;color:var(--heading);max-width:44rem}
-.key .try{font-weight:600;color:var(--accent)}
-.key .hint{font-size:1.1rem;color:var(--fg)}
-.key .sample-wrap{--lc:5.2rem;--rc:6.2rem;position:relative;justify-self:start;display:grid;grid-template-columns:var(--lc) minmax(0,260px) var(--rc);align-items:start;margin:.3rem 0;padding-bottom:calc(var(--bw, 260px) * 34 / 260)}
-.key .sample{grid-column:2;width:100%}
-.key .sample .fp-cell{position:relative}
-.key .mark{position:absolute;z-index:10;left:0;display:flex;align-items:center;gap:.25rem;font-size:1rem;line-height:1;color:var(--fg);transform:translateY(-50%)}
-.key .mark svg{width:2.4rem;height:.7rem}
-.key .mark.sunset{top:calc(24 / 96 * var(--bh))}
-.key .mark.sunrise{top:calc(58.5 / 96 * var(--bh))}
-.key .mark.midnight{left:calc(var(--lc) + var(--bw) * 246 / 260);top:calc(25.5 / 96 * var(--bh))}
-@media (max-width:480px){.key .sample-wrap{--lc:4.4rem;--rc:5.4rem}.key .mark{font-size:.85rem}.key .mark svg{width:1.8rem}}
-.result{margin:0;font-size:1.2rem}
-.result b{color:var(--heading)}
-.nav{display:flex;justify-content:space-between;gap:.5rem;max-width:500px}
+.cal{display:grid;gap:1.1rem;padding-block:2.2rem 1rem}
+.cal section{padding-block:0}
+.controls label{display:grid;gap:.2rem;margin:0}
+.controls select{width:auto}
+.controls{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:end;padding:.8rem 1rem;border-radius:14px;background:var(--tint)}
+.controls label{display:grid;gap:.2rem;font-weight:600;color:var(--heading)}
+.controls select{font:inherit;font-size:1rem;padding:.35rem .5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--fg)}
+.controls p{margin:0;color:var(--muted);font-size:1rem;flex-basis:100%}
 button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);cursor:pointer}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.months{display:grid;gap:1.2rem 1.6rem;align-items:start}
-.month{display:grid;gap:.35rem;min-width:0}
-.month h2{margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font:600 1.2rem/1.2 var(--display);color:var(--heading)}
-.month h2 small{font:italic 400 .95rem/1.2 var(--display);color:var(--muted)}
-.report{margin:0;font-size:1.05rem;color:var(--fg)}
-.report a{color:var(--accent);font-weight:600}
-.soon{border-top:1px solid var(--line);padding-top:1rem}
-.soon h2{margin:0 0 .3rem;font:600 1.15rem/1.2 var(--display);font-variant-caps:small-caps;letter-spacing:.06em;color:var(--gold)}
-.soon ul{margin:0;padding-left:1.2rem;color:var(--muted)}
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 26px -18px rgba(30,20,60,.45);padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom,0px))}
-.bar-in{max-width:960px;margin:0 auto;display:grid;gap:.5rem}
-.bar p{margin:0;font-size:1.08rem}
-.bar b{color:var(--heading)}
-.bar-row{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;font-size:1rem;color:var(--muted)}
-body.has-bar main{padding-bottom:11rem}
-.half{position:absolute;left:3%;width:85%;border:0;margin:0;padding:0;background:transparent;cursor:pointer;border-radius:4px}
-.half:hover{background:rgba(75,58,140,.12)}
+select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* The sheet is always black on white, like paper. */
+.paper{background:#fff;color:#111;border:1px solid var(--line);border-radius:6px;padding:18px;overflow-x:auto}
+.sheet{--gut:5.2em;--gap:1.1em;display:grid;grid-template-columns:var(--gut) repeat(var(--n),minmax(0,1fr));column-gap:var(--gap);row-gap:.3em;font-family:var(--sans);min-width:640px}
+.sheet .title{grid-column:1/-1;display:flex;justify-content:center;align-items:baseline;gap:.8em;margin-bottom:.4em}
+.sheet .title b{font:700 1.7em/1 var(--sans)}
+.sheet .title .he{font:700 1.6em/1 "Frank Ruhl Libre","Times New Roman",serif;direction:rtl}
+.sheet .title i{font:italic 1.05em/1 var(--serif)}
+.sheet .mh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;column-gap:.3em;border-bottom:1px solid #111;padding-bottom:.1em;min-width:0}
+.sheet .mh b{font:700 1.05em/1.1 var(--sans)}
+.sheet .mh i{font:italic .78em/1.1 var(--serif);white-space:nowrap}
+.sheet .col{min-width:0}
+.sheet .col .fp-stack{width:100%}
+.sheet .lab{font:400 .82em/1 var(--serif);align-self:center}
+.sheet .box{border:1.4px solid #111;height:1.9em;align-self:center}
+.sheet .foot{grid-column:1/-1;font:italic .8em/1.2 var(--serif);margin-top:.3em}
+@media print{
+  body{background:#fff;color:#111;font-size:10pt}
+  main{max-width:none;padding:0;display:block}
+  .no-print{display:none!important}
+  .paper{border:0;padding:0;overflow:visible}
+  .sheet{min-width:0;width:calc(var(--gut) + var(--n) * var(--col) + (var(--n) - 1) * var(--gap));margin:0 auto;font-size:9pt;
+         --gut:.78in;--col:.94in;--gap:.17in}
+  .sheet[style*="--n:7"]{--col:.87in;--gap:.11in}
+  .sheet[style*="--n:7"] .mh b{font-size:.95em}
+  .a4 .sheet[style*="--n:7"]{--col:.86in;--gap:.1in}                 /* A4 is a little narrower and taller than Letter */
+  .sheet .box{height:.24in}
+}
 .fp-stack{display:grid;position:relative;width:min(100%,260px)}.fp-stack>*{display:block;position:relative;width:100%}.fp-stack .fp-day{display:block;width:100%;height:auto}.fp-stack>*+*{margin-top:-6.92%}.fp-stack>.fp-ribbon{position:absolute;top:0;left:0;width:100%;height:auto;margin:0;pointer-events:none}
 
+@media print{
+  header.top,.cal-hero,footer,.progress{display:none!important}
+  .cal{padding:0;display:block}
+  .wrap{max-width:none;padding:0}
+}
 </style>
 </head>
 <body>
@@ -74,7 +77,7 @@ body.has-bar main{padding-bottom:11rem}
     <nav class="links" id="links" aria-label="Main">
       <a href="index.html#books">Books</a>
       <a href="index.html#resources">Free resources</a>
-      <a href="calendar.html" aria-current="page">Calendar</a>
+      <a href="calendar.html">Calendar</a>
       <a href="search.html">Search</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
@@ -87,57 +90,24 @@ body.has-bar main{padding-bottom:11rem}
 <main>
   <section class="hero cal-hero panel on-flowers" style="padding-block:0">
     <div class="wrap">
-      <p class="eyebrow">Free tool</p>
-      <h1>When did the niddah state begin? Touch it on the calendar.</h1>
-      <p class="lede">See the hefsek tahara, the seven white days and mikveh night, on the Hebrew calendar.</p>
-      <span class="private">Private: nothing you touch leaves your device</span>
+      <p class="eyebrow">Free to print</p>
+      <h1>Half-year calendar sheet</h1>
+      <p class="lede">Any year, Tishrei to Adar or Nissan to Elul, on one page. Choose Letter or A4.</p>
     </div>
   </section>
 
   <div class="wrap cal">
-  <div class="key">
-    <p>For these laws, only Hebrew dates are relevant.<br><em>(The Gregorian dates are displayed for convenience.)</em></p>
-    <div class="sample-wrap">
-      <span class="mark sunset">sunset <svg viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5H37M32 1.5 38 5 32 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
-      <span class="mark sunrise">sunrise <svg viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5H37M32 1.5 38 5 32 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
-      <span class="mark midnight"><svg viewBox="0 0 40 10" aria-hidden="true"><path d="M40 5H3M8 1.5 2 5 8 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg> midnight</span>
-      <div class="sample" id="sample"></div>
-    </div>
-    <p>Within each Hebrew date: sunset to sunrise is nighttime; sunrise to sunset is daytime.<br><em>(Gregorian dates change at midnight.)</em></p>
-    <p class="try">Try it!</p>
-    <p class="hint" id="hint">Touch the grey area if it began at night, or the white area if it began during the daytime.</p>
+  <div class="controls no-print">
+    <label for="year">Hebrew year<select id="year"></select></label>
+    <label for="half">Months<select id="half"><option value="tishrei">Tishrei to Adar</option><option value="nisan">Nissan to Elul</option></select></label>
+    <label for="paper">Paper<select id="paper"><option value="letter">Letter (8.5 &times; 11 in)</option><option value="a4">A4 (210 &times; 297 mm)</option></select></label>
+    <button type="button" class="act" id="print">Print or save as PDF</button>
+    <p id="print-note">In the print window, choose &ldquo;Save as PDF&rdquo; to keep a copy. Fits one page.</p>
   </div>
-
-
-  <div class="nav">
-    <button type="button" class="act" id="prev">&lsaquo; Earlier month</button>
-    <button type="button" class="act" id="next">Later month &rsaquo;</button>
-  </div>
-  <div class="months" id="months"></div>
-
-  <p class="report"><a href="https://www.familypurity.com/calendar-sheet.html">Print a half-year calendar sheet</a> (Letter or A4)</p>
-  <p class="report">Please write to us if you notice any glitches or problems: <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-em-text data-subject="Calendar: a glitch or problem">RabbiJacobs (at) FamilyPurity.com</a></p>
-
-  <section class="soon" aria-labelledby="soon-h">
-    <h2 id="soon-h">To be launched soon</h2>
-    <ul>
-      <li>Separation dates (vestos)</li>
-      <li>Remembering your dates on your own device</li>
-    </ul>
-  </section>
+  <div class="paper"><div class="sheet" id="sheet"></div></div>
 
   </div>
 </main>
-<div class="bar" id="bar" hidden>
-  <div class="bar-in">
-    <p id="result" role="status"></p>
-    <div class="bar-row">
-      <button type="button" class="act" id="later">The hefsek tahara was later</button>
-      <button type="button" class="act" id="clear">Clear</button>
-    </div>
-  </div>
-</div>
-
 
 <footer class="panel on-flowers" style="margin-top:3rem">
   <div class="wrap">
@@ -370,105 +340,62 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
 
 (function(){
   const $=s=>document.querySelector(s);
-  const DOW=['Su','Mo','Tu','We','Th','Fr','Sh'], DAY=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Shabbos'];
-  const EVE=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];   // the English evening each Hebrew day begins with
+  const DOW=['Su','Mo','Tu','We','Th','Fr','Sh'];
   const MONTH={Tishri:'Tishrei',Heshvan:'Cheshvan',Kislev:'Kislev',Tevet:'Teves',Shevat:'Shevat',Adar:'Adar','Adar I':'Adar I','Adar II':'Adar II',Nisan:'Nissan',Iyar:'Iyar',Sivan:'Sivan',Tamuz:'Tamuz',Av:'Av',Elul:'Elul'};
   const enShort=new Intl.DateTimeFormat('en-US',{month:'short',timeZone:'UTC'});
-  const enLong=new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',timeZone:'UTC'});
-  const iso=FPCalc.iso, add=FPCalc.add, parse=FPCalc.parse;
-  // A Hebrew day is keyed by the English date of its daytime.
-  const info=d=>{const p=FPCalc.hebParts(d), w=d.getUTCDay();
-    return {d,iso:iso(d),heb:p.day,month:MONTH[p.month]||p.month,year:p.year,dow:DOW[w],day:DAY[w],en:d.getUTCDate(),enLong:enLong.format(d),night:EVE[w]+' night'};};
-  const hebName=x=>`${x.heb} ${x.month}`;
-  const firstOfMonth=d=>add(d,1-FPCalc.hebParts(d).day);
-  function monthOf(first){const m=FPCalc.hebParts(first).month,list=[];for(let x=first;FPCalc.hebParts(x).month===m;x=add(x,1))list.push(info(x));return list;}
-
-  const now=new Date(), today=parse(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`);
-  const S={view:firstOfMonth(today), start:null, half:null, hef:null, mode:'start', msg:''};
-
-  // Yom Tov (and Yom Kippur, Tisha B'Av) as short lines for the night band. Second days are marked "outside Israel".
+  const {add,parse,hebParts}=FPCalc;
+  // Hebrew-letter numerals (gematria), e.g. 5787 -> תשפ״ז
+  const gem=n=>{const H=[[400,'ת'],[300,'ש'],[200,'ר'],[100,'ק']],T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'],U=['','א','ב','ג','ד','ה','ו','ז','ח','ט'];
+    let s='';n=n%1000;for(const [v,c] of H){while(n>=v){s+=c;n-=v;}}
+    if(n===15)s+='טו';else if(n===16)s+='טז';else s+=T[Math.floor(n/10)]+U[n%10];
+    return s.length>1?s.slice(0,-1)+'״'+s.slice(-1):s+'׳';};
+  // The first day of a Hebrew month named m in Hebrew year y (searching from an English date near it).
+  function firstOf(y,m,near){for(let d=add(near,-60),i=0;i<200;i++,d=add(d,1)){const p=hebParts(d);if(p.year===y&&p.month===m&&p.day===1)return d;}return null;}
+  // Short names for Yom Tov etc.; days kept only outside Israel get a star (explained under the sheet).
   function holidayLines(d){
     const name=FPCalc.holidayOf(d); if(!name) return null;
-    const outside=/outside Israel/.test(name);
     const NAMES=[[/Rosh Hashanah/,'Rosh Hashanah'],[/Yom Kippur/,'Yom Kippur'],[/Sukkos/,'Sukkos'],[/Shemini Atzeres/,'Shemini Atzeres'],
-                 [/Simchas Torah/,'Simchas Torah'],[/Pesach/,'Pesach'],[/Shavuos/,'Shavuos'],[/Tisha/,'Tisha B\u2019Av']];
-    const main=(NAMES.find(n=>n[0].test(name))||[0,name])[1];
-    // The Hebrew date already says which day it is; the note only says what the reader needs (kept short to fit).
-    const sub=outside?'outside Israel':/seventh day/.test(name)?'7th day':/postponed/.test(name)?'postponed':'';
-    return sub?[main,sub]:[main];
+                 [/Simchas Torah/,'Simchas Torah'],[/Pesach/,'Pesach'],[/Shavuos/,'Shavuos'],[/Tisha/,'Tisha B’Av']];
+    return [((NAMES.find(n=>n[0].test(name))||[0,name])[1])+(/outside Israel/.test(name)?'*':'')];
   }
 
-
-  const sample=info(parse('2026-10-19'));
-  // The practice box: touch its night or day half to see how a day is marked.
-  function drawSample(half){
-    const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
-    $('#sample').innerHTML=FPDay.stack([{n:sample.heb,dow:sample.dow,dot:half,date:sample.d}],(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">`+svg+
-      `<button type="button" class="half" data-try="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="Practice: began at night"></button>`+
-      `<button type="button" class="half" data-try="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="Practice: began during the day"></button></div>`,{extend:true});
-  }
-  drawSample(null);
-  const sizeMarks=()=>{const s=$('#sample .fp-day'); if(!s) return; const r=s.getBoundingClientRect(), w=$('.sample-wrap');
-    w.style.setProperty('--bh',r.height+'px'); w.style.setProperty('--bw',r.width+'px');};
-  sizeMarks(); addEventListener('resize',sizeMarks);
-  $('#sample').addEventListener('click',e=>{const b=e.target.closest('[data-try]'); if(!b) return;
-    drawSample(b.dataset.try);
-    $('#hint').innerHTML=b.dataset.try==='night'
-      ?'The dot is in the night: it began <b>Sunday night</b>, after sunset. Now touch the real day on the calendar below.'
-      :'The dot is in the day: it began <b>Monday, the 19th</b>, during the day. Now touch the real day on the calendar below.';
-  });
-
-  // What to draw on each day: the onset dot, the line to the hefsek tahara, the white days and mikveh night.
-  function marks(){
-    const m={}; if(!S.start) return m;
-    const hef=S.hef||add(S.start,4), gap=Math.round((hef-S.start)/FPCalc.DAY);   // the hefsek tahara: day 5, or later
-    m[iso(S.start)]={dot:S.half,line:S.half,lineEnd:'bottom'};
-    for(let i=1;i<gap;i++) m[iso(add(S.start,i))]={line:'top',lineEnd:'bottom'};
-    m[iso(hef)]={line:'top',lineEnd:'t',label:'Hefsek\ntahara',strong:true};
-    for(let i=1;i<=7;i++) m[iso(add(hef,i))]={label:`White day ${i}`};
-    m[iso(add(hef,8))]={nightNote:'Mikveh'};
-    return m;
-  }
+  const now=new Date(), today=parse(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`);
+  const tp=hebParts(today);
+  for(let y=tp.year-14;y<=tp.year+10;y++) $('#year').insertAdjacentHTML('beforeend',`<option value="${y}"${y===tp.year?' selected':''}>${y} · ${gem(y)}</option>`);
+  $('#half').value=['Nisan','Iyar','Sivan','Tamuz','Av','Elul'].includes(tp.month)?'nisan':'tishrei';
 
   function render(){
-    const mk=marks(), cols=[monthOf(S.view)];
-    cols.push(monthOf(add(cols[0][cols[0].length-1].d,1)));
-    if(S.start){const last=add(S.hef||add(S.start,4),8);while(cols[cols.length-1][cols[cols.length-1].length-1].d<last)cols.push(monthOf(add(cols[cols.length-1][cols[cols.length-1].length-1].d,1)));}
-    const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
-    $('#months').style.gridTemplateColumns=`repeat(${cols.length},minmax(0,250px))`;
-    $('#months').innerHTML=cols.map(list=>{
-      const a=list[0], z=list[list.length-1], en=enShort.format(a.d)===enShort.format(z.d)?enShort.format(a.d):`${enShort.format(a.d)}–${enShort.format(z.d)}`;
-      const days=list.map(x=>{const m=mk[x.iso]||{};
-        return Object.assign({n:x.heb,dow:x.dow,date:x.d,today:x.iso===iso(today),holiday:holidayLines(x.d),x},m);});
-      return `<section class="month"><h2>${a.month} ${a.year}<small>${en} ${z.d.getUTCFullYear()}</small></h2>`+
-        FPDay.stack(days,(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">${svg}`+
-          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="${d.x.night}, ${hebName(d.x)}"></button>`+
-          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="${d.x.day}, ${d.x.enLong}, during the day, ${hebName(d.x)}"></button></div>`)+`</section>`;
-    }).join('');
-    if(S.start){
-      const a=info(S.start), h=info(S.hef||add(S.start,4)), w=info(add(h.d,7));
-      const began=S.half==='night'?`It began <b>${a.night}</b>, the night of ${hebName(a)}.`:`It began <b>${a.day}, ${a.enLong}</b>, during the day, ${hebName(a)}.`;
-      $('#result').innerHTML=S.mode==='hefsek'?`<b>Touch the day the hefsek tahara was done.</b> ${S.msg}`
-        :`${began} Hefsek tahara: <b>${h.day}, ${h.enLong}</b>, before sunset. Mikveh: <b>${w.day} night, ${w.enLong}</b>.`;
-      $('#later').textContent=S.mode==='hefsek'?'Cancel':'The hefsek tahara was later';
-      $('#bar').hidden=false; document.body.classList.add('has-bar');
-    } else { $('#bar').hidden=true; document.body.classList.remove('has-bar'); }
+    const y=+$('#year').value, half=$('#half').value, g=y-3761;
+    // Tishrei to Adar runs from 1 Tishrei (autumn of g) to the day before 1 Nissan; Nissan to Elul runs on to Rosh Hashanah.
+    const start=half==='tishrei'?firstOf(y,'Tishri',parse(`${g}-09-20`)):firstOf(y,'Nisan',parse(`${g+1}-04-01`));
+    const stop=half==='tishrei'?firstOf(y,'Nisan',parse(`${g+1}-04-01`)):firstOf(y+1,'Tishri',parse(`${g+1}-09-20`));
+    const months=[];
+    for(let d=start;d<stop;d=add(d,1)){const p=hebParts(d);if(p.day===1)months.push({name:MONTH[p.month]||p.month,days:[]});months[months.length-1].days.push({d,p});}
+    const first=start, last=add(stop,-1), gy=first.getUTCFullYear()===last.getUTCFullYear()?`${first.getUTCFullYear()}`:`${first.getUTCFullYear()}–${last.getUTCFullYear()}`;
+    let star=false;
+    const n=months.length, sheet=$('#sheet');
+    sheet.style.setProperty('--n',n); sheet.setAttribute('style',`--n:${n}`);
+    let html=`<div class="title"><b>${y}</b><span class="he" lang="he">${gem(y)}</span><i>${gy}</i></div><span></span>`;
+    html+=months.map(m=>{const a=m.days[0].d,z=m.days[m.days.length-1].d,e1=enShort.format(a),e2=enShort.format(z);
+      return `<div class="mh"><b>${m.name}</b><i>${e1===e2?e1:e1+'–'+e2}</i></div>`;}).join('');
+    html+=`<span></span>`+months.map(m=>`<div class="col">`+FPDay.stack(m.days.map(({d,p})=>{const h=holidayLines(d);if(h&&/\*$/.test(h[0]))star=true;
+      return {n:p.day,dow:DOW[d.getUTCDay()],date:d,holiday:h,big:true};}))+`</div>`).join('');
+    for(const lab of ['Day of week','Hebrew date','Interval']) html+=`<span class="lab">${lab}</span>`+months.map(()=>`<span class="box"></span>`).join('');
+    if(star) html+=`<p class="foot">* Outside Israel only.</p>`;
+    sheet.innerHTML=html;
   }
-
-  $('#months').addEventListener('click',e=>{const b=e.target.closest('.half'); if(!b) return; const d=parse(b.dataset.iso);
-    if(S.mode==='hefsek'){                                    // a later hefsek tahara: from the fifth day on
-      const earliest=add(S.start,4);
-      if(d<earliest){const x=info(earliest); S.msg=`It can be done from the fifth day, ${x.day}, ${x.enLong}, or later.`; render(); return;}
-      S.hef=d.getTime()===earliest.getTime()?null:d; S.mode='start'; S.msg=''; render(); return;
-    }
-    S.start=d; S.half=b.dataset.half; S.hef=null; render();});
-  $('#later').addEventListener('click',()=>{S.mode=S.mode==='hefsek'?'start':'hefsek'; S.msg=''; render();});
-  $('#clear').addEventListener('click',()=>{S.start=null;S.half=null;S.hef=null;S.mode='start';S.msg='';render();});
-  $('#prev').addEventListener('click',()=>{S.view=firstOfMonth(add(S.view,-1));render();});
-  $('#next').addEventListener('click',()=>{S.view=add(S.view,monthOf(S.view).length);render();});
-  // The address is assembled here so it is not written out whole in the page.
-  document.querySelectorAll('[data-em]').forEach(el=>{const [u,d]=el.dataset.em.split('|'),a=u+'@'+d,s=el.dataset.subject;
-    if(el.tagName==='A')el.href='mailto:'+a+(s?'?subject='+encodeURIComponent(s):''); if(el.hasAttribute('data-em-text'))el.textContent=a;});
+  $('#year').addEventListener('change',render); $('#half').addEventListener('change',render);
+  // Paper size: Letter or A4, applied to the printed page (and so to a PDF saved from the print window).
+  const pageRule=document.createElement('style'); document.head.appendChild(pageRule);
+  function paper(){const a4=$('#paper').value==='a4'; document.body.classList.toggle('a4',a4);
+    pageRule.textContent=a4?'@page{size:A4;margin:9mm}':'@page{size:letter;margin:.35in}';}
+  $('#paper').addEventListener('change',paper);
+  // A4 is the usual paper outside North America; start there for those visitors.
+  try{ if(!/^en-(US|CA)|^es-MX/.test(navigator.language)&&navigator.language) $('#paper').value='a4'; }catch(e){}
+  paper();
+  $('#print').addEventListener('click',()=>window.print());
+  // Inside a preview frame the browser blocks printing, so the button is hidden there.
+  if(window.self!==window.top){ $('#print').hidden=true; $('#print-note').textContent='Printing works on the website. Here, choose the paper size to preview the layout.'; }
   render();
 })();
 

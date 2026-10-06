@@ -38,12 +38,25 @@ def site_calendar(root):
     return (read('calendar-site-src.html').replace('{ROOT}', root).replace('/*CAL_CSS*/', cal_css)
             .replace('<!--CAL_BODY-->', body).replace('<!--CAL_BAR-->', bar).replace('/*CAL_JS*/', js))
 
+# The website version of the half-year sheet: the same sheet inside the site's header, banner and footer.
+def site_sheet(root):
+    sheet = pages['calendar-half-year']
+    style = sheet[sheet.index('<style>') + 7:sheet.index('</style>')]
+    css = style[style.index('.controls{'):]
+    body = sheet[sheet.index('  <div class="controls no-print">'):sheet.index('</main>')]
+    js = sheet[sheet.index('<script>') + 8:sheet.rindex('</script>')]
+    return (read('half-year-site-src.html').replace('{ROOT}', root).replace('/*SHEET_CSS*/', css)
+            .replace('<!--SHEET_BODY-->', body).replace('/*SHEET_JS*/', js))
+
 os.makedirs(REVIEW, exist_ok=True)
+open(os.path.join(SITE, 'review', 'calendar-sheet-preview.html'), 'w').write(site_sheet('../'))
 open(os.path.join(SITE, 'review', 'calendar-site-preview.html'), 'w').write(site_calendar('../'))   # review/ sits one level below the site
 print('calendar-site-preview written')
 if '--site' in sys.argv:                                                     # publish: the live page at the site root
     open(os.path.join(SITE, 'calendar.html'), 'w').write(site_calendar(''))
     print('calendar.html written (live page)')
+    open(os.path.join(SITE, 'calendar-sheet.html'), 'w').write(site_sheet(''))
+    print('calendar-sheet.html written (live page)')
 for name, page in pages.items():
     open(os.path.join(REVIEW, name + '-preview.html'), 'w').write(full(page))
     out_dir = next((a for a in sys.argv[1:] if not a.startswith('--')), None)
