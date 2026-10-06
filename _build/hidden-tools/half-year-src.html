@@ -1,0 +1,134 @@
+<title>Half-Year Calendar Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Frank+Ruhl+Libre:wght@700&display=swap">
+<style>
+/* Layout: a few controls, then one letter-size sheet: year at the top, a column of day blocks per Hebrew month,
+   and boxes at the bottom for recording (Day of week, Hebrew date, Interval), like Rabbi Jacobs's printed sheets. */
+:root{
+  --bg:#ffffff; --fg:#221d33; --muted:#5f5976; --line:#e0daee; --tint:#f4f1fb; --heading:#2c2157; --accent:#4b3a8c; --gold:#94701f; --paper:#ffffff;
+  --display:"EB Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif; --serif:"Times New Roman",Times,serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14111d;--fg:#ece8f7;--muted:#aaa4c0;--line:#332d47;--tint:#1f1a2e;--heading:#f1edfb;--accent:#b0a1ef;--gold:#dcbb72;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14111d;--fg:#ece8f7;--muted:#aaa4c0;--line:#332d47;--tint:#1f1a2e;--heading:#f1edfb;--accent:#b0a1ef;--gold:#dcbb72;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font:400 1.1rem/1.5 var(--display)}
+main{max-width:1000px;margin:0 auto;padding-block:24px 48px;padding-inline:16px;display:grid;gap:1rem}
+.draft{justify-self:start;font-size:.95rem;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:.25rem .8rem}
+h1{font:600 1.9rem/1.15 var(--display);color:var(--heading);margin:.3rem 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:end;padding:.8rem 1rem;border-radius:14px;background:var(--tint)}
+.controls label{display:grid;gap:.2rem;font-weight:600;color:var(--heading)}
+.controls select{font:inherit;font-size:1rem;padding:.35rem .5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--fg)}
+.controls p{margin:0;color:var(--muted);font-size:1rem;flex-basis:100%}
+button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* The sheet is always black on white, like paper. */
+.paper{background:#fff;color:#111;border:1px solid var(--line);border-radius:6px;padding:18px;overflow-x:auto}
+.sheet{--gut:5.2em;--gap:1.1em;display:grid;grid-template-columns:var(--gut) repeat(var(--n),minmax(0,1fr));column-gap:var(--gap);row-gap:.3em;font-family:var(--sans);min-width:640px}
+.sheet .title{grid-column:1/-1;display:flex;justify-content:center;align-items:baseline;gap:.8em;margin-bottom:.4em}
+.sheet .title b{font:700 1.7em/1 var(--sans)}
+.sheet .title .he{font:700 1.6em/1 "Frank Ruhl Libre","Times New Roman",serif;direction:rtl}
+.sheet .title i{font:italic 1.05em/1 var(--serif)}
+.sheet .mh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;column-gap:.3em;border-bottom:1px solid #111;padding-bottom:.1em;min-width:0}
+.sheet .mh b{font:700 1.05em/1.1 var(--sans)}
+.sheet .mh i{font:italic .78em/1.1 var(--serif);white-space:nowrap}
+.sheet .col{min-width:0}
+.sheet .col .fp-stack{width:100%}
+.sheet .lab{font:400 .82em/1 var(--serif);align-self:center}
+.sheet .box{border:1.4px solid #111;height:1.9em;align-self:center}
+.sheet .foot{grid-column:1/-1;font:italic .8em/1.2 var(--serif);margin-top:.3em}
+@media print{
+  body{background:#fff;color:#111;font-size:10pt}
+  main{max-width:none;padding:0;display:block}
+  .no-print{display:none!important}
+  .paper{border:0;padding:0;overflow:visible}
+  .sheet{min-width:0;width:calc(var(--gut) + var(--n) * var(--col) + (var(--n) - 1) * var(--gap));margin:0 auto;font-size:9pt;
+         --gut:.78in;--col:.94in;--gap:.17in}
+  .sheet[style*="--n:7"]{--col:.87in;--gap:.11in}
+  .sheet[style*="--n:7"] .mh b{font-size:.95em}
+  .a4 .sheet[style*="--n:7"]{--col:.86in;--gap:.1in}                 /* A4 is a little narrower and taller than Letter */
+  .sheet .box{height:.24in}
+}
+/*FPDAY_CSS*/
+</style>
+<main>
+  <div class="no-print">
+    <span class="draft">Draft for Rabbi Jacobs&rsquo;s review &middot; not on the website</span>
+    <h1>Half-year calendar sheet</h1>
+  </div>
+  <div class="controls no-print">
+    <label for="year">Hebrew year<select id="year"></select></label>
+    <label for="half">Months<select id="half"><option value="tishrei">Tishrei to Adar</option><option value="nisan">Nissan to Elul</option></select></label>
+    <label for="paper">Paper<select id="paper"><option value="letter">Letter (8.5 &times; 11 in)</option><option value="a4">A4 (210 &times; 297 mm)</option></select></label>
+    <button type="button" class="act" id="print">Print or save as PDF</button>
+    <p id="print-note">In the print window, choose &ldquo;Save as PDF&rdquo; to keep a copy. Fits one page.</p>
+  </div>
+  <div class="paper"><div class="sheet" id="sheet"></div></div>
+</main>
+<script>
+/*FPCALC_JS*/
+/*FPDAY_JS*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const DOW=['Su','Mo','Tu','We','Th','Fr','Sh'];
+  const MONTH={Tishri:'Tishrei',Heshvan:'Cheshvan',Kislev:'Kislev',Tevet:'Teves',Shevat:'Shevat',Adar:'Adar','Adar I':'Adar I','Adar II':'Adar II',Nisan:'Nissan',Iyar:'Iyar',Sivan:'Sivan',Tamuz:'Tamuz',Av:'Av',Elul:'Elul'};
+  const enShort=new Intl.DateTimeFormat('en-US',{month:'short',timeZone:'UTC'});
+  const {add,parse,hebParts}=FPCalc;
+  // Hebrew-letter numerals (gematria), e.g. 5787 -> תשפ״ז
+  const gem=n=>{const H=[[400,'ת'],[300,'ש'],[200,'ר'],[100,'ק']],T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'],U=['','א','ב','ג','ד','ה','ו','ז','ח','ט'];
+    let s='';n=n%1000;for(const [v,c] of H){while(n>=v){s+=c;n-=v;}}
+    if(n===15)s+='טו';else if(n===16)s+='טז';else s+=T[Math.floor(n/10)]+U[n%10];
+    return s.length>1?s.slice(0,-1)+'״'+s.slice(-1):s+'׳';};
+  // The first day of a Hebrew month named m in Hebrew year y (searching from an English date near it).
+  function firstOf(y,m,near){for(let d=add(near,-60),i=0;i<200;i++,d=add(d,1)){const p=hebParts(d);if(p.year===y&&p.month===m&&p.day===1)return d;}return null;}
+  // Short names for Yom Tov etc.; days kept only outside Israel get a star (explained under the sheet).
+  function holidayLines(d){
+    const name=FPCalc.holidayOf(d); if(!name) return null;
+    const NAMES=[[/Rosh Hashanah/,'Rosh Hashanah'],[/Yom Kippur/,'Yom Kippur'],[/Sukkos/,'Sukkos'],[/Shemini Atzeres/,'Shemini Atzeres'],
+                 [/Simchas Torah/,'Simchas Torah'],[/Pesach/,'Pesach'],[/Shavuos/,'Shavuos'],[/Tisha/,'Tisha B’Av']];
+    return [((NAMES.find(n=>n[0].test(name))||[0,name])[1])+(/outside Israel/.test(name)?'*':'')];
+  }
+
+  const now=new Date(), today=parse(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`);
+  const tp=hebParts(today);
+  for(let y=tp.year-14;y<=tp.year+10;y++) $('#year').insertAdjacentHTML('beforeend',`<option value="${y}"${y===tp.year?' selected':''}>${y} · ${gem(y)}</option>`);
+  $('#half').value=['Nisan','Iyar','Sivan','Tamuz','Av','Elul'].includes(tp.month)?'nisan':'tishrei';
+
+  function render(){
+    const y=+$('#year').value, half=$('#half').value, g=y-3761;
+    // Tishrei to Adar runs from 1 Tishrei (autumn of g) to the day before 1 Nissan; Nissan to Elul runs on to Rosh Hashanah.
+    const start=half==='tishrei'?firstOf(y,'Tishri',parse(`${g}-09-20`)):firstOf(y,'Nisan',parse(`${g+1}-04-01`));
+    const stop=half==='tishrei'?firstOf(y,'Nisan',parse(`${g+1}-04-01`)):firstOf(y+1,'Tishri',parse(`${g+1}-09-20`));
+    const months=[];
+    for(let d=start;d<stop;d=add(d,1)){const p=hebParts(d);if(p.day===1)months.push({name:MONTH[p.month]||p.month,days:[]});months[months.length-1].days.push({d,p});}
+    const first=start, last=add(stop,-1), gy=first.getUTCFullYear()===last.getUTCFullYear()?`${first.getUTCFullYear()}`:`${first.getUTCFullYear()}–${last.getUTCFullYear()}`;
+    let star=false;
+    const n=months.length, sheet=$('#sheet');
+    sheet.style.setProperty('--n',n); sheet.setAttribute('style',`--n:${n}`);
+    let html=`<div class="title"><b>${y}</b><span class="he" lang="he">${gem(y)}</span><i>${gy}</i></div><span></span>`;
+    html+=months.map(m=>{const a=m.days[0].d,z=m.days[m.days.length-1].d,e1=enShort.format(a),e2=enShort.format(z);
+      return `<div class="mh"><b>${m.name}</b><i>${e1===e2?e1:e1+'–'+e2}</i></div>`;}).join('');
+    html+=`<span></span>`+months.map(m=>`<div class="col">`+FPDay.stack(m.days.map(({d,p})=>{const h=holidayLines(d);if(h&&/\*$/.test(h[0]))star=true;
+      return {n:p.day,dow:DOW[d.getUTCDay()],date:d,holiday:h,big:true};}))+`</div>`).join('');
+    for(const lab of ['Day of week','Hebrew date','Interval']) html+=`<span class="lab">${lab}</span>`+months.map(()=>`<span class="box"></span>`).join('');
+    if(star) html+=`<p class="foot">* Outside Israel only.</p>`;
+    sheet.innerHTML=html;
+  }
+  $('#year').addEventListener('change',render); $('#half').addEventListener('change',render);
+  // Paper size: Letter or A4, applied to the printed page (and so to a PDF saved from the print window).
+  const pageRule=document.createElement('style'); document.head.appendChild(pageRule);
+  function paper(){const a4=$('#paper').value==='a4'; document.body.classList.toggle('a4',a4);
+    pageRule.textContent=a4?'@page{size:A4;margin:9mm}':'@page{size:letter;margin:.35in}';}
+  $('#paper').addEventListener('change',paper);
+  // A4 is the usual paper outside North America; start there for those visitors.
+  try{ if(!/^en-(US|CA)|^es-MX/.test(navigator.language)&&navigator.language) $('#paper').value='a4'; }catch(e){}
+  paper();
+  $('#print').addEventListener('click',()=>window.print());
+  // Inside a preview frame the browser blocks printing, so the button is hidden there.
+  if(window.self!==window.top){ $('#print').hidden=true; $('#print-note').textContent='Printing works on the website. Here, choose the paper size to preview the layout.'; }
+  render();
+})();
+</script>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Purity Calendar: Five Days, Hefsek Tahara &amp; Seven White Days | Family Purity</title>
+<meta name="description" content="Free purity calendar by Rabbi Fishel Jacobs. Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night, on a Hebrew calendar. Private: nothing leaves your device.">
+<link rel="canonical" href="https://www.familypurity.com/calendar.html">
+<link rel="icon" href="{ROOT}favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Family Purity">
+<meta property="og:title" content="Purity Calendar | Family Purity">
+<meta property="og:description" content="Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night.">
+<meta property="og:url" content="https://www.familypurity.com/calendar.html">
+<meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="{ROOT}assets/site.css">
+<style>
+:root{--accent:var(--violet);--paper:var(--surface)}
+[hidden]{display:none!important}
+.cal-hero .wrap{grid-template-columns:1fr;display:grid;gap:.8rem;padding-block:clamp(7rem,12vw,8.5rem) clamp(2.2rem,5vw,3rem)}
+.cal-hero h1{color:#fff;font:500 clamp(2.2rem,5vw,3.3rem)/1.08 var(--display);margin:0;text-wrap:balance}
+.cal-hero .lede{color:#efeaff;font-size:1.2rem;max-width:40rem;margin:0}
+.cal-hero .private{justify-self:start;display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;color:#efeaff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.35rem .85rem}
+.cal{display:grid;gap:1.3rem;padding-block:2.2rem 1rem}
+.cal section{padding-block:0}                        /* the site gives sections a lot of space; the calendar's months and notes don't need it */
+.cal .soon{padding-top:1rem}
+
+/*CAL_CSS*/
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="pill on-flowers">
+    <a class="brand" href="{ROOT}index.html" aria-label="Family Purity, home"><img src="{ROOT}images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="{ROOT}index.html#books">Books</a>
+      <a href="{ROOT}index.html#resources">Free resources</a>
+      <a href="{ROOT}calendar.html" aria-current="page">Calendar</a>
+      <a href="{ROOT}search.html">Search</a>
+      <a href="{ROOT}index.html#about">About</a>
+      <a href="{ROOT}index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+    <a class="btn" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask a question</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero cal-hero panel on-flowers" style="padding-block:0">
+    <div class="wrap">
+      <p class="eyebrow">Free tool</p>
+      <h1>When did the niddah state begin? Touch it on the calendar.</h1>
+      <p class="lede">See the hefsek tahara, the seven white days and mikveh night, on the Hebrew calendar.</p>
+      <span class="private">Private: nothing you touch leaves your device</span>
+    </div>
+  </section>
+
+  <div class="wrap cal">
+<!--CAL_BODY-->
+  </div>
+</main>
+<!--CAL_BAR-->
+
+<footer class="panel on-flowers" style="margin-top:3rem">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="{ROOT}index.html" aria-label="Family Purity, home"><img src="{ROOT}images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
+      <p>Rabbi Fishel Jacobs</p>
+    </div>
+    <ul>
+      <li><a href="{ROOT}index.html#books">Books</a></li>
+      <li><a href="{ROOT}index.html#resources">Free resources</a></li>
+      <li><a href="{ROOT}calendar.html">Calendar</a></li>
+      <li><a href="{ROOT}index.html#contact">Contact</a></li>
+    </ul>
+    <small>&copy; Family Purity <span class="credit">Photo: Hisu Lee / Unsplash</span></small>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.querySelector('.menu-btn'), links=document.getElementById('links');
+menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'Close':'Menu'});
+</script>
+<script>
+/*CAL_JS*/
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8bc2fc425c042159999a4b01f919dea"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

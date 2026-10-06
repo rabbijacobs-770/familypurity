@@ -31,5 +31,25 @@
     const h=HOLIDAYS.find(x=>x[0]===p.month&&x[1]===p.day); return h?h[2]:null;
   }
 
-  g.FPCalc={DAY,parse,add,iso,hebParts,nextSameHebrewDate,holidayOf};
+  // Sunrise or sunset (UTC Date) for a civil date at a place; approximate, within a minute or two. Null in polar day/night.
+  const rad=Math.PI/180;
+  function sun(d,lat,lng,rising){
+    const y=d.getUTCFullYear(), m=d.getUTCMonth()+1, dd=d.getUTCDate();
+    const N=Math.floor((Date.UTC(y,m-1,dd)-Date.UTC(y,0,0))/DAY), lh=lng/15, t=N+((rising?6:18)-lh)/24;
+    const M=0.9856*t-3.289;
+    let L=(M+1.916*Math.sin(M*rad)+0.020*Math.sin(2*M*rad)+282.634)%360; if(L<0)L+=360;
+    let RA=Math.atan(0.91764*Math.tan(L*rad))/rad; RA=(RA+360)%360;
+    RA=(RA+(Math.floor(L/90)*90-Math.floor(RA/90)*90))/15;
+    const sinDec=0.39782*Math.sin(L*rad), cosDec=Math.cos(Math.asin(sinDec));
+    const cosH=(Math.cos(90.833*rad)-sinDec*Math.sin(lat*rad))/(cosDec*Math.cos(lat*rad));
+    if(cosH>1||cosH<-1) return null;
+    let H=rising?360-Math.acos(cosH)/rad:Math.acos(cosH)/rad; H/=15;
+    let UT=(H+RA-0.06571*t-6.622-lh)%24; if(UT<0)UT+=24;
+    const base=Date.UTC(y,m-1,dd)-lh*3600000;
+    let ms=Date.UTC(y,m-1,dd)+UT*3600000;
+    while(ms<base)ms+=DAY; while(ms>=base+DAY)ms-=DAY;
+    return new Date(ms);
+  }
+
+  g.FPCalc={DAY,parse,add,iso,hebParts,nextSameHebrewDate,holidayOf,sun};
 })(typeof window!=='undefined'?window:this);

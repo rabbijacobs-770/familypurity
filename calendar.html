@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Purity Calendar: Five Days, Hefsek Tahara &amp; Seven White Days | Family Purity</title>
+<meta name="description" content="Free purity calendar by Rabbi Fishel Jacobs. Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night, on a Hebrew calendar. Private: nothing leaves your device.">
+<link rel="canonical" href="https://www.familypurity.com/calendar.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Family Purity">
+<meta property="og:title" content="Purity Calendar | Family Purity">
+<meta property="og:description" content="Touch the day the niddah state began to see the hefsek tahara, the seven white days and mikveh night.">
+<meta property="og:url" content="https://www.familypurity.com/calendar.html">
+<meta property="og:image" content="https://www.familypurity.com/images/family-p-copy_orig.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+:root{--accent:var(--violet);--paper:var(--surface)}
+[hidden]{display:none!important}
+.cal-hero .wrap{grid-template-columns:1fr;display:grid;gap:.8rem;padding-block:clamp(7rem,12vw,8.5rem) clamp(2.2rem,5vw,3rem)}
+.cal-hero h1{color:#fff;font:500 clamp(2.2rem,5vw,3.3rem)/1.08 var(--display);margin:0;text-wrap:balance}
+.cal-hero .lede{color:#efeaff;font-size:1.2rem;max-width:40rem;margin:0}
+.cal-hero .private{justify-self:start;display:inline-flex;align-items:center;gap:.5rem;font-size:.95rem;color:#efeaff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.35rem .85rem}
+.cal{display:grid;gap:1.3rem;padding-block:2.2rem 1rem}
+.cal section{padding-block:0}                        /* the site gives sections a lot of space; the calendar's months and notes don't need it */
+.cal .soon{padding-top:1rem}
+
+.key{display:grid;gap:.7rem;padding:1.1rem 1.2rem;border-radius:16px;background:var(--tint)}
+.key p{margin:0;font-size:1.25rem;color:var(--heading);max-width:44rem}
+.key .try{font-weight:600;color:var(--accent)}
+.key .hint{font-size:1.1rem;color:var(--fg)}
+.key .sample-wrap{--lc:5.2rem;--rc:6.2rem;position:relative;justify-self:start;display:grid;grid-template-columns:var(--lc) minmax(0,260px) var(--rc);align-items:start;margin:.3rem 0;padding-bottom:calc(var(--bw, 260px) * 34 / 260)}
+.key .sample{grid-column:2;width:100%}
+.key .sample .fp-cell{position:relative}
+.key .mark{position:absolute;z-index:10;left:0;display:flex;align-items:center;gap:.25rem;font-size:1rem;line-height:1;color:var(--fg);transform:translateY(-50%)}
+.key .mark svg{width:2.4rem;height:.7rem}
+.key .mark.sunset{top:calc(24 / 96 * var(--bh))}
+.key .mark.sunrise{top:calc(58.5 / 96 * var(--bh))}
+.key .mark.midnight{left:calc(var(--lc) + var(--bw) * 246 / 260);top:calc(25.5 / 96 * var(--bh))}
+@media (max-width:480px){.key .sample-wrap{--lc:4.4rem;--rc:5.4rem}.key .mark{font-size:.85rem}.key .mark svg{width:1.8rem}}
+.result{margin:0;font-size:1.2rem}
+.result b{color:var(--heading)}
+.nav{display:flex;justify-content:space-between;gap:.5rem;max-width:500px}
+button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.months{display:grid;gap:1.2rem 1.6rem;align-items:start}
+.month{display:grid;gap:.35rem;min-width:0}
+.month h2{margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font:600 1.2rem/1.2 var(--display);color:var(--heading)}
+.month h2 small{font:italic 400 .95rem/1.2 var(--display);color:var(--muted)}
+.report{margin:0;font-size:1.05rem;color:var(--fg)}
+.report a{color:var(--accent);font-weight:600}
+.soon{border-top:1px solid var(--line);padding-top:1rem}
+.soon h2{margin:0 0 .3rem;font:600 1.15rem/1.2 var(--display);font-variant-caps:small-caps;letter-spacing:.06em;color:var(--gold)}
+.soon ul{margin:0;padding-left:1.2rem;color:var(--muted)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 26px -18px rgba(30,20,60,.45);padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom,0px))}
+.bar-in{max-width:960px;margin:0 auto;display:grid;gap:.5rem}
+.bar p{margin:0;font-size:1.08rem}
+.bar b{color:var(--heading)}
+.bar-row{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;font-size:1rem;color:var(--muted)}
+body.has-bar main{padding-bottom:11rem}
+.half{position:absolute;left:3%;width:85%;border:0;margin:0;padding:0;background:transparent;cursor:pointer;border-radius:4px}
+.half:hover{background:rgba(75,58,140,.12)}
+.fp-stack{display:grid;position:relative;width:min(100%,260px)}.fp-stack>*{display:block;position:relative;width:100%}.fp-stack .fp-day{display:block;width:100%;height:auto}.fp-stack>*+*{margin-top:-6.92%}.fp-stack>.fp-ribbon{position:absolute;top:0;left:0;width:100%;height:auto;margin:0;pointer-events:none}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="pill on-flowers">
+    <a class="brand" href="index.html" aria-label="Family Purity, home"><img src="images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="index.html#books">Books</a>
+      <a href="index.html#resources">Free resources</a>
+      <a href="calendar.html" aria-current="page">Calendar</a>
+      <a href="search.html">Search</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+    <a class="btn" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask a question</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero cal-hero panel on-flowers" style="padding-block:0">
+    <div class="wrap">
+      <p class="eyebrow">Free tool</p>
+      <h1>When did the niddah state begin? Touch it on the calendar.</h1>
+      <p class="lede">See the hefsek tahara, the seven white days and mikveh night, on the Hebrew calendar.</p>
+      <span class="private">Private: nothing you touch leaves your device</span>
+    </div>
+  </section>
+
+  <div class="wrap cal">
+  <div class="key">
+    <p>For these laws, only Hebrew dates are relevant.<br><em>(The Gregorian dates are displayed for convenience.)</em></p>
+    <div class="sample-wrap">
+      <span class="mark sunset">sunset <svg viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5H37M32 1.5 38 5 32 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
+      <span class="mark sunrise">sunrise <svg viewBox="0 0 40 10" aria-hidden="true"><path d="M0 5H37M32 1.5 38 5 32 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
+      <span class="mark midnight"><svg viewBox="0 0 40 10" aria-hidden="true"><path d="M40 5H3M8 1.5 2 5 8 8.5" fill="none" stroke="currentColor" stroke-width="1"/></svg> midnight</span>
+      <div class="sample" id="sample"></div>
+    </div>
+    <p>Within each Hebrew date: sunset to sunrise is nighttime; sunrise to sunset is daytime.<br><em>(Gregorian dates change at midnight.)</em></p>
+    <p class="try">Try it!</p>
+    <p class="hint" id="hint">Touch the grey area if it began at night, or the white area if it began during the daytime.</p>
+  </div>
+
+
+  <div class="nav">
+    <button type="button" class="act" id="prev">&lsaquo; Earlier month</button>
+    <button type="button" class="act" id="next">Later month &rsaquo;</button>
+  </div>
+  <div class="months" id="months"></div>
+
+  <p class="report">Please write to us if you notice any glitches or problems: <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-em-text data-subject="Calendar: a glitch or problem">RabbiJacobs (at) FamilyPurity.com</a></p>
+
+  <section class="soon" aria-labelledby="soon-h">
+    <h2 id="soon-h">To be launched soon</h2>
+    <ul>
+      <li>Separation dates (vestos)</li>
+      <li>Remembering your dates on your own device</li>
+    </ul>
+  </section>
+
+  </div>
+</main>
+<div class="bar" id="bar" hidden>
+  <div class="bar-in">
+    <p id="result" role="status"></p>
+    <div class="bar-row">
+      <button type="button" class="act" id="later">The hefsek tahara was later</button>
+      <button type="button" class="act" id="clear">Clear</button>
+    </div>
+  </div>
+</div>
+
+
+<footer class="panel on-flowers" style="margin-top:3rem">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="index.html" aria-label="Family Purity, home"><img src="images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
+      <p>Rabbi Fishel Jacobs</p>
+    </div>
+    <ul>
+      <li><a href="index.html#books">Books</a></li>
+      <li><a href="index.html#resources">Free resources</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <small>&copy; Family Purity <span class="credit">Photo: Hisu Lee / Unsplash</span></small>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.querySelector('.menu-btn'), links=document.getElementById('links');
+menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'Close':'Menu'});
+</script>
+<script>
+
+// Family Purity date logic, kept free of page code so it can be tested on its own (_build/tests).
+// Each Hebrew day is keyed by the civil date of its daytime, held at UTC noon.
+(function(g){
+  'use strict';
+  const DAY=86400000;
+  const parse=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(Date.UTC(y,m-1,d,12));};
+  const add=(d,n)=>new Date(d.getTime()+n*DAY);
+  const iso=d=>d.toISOString().slice(0,10);
+  const hebEn=new Intl.DateTimeFormat('en-u-ca-hebrew',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+  const hebParts=d=>{const o={};hebEn.formatToParts(d).forEach(p=>{if(p.type!=='literal')o[p.type]=p.value});return {day:+o.day,month:o.month,year:+o.year};};
+
+  // Same Hebrew date in the very next Hebrew month. If that month is too short (e.g. 30 Kislev -> Tevet has 29 days), date is null.
+  function nextSameHebrewDate(h){
+    const p=hebParts(h); let i=1, q=hebParts(add(h,1));
+    while(q.month===p.month && i<40){ i++; q=hebParts(add(h,i)); }
+    const next=q.month;
+    while(q.month===next && i<80){ if(q.day===p.day) return {date:add(h,i),month:next}; i++; q=hebParts(add(h,i)); }
+    return {date:null,day:p.day,month:next};
+  }
+
+  // Yom Tov, Yom Kippur and Tisha B'Av, by Hebrew date (second days marked as outside Israel).
+  const HOLIDAYS=[['Tishri',1,'Rosh Hashanah'],['Tishri',2,'Rosh Hashanah'],['Tishri',10,'Yom Kippur'],
+    ['Tishri',15,'Sukkos'],['Tishri',16,'the second day of Sukkos (outside Israel)'],['Tishri',22,'Shemini Atzeres'],
+    ['Tishri',23,'Simchas Torah (outside Israel)'],['Nisan',15,'Pesach'],['Nisan',16,'the second day of Pesach (outside Israel)'],
+    ['Nisan',21,'the seventh day of Pesach'],['Nisan',22,'the last day of Pesach (outside Israel)'],
+    ['Sivan',6,'Shavuos'],['Sivan',7,'the second day of Shavuos (outside Israel)'],['Av',9,'Tisha B’Av']];
+  function holidayOf(d){
+    const p=hebParts(d);
+    if(p.month==='Av'&&p.day===9&&d.getUTCDay()===6) return null;                       // the fast moves to Sunday
+    if(p.month==='Av'&&p.day===10&&add(d,-1).getUTCDay()===6) return 'Tisha B’Av (postponed from Shabbos)';
+    const h=HOLIDAYS.find(x=>x[0]===p.month&&x[1]===p.day); return h?h[2]:null;
+  }
+
+  // Sunrise or sunset (UTC Date) for a civil date at a place; approximate, within a minute or two. Null in polar day/night.
+  const rad=Math.PI/180;
+  function sun(d,lat,lng,rising){
+    const y=d.getUTCFullYear(), m=d.getUTCMonth()+1, dd=d.getUTCDate();
+    const N=Math.floor((Date.UTC(y,m-1,dd)-Date.UTC(y,0,0))/DAY), lh=lng/15, t=N+((rising?6:18)-lh)/24;
+    const M=0.9856*t-3.289;
+    let L=(M+1.916*Math.sin(M*rad)+0.020*Math.sin(2*M*rad)+282.634)%360; if(L<0)L+=360;
+    let RA=Math.atan(0.91764*Math.tan(L*rad))/rad; RA=(RA+360)%360;
+    RA=(RA+(Math.floor(L/90)*90-Math.floor(RA/90)*90))/15;
+    const sinDec=0.39782*Math.sin(L*rad), cosDec=Math.cos(Math.asin(sinDec));
+    const cosH=(Math.cos(90.833*rad)-sinDec*Math.sin(lat*rad))/(cosDec*Math.cos(lat*rad));
+    if(cosH>1||cosH<-1) return null;
+    let H=rising?360-Math.acos(cosH)/rad:Math.acos(cosH)/rad; H/=15;
+    let UT=(H+RA-0.06571*t-6.622-lh)%24; if(UT<0)UT+=24;
+    const base=Date.UTC(y,m-1,dd)-lh*3600000;
+    let ms=Date.UTC(y,m-1,dd)+UT*3600000;
+    while(ms<base)ms+=DAY; while(ms>=base+DAY)ms-=DAY;
+    return new Date(ms);
+  }
+
+  g.FPCalc={DAY,parse,add,iso,hebParts,nextSameHebrewDate,holidayOf,sun};
+})(typeof window!=='undefined'?window:this);
+
+/* Family Purity calendar: the basic day block, drawn like the day boxes on Rabbi Jacobs's printed calendar sheets.
+   One block is one Hebrew day, from sunset to sunset. Its grey top is the NIGHT (sunset to sunrise);
+   its white bottom is the DAY (sunrise to sunset). The English (Gregorian) date runs from midnight to midnight,
+   so it is INLAID in the blocks' sides: a channel is carved down the sides (its shaded wall shows the depth of the cut)
+   and a strip is set into it. Each English date is one piece of the strip, from midnight (level with the middle of one
+   night) to the next midnight, crossing the sunset where one block meets the next; a narrow gap marks each midnight.
+   The pieces alternate two light shades; the number is cut into the middle of its piece.
+   FPDay.svg(o) returns one block. Options:
+     n          the Hebrew day of the month, in the white circle (the operative date)
+     dow        day of the week: Su Mo Tu We Th Fr Sh (Sh is set in italics), in the white half
+     night      optional name of the night in the grey half, e.g. "Sunday night" (the calendar leaves it out: it is self-evident)
+     nightNote  a bold note in the night half, e.g. "Mikveh"
+     holiday    [name, detail] of a Yom Tov, Yom Kippur or Tisha B'Av: an italic tag on the line between night and day (sunrise)
+     label      note in the white half, e.g. "White day 3"; a "\n" starts a second, smaller line; strong sets it in bold
+     big        true sets the text larger, for the printed half-year sheet (where each block is about an inch wide)
+     today      true outlines the block in the accent color and adds "Today" in the white half
+     dot        'night' or 'day': marks when the niddah state began (as on the "Suggested Use" page in Times)
+     line       'night' | 'day' | 'top': a line down the block starting there...
+     lineEnd    'bottom' (continues into the next block) or 't' (ends with a bar: the hefsek tahara, before sunset)
+     date       the English date of the daytime (a Date at UTC noon); FPDay.stack draws the ribbon from these
+     theme      'book' (greys, as printed; the default) or 'site' (violets)
+   FPDay.stack([...days], wrap, {extend}) returns a column of blocks with the English-date ribbon down their sides;
+     extend: true lets the last Gregorian date run on below the column to its next midnight.
+     wrap(svg, day, z) may return the markup around each block (e.g. with buttons); it must keep style="z-index:z".
+   FPDay.HALVES gives the night and day halves as fractions of a block's height, for touch areas. */
+(function (g) {
+  const THEMES = {
+    book: { line: '#1f1f1f', lid: '#c4c4c4', band: '#bdbdbd', body: '#ffffff', ink: '#111111', even: '#e3e3e3', odd: '#f6f6f6', face1: '#f4f4f4', face2: '#e7e7e7', floor: '#8f8f8f', wallDark: '#9b9b9b', wallLight: '#cbcbcb', wallLit: '#cfcfcf', shadow: 'rgba(0,0,0,.45)', lite: '#ffffff', soft: '#3f3f3f', tick: '#8c8c8c', accent: '#4b3a8c' },
+    site: { line: '#2c2157', lid: '#c8bfe9', band: '#6f5dbb', body: '#ffffff', ink: '#2c2157', even: '#e4def5', odd: '#f6f4fc', face1: '#f5f3fc', face2: '#e8e3f6', floor: '#8b82b8', wallDark: '#978fc4', wallLight: '#cdc6e8', wallLit: '#d3cceb', shadow: 'rgba(44,33,87,.45)', lite: '#ffffff', soft: '#3f3766', tick: '#9b90c9', accent: '#94701f' }
+  };
+  const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+  const SERIF = '"Times New Roman", Times, serif';
+  // Block geometry (viewBox 260 x 96), proportioned like the printed sheet: front face 8–206, side face 206–250.
+  // The side is a slanted face: its top edge rises from (206,24) to (250,6), so a level line on it rises 18 units across.
+  const OUTLINE = 'M8 24 27 6H250V74L206 92H17L8 83Z';
+  const NIGHT_Y = 41, DAY_Y = 76, LINE_X = 84;             // middle of the night (about midnight), a spot in the day, the line's position
+  const PITCH = 78;                                        // each block sits 78 units below the one above (96 tall, 18 overlapped)
+  const HALVES = { night: [24 / 96, 58.5 / 96], day: [58.5 / 96, 92 / 96] };
+  let uid = 0;
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const DOW_NAMES = { Su: 'Sunday', Mo: 'Monday', Tu: 'Tuesday', We: 'Wednesday', Th: 'Thursday', Fr: 'Friday', Sh: 'Shabbos' };
+  const MON = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' });
+
+  const shade = (t, d) => (Math.floor(d.getTime() / 864e5) % 2 ? t.odd : t.even);
+
+  function svg(o) {
+    const t = THEMES[o.theme || 'book'];
+    const name = [o.n, o.night, o.holiday && o.holiday.join(', '), o.nightNote, o.dow && DOW_NAMES[o.dow], o.date && 'English date ' + MON.format(o.date) + ' ' + o.date.getUTCDate(),
+                  o.label && o.label.replace('\n', ', ')].filter(Boolean).join(', ');
+    // The night band: an optional bold note (e.g. Mikveh).
+    const band = [];
+    if (o.night) band.push({ t: o.night, size: 12 });
+    if (o.nightNote) band.push({ t: o.nightNote, size: 13, bold: true });
+    const ys = band.length === 1 ? [46] : band.length === 2 ? [40, 53] : [35, 46, 56];
+    // A Yom Tov sits on the line between night and day (sunrise), in a small white tag; any detail ("2nd day…") under it.
+    let hol = '';
+    if (o.holiday) {
+      const size = o.big ? 14 : 12, w = Math.min(116, o.holiday[0].length * size * .56 + 13), top = 58.5 - size * .65;
+      hol = `<rect x="90" y="${top}" width="${w}" height="${size * 1.3}" rx="${size * .65}" fill="${t.body}" stroke="${t.line}" stroke-width=".7"/>` +
+            `<text x="96" y="${58.5 + size * .36}" font-family='${SANS}' font-size="${size}" font-style="italic" fill="${t.ink}">${esc(o.holiday[0])}</text>` +
+            (o.holiday[1] ? `<text x="96" y="${58.5 + size * .65 + (o.big ? 11 : 10)}" font-family='${SANS}' font-size="${o.big ? 11 : 9.5}" font-style="italic" fill="${t.ink}">${esc(o.holiday[1])}</text>` : '');
+    }
+    const night = band.map((b, i) => `<text x="96" y="${ys[i]}" font-family='${SANS}' font-size="${b.size}"${b.it ? ' font-style="italic"' : ''}${b.bold ? ' font-weight="700"' : ''} fill="${t.ink}">${esc(b.t)}</text>`).join('');
+    const dow = o.dow ? `<text x="${o.big ? 200 : 198}" y="${o.big ? 88 : 86}" text-anchor="end" font-family='${SERIF}' font-size="${o.big ? 27 : 20}" font-style="${o.dow === 'Sh' ? 'italic' : 'normal'}" fill="${t.ink}">${esc(o.dow)}</text>` : '';
+    let lines = o.label ? String(o.label).split('\n') : [];
+    if (o.today && lines.length < 2) lines = lines.length ? [lines[0], 'Today'] : ['Today'];
+    const weight = o.strong || (o.today && lines.length === 1) ? 700 : 400;
+    const label = lines.length === 1 ? `<text x="94" y="85" font-family='${SANS}' font-size="13" font-weight="${weight}" fill="${t.ink}">${esc(lines[0])}</text>`
+      : lines.length > 1 ? `<text x="96" y="76" font-family='${SANS}' font-size="13.5" font-weight="${weight}" fill="${t.ink}">${esc(lines[0])}<tspan x="96" y="88" font-size="12">${esc(lines[1])}</tspan></text>` : '';
+    let marks = '';
+    if (o.line) {
+      const y1 = o.line === 'night' ? NIGHT_Y : o.line === 'day' ? DAY_Y : 6, y2 = o.lineEnd === 't' ? 87 : 96;
+      marks += `<path d="M${LINE_X} ${y1}V${y2}" stroke="${t.ink}" stroke-width="2"/>`;
+      if (o.lineEnd === 't') marks += `<path d="M${LINE_X - 11} 87H${LINE_X + 11}" stroke="${t.ink}" stroke-width="2.6"/>`;
+    }
+    if (o.dot) marks += `<circle cx="${LINE_X}" cy="${o.dot === 'night' ? NIGHT_Y : DAY_Y}" r="5" fill="${t.ink}" stroke="${t.body}" stroke-width="1.5"/>`;
+    const side = `<path d="M206 24 250 6V74L206 92Z" fill="${t.body}"/>` +
+                 `<path d="M206 24 250 6V40.5L206 58.5Z" fill="${t.band}"/>`;                // the night band continues around the corner
+    return `<svg class="fp-day" viewBox="0 0 260 96" role="img" aria-label="${esc(name)}" xmlns="http://www.w3.org/2000/svg">` +
+      `<path d="${OUTLINE}" fill="${t.body}"/>` +
+      `<path d="M8 24 27 6H250L206 24Z" fill="${t.lid}"/>` +                                      // lid
+      `<path d="M8 24H206V58.5H8Z" fill="${t.band}"/>` +                                         // grey band: the night
+      side +
+      `<path d="M8 24H206L250 6M206 24V92" fill="none" stroke="${t.line}" stroke-width="1" stroke-linejoin="round"/>` +
+      `<path d="${OUTLINE}" fill="none" stroke="${o.today ? t.accent : t.line}" stroke-width="${o.today ? 3 : 1.6}" stroke-linejoin="round"/>` +
+      `<circle cx="50" cy="58.5" r="26" fill="${t.body}"/>` +                                     // arch rising into the band
+      `<text x="50" y="${o.big ? 74 : 71}" text-anchor="middle" font-family='${SANS}' font-size="${o.big ? 42 : 35}" fill="${t.ink}">${esc(o.n)}</text>` +
+      night + hol + dow + label + marks +
+      `</svg>`;
+  }
+
+  // The English-date ribbon, drawn over the blocks' sides. Midnight on the side is a slanted line (the side face rises
+  // 18 units over its 44-unit width), level with the middle of the night at the front edge.
+  const midnight = (k, x) => k * PITCH + NIGHT_Y - (x - 206) * 18 / 44;
+  // extend: let the last Gregorian date run on below the last block, to its next midnight (used for a single sample block).
+  function ribbon(days, theme, extend) {
+    const t = THEMES[theme || 'book'], n = days.length, H = extend ? n * PITCH + NIGHT_Y + 4 : (n - 1) * PITCH + 96;
+    // The groove cut into the side (c1–c2): a deep shaded left wall, a narrow lit right wall, and the strip set inside (x1–x2).
+    // Light comes from the upper left, so inside a groove the left and top walls are in shadow and the right and bottom catch light.
+    const c1 = 217, c2 = 251, x1 = c1 + 4.5, x2 = 249.6, xm = (x1 + x2) / 2;          // a thin left wall; the groove runs out to the side's back edge
+    // The groove starts at the first midnight and ends at the last block's lower edge, both slanted like the side face.
+    const startY = x => midnight(0, x), id = 'fpw' + (++uid);
+    const boxEnd = x => (n - 1) * PITCH + 92 - (x - 206) * 18 / 44;                       // the last block's lower edge
+    const endY = extend ? x => midnight(n, x) + 1.4 : boxEnd;                               // where the last date's strip stops
+    const engrave = (x, y, size, font, text, extra = '') =>                              // cut-in lettering: a light edge under dark letters
+      `<text x="${x + .6}" y="${y + .8}" text-anchor="middle" font-family='${font}' font-size="${size}" ${extra} fill="${t.lite}">${text}</text>` +
+      `<text x="${x}" y="${y}" text-anchor="middle" font-family='${font}' font-size="${size}" ${extra} fill="${t.soft}">${text}</text>`;
+    const quad = (xa, xb, ya, yb) => `M${xa} ${ya(xa)}L${xb} ${ya(xb)}V${yb(xb)}L${xa} ${yb(xa)}Z`;
+    let out = `<defs><linearGradient id="${id}" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="${t.wallDark}"/><stop offset="1" stop-color="${t.wallLight}"/></linearGradient>` +
+      `<linearGradient id="${id}s" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>` +
+      `<linearGradient id="${id}l" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient></defs>` +
+      `<path d="${quad(c1, c2, startY, boxEnd)}" fill="${t.floor}"/>` +                                   // the floor of the groove (seen in the gaps at midnight)
+      `<path d="${quad(c1, x1, startY, boxEnd)}" fill="url(#${id})"/>` +                                // its deep left wall, in shadow
+      `<path d="M${c1} ${startY(c1)}V${boxEnd(c1)}" stroke="${t.tick}" stroke-width=".8"/>`;   // the cut edge, drawn light (the right side is the block's own edge)
+    for (let k = 0; k < n; k++) {
+      const d = days[k].date;
+      // The Gregorian date: a strip set into the groove, from one midnight to the next; a narrow gap at each midnight.
+      const a1 = midnight(k, x1) + 1.6, a2 = midnight(k, x2) + 1.6;
+      const b1 = Math.min(midnight(k + 1, x1) - 1.6, endY(x1) - 1), b2 = Math.min(midnight(k + 1, x2) - 1.6, endY(x2) - 1);
+      if (b1 - a1 < 4) continue;
+      const odd = Math.floor(d.getTime() / 864e5) % 2;
+      out += `<path d="M${x1} ${a1}L${x2} ${a2}V${b2}L${x1} ${b1}Z" fill="${odd ? t.face2 : t.face1}"/>` +
+             `<path d="M${x1} ${a1}H${x1 + 5}V${b1}H${x1}Z" fill="url(#${id}l)"/>` +                                         // shadow cast from the left wall
+             `<path d="M${x1} ${b1}V${a1}L${x2} ${a2}" fill="none" stroke="${t.shadow}" stroke-width="1" stroke-linejoin="round"/>` +   // its shaded top and left edges
+             `<path d="M${x2} ${b2}L${x1} ${b1}" fill="none" stroke="${t.lite}" stroke-width="1"/>`;      // its lit lower edge (no bright right edge: it was too loud)
+      const ta = (a1 + a2) / 2, tb = (b1 + b2) / 2, mid = (ta + tb) / 2;
+      if (tb - ta > 40) {
+        const big = days[k].big;                                                           // larger on the printed sheet
+        if (k === 0 || d.getUTCDate() === 1) out += engrave(xm, mid - (big ? 16 : 13), big ? 11 : 9, SERIF, MON.format(d), 'font-style="italic"');
+        out += engrave(xm, mid + (big ? 8 : 6), big ? 23 : 18.5, SERIF, d.getUTCDate(), 'font-style="italic"');      // italic: shown for convenience only
+      }
+    }
+    // One quiet grey line for the back edge, in place of the blocks' separate black corners there.
+    out += `<path d="M250.4 ${startY(250.4)}V${endY(250.4) - (extend ? 1.6 : 0)}" stroke="${t.tick}" stroke-width=".8"/>`;
+    return `<svg class="fp-ribbon" viewBox="0 0 260 ${H}" aria-hidden="true" style="z-index:${n + 1}" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+  }
+
+  // A column of days, earlier days on top so each one's bottom covers part of the next one's lid; the ribbon over their sides.
+  const cell = (s, d, z) => `<div class="fp-cell" style="z-index:${z}">${s}</div>`;
+  const stack = (days, wrap = cell, opts = {}) => `<div class="fp-stack">${days.map((d, i) => wrap(svg(d), d, days.length - i)).join('')}` +
+    (days[0] && days[0].date ? ribbon(days, days[0].theme, opts.extend) : '') + `</div>`;
+
+  // Each block has 6 units of air above and 4 below: pulling the next one up 10/260 of the width makes them touch;
+  // 18/260 (6.92%) slides each bottom 8 units over the lid below.
+  const css = '.fp-stack{display:grid;position:relative;width:min(100%,260px)}.fp-stack>*{display:block;position:relative;width:100%}' +
+    '.fp-stack .fp-day{display:block;width:100%;height:auto}.fp-stack>*+*{margin-top:-6.92%}' +
+    '.fp-stack>.fp-ribbon{position:absolute;top:0;left:0;width:100%;height:auto;margin:0;pointer-events:none}';
+
+  g.FPDay = { svg, stack, ribbon, css, THEMES, HALVES, PITCH };
+})(window);
+
+(function(){
+  const $=s=>document.querySelector(s);
+  const DOW=['Su','Mo','Tu','We','Th','Fr','Sh'], DAY=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Shabbos'];
+  const EVE=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];   // the English evening each Hebrew day begins with
+  const MONTH={Tishri:'Tishrei',Heshvan:'Cheshvan',Kislev:'Kislev',Tevet:'Teves',Shevat:'Shevat',Adar:'Adar','Adar I':'Adar I','Adar II':'Adar II',Nisan:'Nissan',Iyar:'Iyar',Sivan:'Sivan',Tamuz:'Tamuz',Av:'Av',Elul:'Elul'};
+  const enShort=new Intl.DateTimeFormat('en-US',{month:'short',timeZone:'UTC'});
+  const enLong=new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',timeZone:'UTC'});
+  const iso=FPCalc.iso, add=FPCalc.add, parse=FPCalc.parse;
+  // A Hebrew day is keyed by the English date of its daytime.
+  const info=d=>{const p=FPCalc.hebParts(d), w=d.getUTCDay();
+    return {d,iso:iso(d),heb:p.day,month:MONTH[p.month]||p.month,year:p.year,dow:DOW[w],day:DAY[w],en:d.getUTCDate(),enLong:enLong.format(d),night:EVE[w]+' night'};};
+  const hebName=x=>`${x.heb} ${x.month}`;
+  const firstOfMonth=d=>add(d,1-FPCalc.hebParts(d).day);
+  function monthOf(first){const m=FPCalc.hebParts(first).month,list=[];for(let x=first;FPCalc.hebParts(x).month===m;x=add(x,1))list.push(info(x));return list;}
+
+  const now=new Date(), today=parse(`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`);
+  const S={view:firstOfMonth(today), start:null, half:null, hef:null, mode:'start', msg:''};
+
+  // Yom Tov (and Yom Kippur, Tisha B'Av) as short lines for the night band. Second days are marked "outside Israel".
+  function holidayLines(d){
+    const name=FPCalc.holidayOf(d); if(!name) return null;
+    const outside=/outside Israel/.test(name);
+    const NAMES=[[/Rosh Hashanah/,'Rosh Hashanah'],[/Yom Kippur/,'Yom Kippur'],[/Sukkos/,'Sukkos'],[/Shemini Atzeres/,'Shemini Atzeres'],
+                 [/Simchas Torah/,'Simchas Torah'],[/Pesach/,'Pesach'],[/Shavuos/,'Shavuos'],[/Tisha/,'Tisha B\u2019Av']];
+    const main=(NAMES.find(n=>n[0].test(name))||[0,name])[1];
+    // The Hebrew date already says which day it is; the note only says what the reader needs (kept short to fit).
+    const sub=outside?'outside Israel':/seventh day/.test(name)?'7th day':/postponed/.test(name)?'postponed':'';
+    return sub?[main,sub]:[main];
+  }
+
+
+  const sample=info(parse('2026-10-19'));
+  // The practice box: touch its night or day half to see how a day is marked.
+  function drawSample(half){
+    const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
+    $('#sample').innerHTML=FPDay.stack([{n:sample.heb,dow:sample.dow,dot:half,date:sample.d}],(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">`+svg+
+      `<button type="button" class="half" data-try="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="Practice: began at night"></button>`+
+      `<button type="button" class="half" data-try="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="Practice: began during the day"></button></div>`,{extend:true});
+  }
+  drawSample(null);
+  const sizeMarks=()=>{const s=$('#sample .fp-day'); if(!s) return; const r=s.getBoundingClientRect(), w=$('.sample-wrap');
+    w.style.setProperty('--bh',r.height+'px'); w.style.setProperty('--bw',r.width+'px');};
+  sizeMarks(); addEventListener('resize',sizeMarks);
+  $('#sample').addEventListener('click',e=>{const b=e.target.closest('[data-try]'); if(!b) return;
+    drawSample(b.dataset.try);
+    $('#hint').innerHTML=b.dataset.try==='night'
+      ?'The dot is in the night: it began <b>Sunday night</b>, after sunset. Now touch the real day on the calendar below.'
+      :'The dot is in the day: it began <b>Monday, the 19th</b>, during the day. Now touch the real day on the calendar below.';
+  });
+
+  // What to draw on each day: the onset dot, the line to the hefsek tahara, the white days and mikveh night.
+  function marks(){
+    const m={}; if(!S.start) return m;
+    const hef=S.hef||add(S.start,4), gap=Math.round((hef-S.start)/FPCalc.DAY);   // the hefsek tahara: day 5, or later
+    m[iso(S.start)]={dot:S.half,line:S.half,lineEnd:'bottom'};
+    for(let i=1;i<gap;i++) m[iso(add(S.start,i))]={line:'top',lineEnd:'bottom'};
+    m[iso(hef)]={line:'top',lineEnd:'t',label:'Hefsek\ntahara',strong:true};
+    for(let i=1;i<=7;i++) m[iso(add(hef,i))]={label:`White day ${i}`};
+    m[iso(add(hef,8))]={nightNote:'Mikveh'};
+    return m;
+  }
+
+  function render(){
+    const mk=marks(), cols=[monthOf(S.view)];
+    cols.push(monthOf(add(cols[0][cols[0].length-1].d,1)));
+    if(S.start){const last=add(S.hef||add(S.start,4),8);while(cols[cols.length-1][cols[cols.length-1].length-1].d<last)cols.push(monthOf(add(cols[cols.length-1][cols[cols.length-1].length-1].d,1)));}
+    const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
+    $('#months').style.gridTemplateColumns=`repeat(${cols.length},minmax(0,250px))`;
+    $('#months').innerHTML=cols.map(list=>{
+      const a=list[0], z=list[list.length-1], en=enShort.format(a.d)===enShort.format(z.d)?enShort.format(a.d):`${enShort.format(a.d)}–${enShort.format(z.d)}`;
+      const days=list.map(x=>{const m=mk[x.iso]||{};
+        return Object.assign({n:x.heb,dow:x.dow,date:x.d,today:x.iso===iso(today),holiday:holidayLines(x.d),x},m);});
+      return `<section class="month"><h2>${a.month} ${a.year}<small>${en} ${z.d.getUTCFullYear()}</small></h2>`+
+        FPDay.stack(days,(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">${svg}`+
+          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="${d.x.night}, ${hebName(d.x)}"></button>`+
+          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="${d.x.day}, ${d.x.enLong}, during the day, ${hebName(d.x)}"></button></div>`)+`</section>`;
+    }).join('');
+    if(S.start){
+      const a=info(S.start), h=info(S.hef||add(S.start,4)), w=info(add(h.d,7));
+      const began=S.half==='night'?`It began <b>${a.night}</b>, the night of ${hebName(a)}.`:`It began <b>${a.day}, ${a.enLong}</b>, during the day, ${hebName(a)}.`;
+      $('#result').innerHTML=S.mode==='hefsek'?`<b>Touch the day the hefsek tahara was done.</b> ${S.msg}`
+        :`${began} Hefsek tahara: <b>${h.day}, ${h.enLong}</b>, before sunset. Mikveh: <b>${w.day} night, ${w.enLong}</b>.`;
+      $('#later').textContent=S.mode==='hefsek'?'Cancel':'The hefsek tahara was later';
+      $('#bar').hidden=false; document.body.classList.add('has-bar');
+    } else { $('#bar').hidden=true; document.body.classList.remove('has-bar'); }
+  }
+
+  $('#months').addEventListener('click',e=>{const b=e.target.closest('.half'); if(!b) return; const d=parse(b.dataset.iso);
+    if(S.mode==='hefsek'){                                    // a later hefsek tahara: from the fifth day on
+      const earliest=add(S.start,4);
+      if(d<earliest){const x=info(earliest); S.msg=`It can be done from the fifth day, ${x.day}, ${x.enLong}, or later.`; render(); return;}
+      S.hef=d.getTime()===earliest.getTime()?null:d; S.mode='start'; S.msg=''; render(); return;
+    }
+    S.start=d; S.half=b.dataset.half; S.hef=null; render();});
+  $('#later').addEventListener('click',()=>{S.mode=S.mode==='hefsek'?'start':'hefsek'; S.msg=''; render();});
+  $('#clear').addEventListener('click',()=>{S.start=null;S.half=null;S.hef=null;S.mode='start';S.msg='';render();});
+  $('#prev').addEventListener('click',()=>{S.view=firstOfMonth(add(S.view,-1));render();});
+  $('#next').addEventListener('click',()=>{S.view=add(S.view,monthOf(S.view).length);render();});
+  // The address is assembled here so it is not written out whole in the page.
+  document.querySelectorAll('[data-em]').forEach(el=>{const [u,d]=el.dataset.em.split('|'),a=u+'@'+d,s=el.dataset.subject;
+    if(el.tagName==='A')el.href='mailto:'+a+(s?'?subject='+encodeURIComponent(s):''); if(el.hasAttribute('data-em-text'))el.textContent=a;});
+  render();
+})();
+
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8bc2fc425c042159999a4b01f919dea"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

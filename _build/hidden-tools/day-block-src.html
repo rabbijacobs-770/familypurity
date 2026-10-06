@@ -1,0 +1,52 @@
+<title>Calendar Day Block</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: one narrow column, the two versions side by side (stacking on phones), the book's original below. */
+:root{
+  --bg:#ffffff; --fg:#221d33; --muted:#5f5976; --line:#e0daee; --heading:#2c2157; --gold:#94701f; --paper:#ffffff;
+  --display:"EB Garamond",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14111d;--fg:#ece8f7;--muted:#aaa4c0;--line:#332d47;--heading:#f1edfb;--gold:#dcbb72;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14111d;--fg:#ece8f7;--muted:#aaa4c0;--line:#332d47;--heading:#f1edfb;--gold:#dcbb72;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 1.15rem/1.5 var(--display)}
+main{max-width:980px;margin:0 auto;padding-block:28px 48px;padding-inline:16px}
+h1{font:600 1.9rem/1.15 var(--display);color:var(--heading);margin:0 0 .3rem;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 1.8rem}
+h2{font:600 1.05rem/1.2 var(--display);font-variant-caps:small-caps;letter-spacing:.07em;color:var(--gold);margin:2.2rem 0 .9rem}
+.row{display:flex;flex-wrap:wrap;gap:28px 32px;align-items:flex-start}
+.cell{display:grid;gap:.5rem;justify-items:start;min-width:0}
+.cell b{font-weight:600;color:var(--heading)}
+.one{width:min(100%,312px)}
+.one .fp-day{display:block;width:100%;height:auto}
+.orig{width:min(100%,600px);border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper)}
+.orig img{display:block;width:100%;height:auto}
+.orig.sheet{width:min(100%,232px);padding:8px}
+/*FPDAY_CSS*/
+</style>
+<main>
+  <h1>The basic day</h1>
+  <p class="sub">One box is one Hebrew day: the grey top is the night, the white bottom is the day. The Hebrew date is in the circle; the day of the week and English date are in the daytime half. Private preview, not on the website.</p>
+
+  <h2>One day</h2>
+  <div class="row">
+    <div class="cell"><b>With the English date</b><div class="one" data-day='{"n":1,"en":24,"dow":"Sh"}'></div></div>
+    <div class="cell"><b>Hebrew date only</b><div class="one" data-day='{"n":1,"dow":"Sh"}'></div></div>
+  </div>
+
+  <h2>Nissan 5772, next to your printed sheet</h2>
+  <div class="row">
+    <div class="cell"><b>Drawn by the computer</b><div data-nissan></div></div>
+    <div class="cell"><b>Your sheet</b><div class="orig sheet"><img src="/*SHEET*/" alt="The first days of Nissan 5772 on the printed calendar sheet" width="216" height="508"></div></div>
+  </div>
+</main>
+<script>
+/*FPDAY_JS*/
+document.querySelectorAll('[data-day]').forEach(el=>{el.innerHTML=FPDay.svg(JSON.parse(el.dataset.day));});
+// 1 Nissan 5772 was Shabbos, 24 March 2012. Dates come from the browser's Hebrew calendar.
+const hebDay=new Intl.DateTimeFormat('en-u-ca-hebrew',{day:'numeric'}), DOW=['Su','Mo','Tu','We','Th','Fr','Sh'];
+const days=[...Array(7)].map((_,i)=>new Date(2012,2,24+i,12));
+document.querySelector('[data-nissan]').innerHTML=FPDay.stack(days.map(d=>({n:hebDay.format(d),en:d.getDate(),dow:DOW[d.getDay()]})));
+</script>
