@@ -81,3 +81,15 @@
     }
   }
 })();
+
+// Study Guide quiz: a "Test yourself" card at the end of chapters that have a quiz
+(function(){
+  const quizzes={'niddah':'../quiz-niddah.html','source-of-niddah':'../quiz-niddah.html','gynecological-considerations':'../quiz-niddah.html'};
+  const slug=location.pathname.split('/').pop().replace(/\.html$/,'');
+  const href=quizzes[slug]; if(!href) return;
+  const end=document.querySelector('aside.end .end-card'); if(!end) return;
+  const card=document.createElement('div');
+  card.className='end-card'; card.style.marginTop='1.25rem';
+  card.innerHTML='<h2>Test yourself</h2><p>21 review questions on Chapter 2, Niddah, from the <em>Study Guide for Choson &amp; Kallah</em>. Nothing you answer is saved.</p><div class="btn-row"><a class="btn btn-solid" href="'+href+'">Take the Niddah quiz</a></div>';
+  end.after(card);
+})();
