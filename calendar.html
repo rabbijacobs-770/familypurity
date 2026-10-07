@@ -312,7 +312,9 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
       `<path d="M8 24H206L250 6M206 24V92" fill="none" stroke="${t.line}" stroke-width="1" stroke-linejoin="round"/>` +
       `<path d="${OUTLINE}" fill="none" stroke="${o.today ? t.accent : t.line}" stroke-width="${o.today ? 3 : 1.6}" stroke-linejoin="round"/>` +
       `<circle cx="50" cy="58.5" r="26" fill="${t.body}"/>` +                                     // arch rising into the band
-      (hebN ? `<text x="50" y="${o.big ? 73 : 70}" text-anchor="middle" font-family='${HEB}' font-weight="500" font-size="${o.big ? 38 : 32}" fill="${t.ink}">${esc(o.n)}</text>`
+      // Hebrew letters: Safari draws Hebrew inside an SVG left to right (י״ח came out as ח״י), so the letters are written
+      // in the order they appear on the page, right-hand letter last, and every browser is told to draw them exactly so.
+      (hebN ? `<text x="50" y="${o.big ? 73 : 70}" text-anchor="middle" direction="ltr" unicode-bidi="bidi-override" style="direction:ltr;unicode-bidi:bidi-override" font-family='${HEB}' font-weight="500" font-size="${o.big ? 38 : 32}" fill="${t.ink}">${esc([...String(o.n)].reverse().join(''))}</text>`
             : `<text x="50" y="${o.big ? 74 : 71}" text-anchor="middle" font-family='${SANS}' font-size="${o.big ? 42 : 35}" fill="${t.ink}">${esc(o.n)}</text>`) +
       night + hol + dow + label + marks +
       `</svg>`;
