@@ -6,7 +6,7 @@
    night) to the next midnight, crossing the sunset where one block meets the next; a narrow gap marks each midnight.
    The pieces alternate two light shades; the number is cut into the middle of its piece.
    FPDay.svg(o) returns one block. Options:
-     n          the Hebrew day of the month, in the white circle (the operative date)
+     n          the Hebrew day of the month, in the white circle (the operative date): a number, or Hebrew letters (י״ד)
      dow        day of the week: Su Mo Tu We Th Fr Sh (Sh is set in italics), in the white half
      night      optional name of the night in the grey half, e.g. "Sunday night" (the calendar leaves it out: it is self-evident)
      nightNote  a bold note in the night half, e.g. "Mikveh"
@@ -30,6 +30,7 @@
   };
   const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif';
   const SERIF = '"Times New Roman", Times, serif';
+  const HEB = '"Frank Ruhl Libre", "Times New Roman", serif';                       // for a Hebrew-letter date (י״ד)
   // Block geometry (viewBox 260 x 96), proportioned like the printed sheet: front face 8–206, side face 206–250.
   // The side is a slanted face: its top edge rises from (206,24) to (250,6), so a level line on it rises 18 units across.
   // The lid's left end recedes at the same angle and depth as the right side (44 across, 18 up), so both ends match.
@@ -46,6 +47,7 @@
 
   function svg(o) {
     const t = THEMES[o.theme || 'book'];
+    const hebN = /[\u0590-\u05FF]/.test(String(o.n));                                   // the date written in Hebrew letters
     const name = [o.n, o.night, o.holiday && o.holiday.join(', '), o.nightNote, o.dow && DOW_NAMES[o.dow], o.date && 'English date ' + MON.format(o.date) + ' ' + o.date.getUTCDate(),
                   o.label && o.label.replace('\n', ', ')].filter(Boolean).join(', ');
     // The night band: an optional bold note (e.g. Mikveh).
@@ -85,7 +87,8 @@
       `<path d="M8 24H206L250 6M206 24V92" fill="none" stroke="${t.line}" stroke-width="1" stroke-linejoin="round"/>` +
       `<path d="${OUTLINE}" fill="none" stroke="${o.today ? t.accent : t.line}" stroke-width="${o.today ? 3 : 1.6}" stroke-linejoin="round"/>` +
       `<circle cx="50" cy="58.5" r="26" fill="${t.body}"/>` +                                     // arch rising into the band
-      `<text x="50" y="${o.big ? 74 : 71}" text-anchor="middle" font-family='${SANS}' font-size="${o.big ? 42 : 35}" fill="${t.ink}">${esc(o.n)}</text>` +
+      (hebN ? `<text x="50" y="${o.big ? 73 : 70}" text-anchor="middle" font-family='${HEB}' font-weight="500" font-size="${o.big ? 38 : 32}" fill="${t.ink}">${esc(o.n)}</text>`
+            : `<text x="50" y="${o.big ? 74 : 71}" text-anchor="middle" font-family='${SANS}' font-size="${o.big ? 42 : 35}" fill="${t.ink}">${esc(o.n)}</text>`) +
       night + hol + dow + label + marks +
       `</svg>`;
   }

@@ -1,7 +1,7 @@
 <title>Purity Calendar Tools</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Frank+Ruhl+Libre:wght@500&display=swap">
 <style>
 /* Layout: one question, one small key, then the calendar (Hebrew-month columns of day blocks) that answers it. */
 :root{
@@ -31,12 +31,17 @@ h1{font:600 2.1rem/1.15 var(--display);color:var(--heading);margin:.4rem 0 0;tex
 @media (max-width:480px){.key .sample-wrap{--lc:4.4rem;--rc:5.4rem}.key .mark{font-size:.85rem}.key .mark svg{width:1.8rem}}
 .result{margin:0;font-size:1.2rem}
 .result b{color:var(--heading)}
-.nav{display:flex;justify-content:space-between;gap:.5rem;max-width:500px}
+.nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem;max-width:560px}
+.datefmt{display:flex;align-items:center;gap:.3rem;font-size:1rem;color:var(--muted)}
+.datefmt button{font:600 1.05rem/1 var(--display);min-width:2.6rem;padding:.45rem .6rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--fg);cursor:pointer}
+.datefmt button[lang=he]{font-family:"Frank Ruhl Libre","Times New Roman",serif;font-weight:500}
+.datefmt button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
 button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:999px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);cursor:pointer}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .months{display:grid;gap:1.2rem 1.6rem;align-items:start}
 .month{display:grid;gap:.35rem;min-width:0}
 .month h2{margin:0;display:grid;gap:.1rem;font:600 1.2rem/1.15 var(--display);color:var(--heading)}   /* month name, then the Gregorian months under it: every column lines up */
+.month h2 .hm{font-family:"Frank Ruhl Libre","Times New Roman",serif;font-weight:500;justify-self:start}
 .month h2 small{font:italic 400 .95rem/1.2 var(--display);color:var(--muted)}
 .report{margin:0;font-size:1.05rem;color:var(--fg)}
 .report a{color:var(--accent);font-weight:600}
@@ -75,6 +80,7 @@ body.has-bar main{padding-bottom:11rem}
 
   <div class="nav">
     <button type="button" class="act" id="prev">&lsaquo; Earlier month</button>
+    <div class="datefmt" role="group" aria-label="How to show the Hebrew dates"><span>Dates:</span><button type="button" data-fmt="num" aria-pressed="true">14</button><button type="button" data-fmt="he" lang="he" aria-pressed="false">י״ד</button></div>
     <button type="button" class="act" id="next">Later month &rsaquo;</button>
   </div>
   <div class="months" id="months"></div>
@@ -112,8 +118,18 @@ body.has-bar main{padding-bottom:11rem}
   const iso=FPCalc.iso, add=FPCalc.add, parse=FPCalc.parse;
   // A Hebrew day is keyed by the English date of its daytime.
   const info=d=>{const p=FPCalc.hebParts(d), w=d.getUTCDay();
-    return {d,iso:iso(d),heb:p.day,month:MONTH[p.month]||p.month,year:p.year,dow:DOW[w],day:DAY[w],en:d.getUTCDate(),enLong:enLong.format(d),night:EVE[w]+' night'};};
-  const hebName=x=>`${x.heb} ${x.month}`;
+    return {d,iso:iso(d),heb:p.day,month:MONTH[p.month]||p.month,year:p.year,dow:DOW[w],day:DAY[w],en:d.getUTCDate(),enLong:enLong.format(d),night:EVE[w]+' night',hmonth:HMONTH[p.month]||p.month};};
+  // Hebrew-letter numerals (gematria): 14 -> י״ד, 15 -> ט״ו, 5787 -> תשפ״ז
+  const gem=n=>{const H=[[400,'ת'],[300,'ש'],[200,'ר'],[100,'ק']],T=['','י','כ','ל','מ','נ','ס','ע','פ','צ'],U=['','א','ב','ג','ד','ה','ו','ז','ח','ט'];
+    let s='';n=n%1000;for(const [v,c] of H){while(n>=v){s+=c;n-=v;}}
+    if(n===15)s+='טו';else if(n===16)s+='טז';else s+=T[Math.floor(n/10)]+U[n%10];
+    return s.length>1?s.slice(0,-1)+'״'+s.slice(-1):s+'׳';};
+  const HMONTH={Tishri:'תשרי',Heshvan:'חשון',Kislev:'כסלו',Tevet:'טבת',Shevat:'שבט',Adar:'אדר','Adar I':'אדר א׳','Adar II':'אדר ב׳',Nisan:'ניסן',Iyar:'אייר',Sivan:'סיון',Tamuz:'תמוז',Av:'אב',Elul:'אלול'};
+  // Dates shown as numbers (14) or in Hebrew letters (י״ד); the reader's choice is remembered on this device only.
+  let HE=false; try{HE=localStorage.getItem('fp-dates')==='he';}catch(e){}
+  const dayN=x=>HE?gem(x.heb):x.heb;
+  const hebPlain=x=>`${x.heb} ${x.month}`;                                       // for screen readers
+  const hebName=x=>HE?`<bdi lang="he">${gem(x.heb)} ${x.hmonth}</bdi>`:`${x.heb} ${x.month}`;
   const firstOfMonth=d=>add(d,1-FPCalc.hebParts(d).day);
   function monthOf(first){const m=FPCalc.hebParts(first).month,list=[];for(let x=first;FPCalc.hebParts(x).month===m;x=add(x,1))list.push(info(x));return list;}
 
@@ -137,16 +153,22 @@ body.has-bar main{padding-bottom:11rem}
   // The practice box: touch its night or day half to see how a day is marked.
   function drawSample(half){
     const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
-    $('#sample').innerHTML=FPDay.stack([{n:sample.heb,dow:sample.dow,dot:half,date:sample.d}],(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">`+svg+
+    $('#sample').innerHTML=FPDay.stack([{n:dayN(sample),dow:sample.dow,dot:half,date:sample.d}],(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">`+svg+
       `<button type="button" class="half" data-try="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="Practice: began at night"></button>`+
       `<button type="button" class="half" data-try="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="Practice: began during the day"></button></div>`,{extend:true});
   }
+  let tryHalf=null;
   drawSample(null);
+  function showFmt(){document.querySelectorAll('.datefmt button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.fmt==='he')===HE)));}
+  showFmt();
+  document.querySelector('.datefmt').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return;
+    HE=b.dataset.fmt==='he'; try{localStorage.setItem('fp-dates',HE?'he':'num');}catch(e){}
+    showFmt(); drawSample(tryHalf); render(); requestAnimationFrame(sizeMarks);});
   const sizeMarks=()=>{const s=$('#sample .fp-day'); if(!s) return; const r=s.getBoundingClientRect(), w=$('.sample-wrap');
     w.style.setProperty('--bh',r.height+'px'); w.style.setProperty('--bw',r.width+'px');};
   sizeMarks(); addEventListener('resize',sizeMarks);
   $('#sample').addEventListener('click',e=>{const b=e.target.closest('[data-try]'); if(!b) return;
-    drawSample(b.dataset.try);
+    tryHalf=b.dataset.try; drawSample(tryHalf);
     $('#hint').innerHTML=b.dataset.try==='night'
       ?'The dot is in the night: it began <b>Sunday night</b>, after sunset. Now touch the real day on the calendar below.'
       :'The dot is in the day: it began <b>Monday, the 19th</b>, during the day. Now touch the real day on the calendar below.';
@@ -174,11 +196,11 @@ body.has-bar main{padding-bottom:11rem}
     $('#months').innerHTML=cols.map(list=>{
       const a=list[0], z=list[list.length-1], en=enShort.format(a.d)===enShort.format(z.d)?enShort.format(a.d):`${enShort.format(a.d)}–${enShort.format(z.d)}`;
       const days=list.map(x=>{const m=mk[x.iso]||{};
-        return Object.assign({n:x.heb,dow:x.dow,date:x.d,today:x.iso===iso(today),holiday:holidayLines(x.d),x},m);});
-      return `<section class="month"><h2>${a.month} ${a.year}<small>${en} ${z.d.getUTCFullYear()}</small></h2>`+
+        return Object.assign({n:dayN(x),dow:x.dow,date:x.d,today:x.iso===iso(today),holiday:holidayLines(x.d),x},m);});
+      return `<section class="month"><h2>${HE?`<span lang="he" dir="rtl" class="hm">${a.hmonth} ${gem(a.year)}</span>`:`${a.month} ${a.year}`}<small>${en} ${z.d.getUTCFullYear()}</small></h2>`+
         FPDay.stack(days,(svg,d,zi)=>`<div class="fp-cell" style="z-index:${zi}">${svg}`+
-          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="${d.x.night}, ${hebName(d.x)}"></button>`+
-          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="${d.x.day}, ${d.x.enLong}, during the day, ${hebName(d.x)}"></button></div>`)+`</section>`;
+          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="night" style="top:${pct(n0)};height:${pct(n1-n0)}" aria-label="${d.x.night}, ${hebPlain(d.x)}"></button>`+
+          `<button type="button" class="half" data-iso="${d.x.iso}" data-half="day" style="top:${pct(d0)};height:${pct(d1-d0)}" aria-label="${d.x.day}, ${d.x.enLong}, during the day, ${hebPlain(d.x)}"></button></div>`)+`</section>`;
     }).join('');
     if(S.start){
       const a=info(S.start), h=info(S.hef||add(S.start,4)), w=info(add(h.d,7));
