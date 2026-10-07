@@ -128,14 +128,19 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     const n=months.length, sheet=$('#sheet');
     sheet.style.setProperty('--n',n); sheet.setAttribute('style',`--n:${n}`);
     let html=`<div class="title"><b>${y}</b><span class="he" lang="he">${gem(y)}</span><i>${gy}</i></div><span></span>`;
-    html+=months.map(m=>{const a=m.days[0].d,z=m.days[m.days.length-1].d,e1=enShort.format(a),e2=enShort.format(z);
+    // Hebrew order: the months run right to left, Tishrei (or Nissan) in the rightmost column.
+    const rtl=months.slice().reverse();
+    html+=rtl.map(m=>{const a=m.days[0].d,z=m.days[m.days.length-1].d,e1=enShort.format(a),e2=enShort.format(z);
       return `<div class="mh"><b>${m.name}</b><i>${e1===e2?e1:e1+'–'+e2}</i></div>`;}).join('');
-    html+=`<span></span>`+months.map(m=>`<div class="col">`+FPDay.stack(m.days.map(({d,p})=>{const h=holidayLines(d);if(h&&/\*$/.test(h[0]))star=true;
+    html+=`<span></span>`+rtl.map(m=>`<div class="col">`+FPDay.stack(m.days.map(({d,p})=>{const h=holidayLines(d);if(h&&/\*$/.test(h[0]))star=true;
       return {n:p.day,dow:DOW[d.getUTCDay()],date:d,holiday:h,big:true};}))+`</div>`).join('');
     for(const lab of ['Day of week','Hebrew date','Interval']) html+=`<span class="lab">${lab}</span>`+months.map(()=>`<span class="box"></span>`).join('');
     if(star) html+=`<p class="foot">* Outside Israel only.</p>`;
     sheet.innerHTML=html;
+    toStart();
   }
+  // On a narrow screen the sheet scrolls sideways: begin at its right end, where the first month is.
+  function toStart(){const p=$('#online'); p.scrollLeft=p.scrollWidth;}
   $('#year').addEventListener('change',render); $('#half').addEventListener('change',render);
   // Paper size: Letter or A4, applied to the printed page (and so to a PDF saved from the print window).
   const pageRule=document.createElement('style'); document.head.appendChild(pageRule);
@@ -152,6 +157,7 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   function format(){
     const pdf=document.querySelector('input[name=format]:checked').value==='pdf';
     $('#online').hidden=pdf; $('#print').hidden=pdf||window.self!==window.top; $('#print-note').hidden=pdf; $('#pdfview').hidden=!pdf;
+    if(!pdf) toStart();
     if(pdf){
       const y=+$('#year').value, ok=y>=PDF_FIRST&&y<=PDF_LAST;
       const url=`${PDF_BASE}half-year-${y}-${$('#half').value}-${$('#paper').value}.pdf`;
