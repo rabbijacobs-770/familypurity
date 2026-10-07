@@ -240,7 +240,8 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
   const SERIF = '"Times New Roman", Times, serif';
   // Block geometry (viewBox 260 x 96), proportioned like the printed sheet: front face 8–206, side face 206–250.
   // The side is a slanted face: its top edge rises from (206,24) to (250,6), so a level line on it rises 18 units across.
-  const OUTLINE = 'M8 24 27 6H250V74L206 92H17L8 83Z';
+  // The lid's left end recedes at the same angle and depth as the right side (44 across, 18 up), so both ends match.
+  const OUTLINE = 'M8 24 52 6H250V74L206 92H8Z';
   const NIGHT_Y = 41, DAY_Y = 76, LINE_X = 84;             // middle of the night (about midnight), a spot in the day, the line's position
   const PITCH = 78;                                        // each block sits 78 units below the one above (96 tall, 18 overlapped)
   const HALVES = { night: [24 / 96, 58.5 / 96], day: [58.5 / 96, 92 / 96] };
@@ -286,7 +287,7 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
                  `<path d="M206 24 250 6V40.5L206 58.5Z" fill="${t.band}"/>`;                // the night band continues around the corner
     return `<svg class="fp-day" viewBox="0 0 260 96" role="img" aria-label="${esc(name)}" xmlns="http://www.w3.org/2000/svg">` +
       `<path d="${OUTLINE}" fill="${t.body}"/>` +
-      `<path d="M8 24 27 6H250L206 24Z" fill="${t.lid}"/>` +                                      // lid
+      `<path d="M8 24 52 6H250L206 24Z" fill="${t.lid}"/>` +                                      // lid
       `<path d="M8 24H206V58.5H8Z" fill="${t.band}"/>` +                                         // grey band: the night
       side +
       `<path d="M8 24H206L250 6M206 24V92" fill="none" stroke="${t.line}" stroke-width="1" stroke-linejoin="round"/>` +
