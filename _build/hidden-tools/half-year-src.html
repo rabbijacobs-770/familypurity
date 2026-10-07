@@ -42,9 +42,9 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .sheet .title b{font:700 1.7em/1 var(--sans)}
 .sheet .title .he{font:700 1.6em/1 "Frank Ruhl Libre","Times New Roman",serif;direction:rtl}
 .sheet .title i{font:italic 1.05em/1 var(--serif)}
-.sheet .mh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;column-gap:.3em;border-bottom:1px solid #111;padding-bottom:.1em;min-width:0}
+.sheet .mh{display:grid;row-gap:.05em;border-bottom:1px solid #111;padding-bottom:.1em;min-width:0}   /* month name; the Gregorian months right-aligned under it, over the Gregorian strip */
 .sheet .mh b{font:700 1.05em/1.1 var(--sans)}
-.sheet .mh i{font:italic .78em/1.1 var(--serif);white-space:nowrap}
+.sheet .mh i{font:italic .78em/1.1 var(--serif);white-space:nowrap;justify-self:end}
 .sheet .col{min-width:0}
 .sheet .col .fp-stack{width:100%}
 .sheet .lab{font:400 .82em/1 var(--serif);align-self:center}
