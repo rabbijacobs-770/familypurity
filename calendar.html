@@ -32,7 +32,7 @@
 .key p{margin:0;font-size:1.25rem;color:var(--heading);max-width:44rem}
 .key .try{font-weight:600;color:var(--accent)}
 .key .hint{font-size:1.1rem;color:var(--fg)}
-.key .sample-wrap{--lc:5.2rem;--rc:6.2rem;position:relative;justify-self:start;display:grid;grid-template-columns:var(--lc) minmax(0,260px) var(--rc);align-items:start;margin:.3rem 0;padding-bottom:calc(var(--bw, 260px) * 34 / 260)}
+.key .sample-wrap{--lc:5.2rem;--rc:6.2rem;position:relative;justify-self:start;display:grid;grid-template-columns:var(--lc) minmax(0,210px) var(--rc);align-items:start;margin:.3rem 0;padding-bottom:calc(var(--bw, 260px) * 34 / 260)}
 .key .sample{grid-column:2;width:100%}
 .key .sample .fp-cell{position:relative}
 .key .mark{position:absolute;z-index:10;left:0;display:flex;align-items:center;gap:.25rem;font-size:1rem;line-height:1;color:var(--fg);transform:translateY(-50%)}
@@ -48,7 +48,7 @@ button.act{font:600 1rem/1 var(--display);padding:.55rem .95rem;border-radius:99
 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .months{display:grid;gap:1.2rem 1.6rem;align-items:start}
 .month{display:grid;gap:.35rem;min-width:0}
-.month h2{margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font:600 1.2rem/1.2 var(--display);color:var(--heading)}
+.month h2{margin:0;display:grid;gap:.1rem;font:600 1.2rem/1.15 var(--display);color:var(--heading)}   /* month name, then the Gregorian months under it: every column lines up */
 .month h2 small{font:italic 400 .95rem/1.2 var(--display);color:var(--muted)}
 .report{margin:0;font-size:1.05rem;color:var(--fg)}
 .report a{color:var(--accent);font-weight:600}
@@ -437,7 +437,8 @@ menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
     cols.push(monthOf(add(cols[0][cols[0].length-1].d,1)));
     if(S.start){const last=add(S.hef||add(S.start,4),8);while(cols[cols.length-1][cols[cols.length-1].length-1].d<last)cols.push(monthOf(add(cols[cols.length-1][cols[cols.length-1].length-1].d,1)));}
     const [n0,n1]=FPDay.HALVES.night,[d0,d1]=FPDay.HALVES.day, pct=v=>(v*100).toFixed(2)+'%';
-    $('#months').style.gridTemplateColumns=`repeat(${cols.length},minmax(0,250px))`;
+    // About 200px a column on a computer (20% smaller than before); on a phone the columns are narrower anyway, so the touch areas stay as they were.
+    $('#months').style.gridTemplateColumns=`repeat(${cols.length},minmax(0,200px))`;
     $('#months').innerHTML=cols.map(list=>{
       const a=list[0], z=list[list.length-1], en=enShort.format(a.d)===enShort.format(z.d)?enShort.format(a.d):`${enShort.format(a.d)}–${enShort.format(z.d)}`;
       const days=list.map(x=>{const m=mk[x.iso]||{};
