@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stains Review Quiz | Family Purity Study Guide | Rabbi Fishel Jacobs</title>
+<meta name="description" content="Free online review quiz on the laws of stains (kesamim), from the Study Guide for Choson and Kallah by Rabbi Fishel Jacobs. 10 questions, nothing saved.">
+<link rel="canonical" href="https://www.familypurity.com/quiz-stains.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one calm reading column, one question at a time, in the site's violet-and-gold Garamond style */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --tint:#f2effa; --line:#e0daee;
+  --fg:#221d33; --muted:#5f5976; --heading:#2c2157;
+  --violet:#4b3a8c; --violet-deep:#2c2157; --gold:#94701f;
+  --good:#2f6b4a; --good-bg:#e9f4ee; --bad:#9a2f3a; --bad-bg:#f8eaec;
+  --on-solid:#ffffff;
+  --serif:"EB Garamond",Garamond,"Iowan Old Style",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:19px;line-height:1.55}
+.wrap{max-width:40rem;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:grid;gap:28px}
+.eyebrow{margin:0;font-variant:small-caps;letter-spacing:.08em;color:var(--gold);font-weight:600;font-size:1.05rem}
+h1{margin:.1em 0 0;font-weight:500;color:var(--heading);font-size:clamp(2rem,6vw,2.6rem);line-height:1.1;text-wrap:balance}
+.intro p{margin:.5em 0 0;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.95rem;color:var(--muted);margin-top:14px}
+.meta span::before{content:"";display:inline-block;width:.42rem;height:.42rem;border-radius:50%;background:var(--gold);margin-right:.5rem;vertical-align:.15em}
+
+.progress{display:grid;gap:8px}
+.progress-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.95rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.section-name{font-variant:small-caps;letter-spacing:.06em;color:var(--violet)}
+.bar{height:4px;border-radius:4px;background:var(--tint);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--violet);width:0;transition:width .3s}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 26px;display:grid;gap:20px}
+.q{margin:0;font-size:1.3rem;line-height:1.45;color:var(--heading)}
+.blank{display:inline-block;min-width:4.5em;border-bottom:1.5px solid var(--muted);transform:translateY(-.15em)}
+.opts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.opt{width:100%;text-align:left;font:inherit;color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--violet)}
+.opt:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.opt:disabled{cursor:default}
+.letter{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.95rem;color:var(--muted);margin-top:.05rem}
+.opt.correct{border-color:var(--good);background:var(--good-bg)}
+.opt.correct .letter{border-color:var(--good);background:var(--good);color:var(--on-solid)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong .letter{border-color:var(--bad);background:var(--bad);color:var(--on-solid)}
+
+.feedback{border-radius:14px;padding:14px 16px;background:var(--tint);display:grid;gap:4px}
+.feedback strong{font-weight:600}
+.feedback.good strong{color:var(--good)}
+.feedback.bad strong{color:var(--bad)}
+.feedback p{margin:0;color:var(--muted);font-size:1rem}
+.feedback a{color:var(--violet)}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+.btn{font:inherit;font-size:1rem;font-weight:500;border-radius:999px;padding:.6rem 1.4rem;cursor:pointer;border:1.5px solid transparent}
+.btn-solid{background:var(--violet-deep);color:var(--on-solid)}
+.btn-line{background:transparent;border-color:var(--line);color:var(--fg)}
+.btn:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+
+.score{font-size:3.2rem;line-height:1;color:var(--heading);font-variant-numeric:tabular-nums;margin:0}
+.score small{font-size:1.2rem;color:var(--muted)}
+.review{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.review li{border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:grid;gap:2px;font-size:1rem}
+.review .rq{color:var(--fg)}
+.review .ra{color:var(--muted)}
+.review .tag{font-variant:small-caps;letter-spacing:.06em;font-weight:600}
+.review .tag.ok{color:var(--good)} .review .tag.no{color:var(--bad)}
+.note{font-size:.95rem;color:var(--muted);margin:0}
+.note a{color:var(--violet)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+.topbar{max-width:40rem;margin:0 auto;padding:18px 20px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:1rem}
+.topbar a{color:var(--violet);text-decoration:none}
+.topbar a:hover{text-decoration:underline}
+.brand{font-weight:600;color:var(--heading)!important}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="Site"><a class="brand" href="index.html">Family Purity</a><a href="index.html#resources">All chapters &rarr;</a></nav>
+<main class="wrap">
+  <header class="intro">
+    <p class="eyebrow">Study Guide for Choson &amp; Kallah · Chapter 3</p>
+    <h1>Stains: review quiz</h1>
+    <p>Check what you've learned about stains: what a kesem is, its size, color and the surface it's found on. Each answer points to the page in <em>Family Purity</em> where it's explained.</p>
+    <div class="meta"><span>10 questions</span><span>About 3 minutes</span><span>Nothing you answer is saved or sent</span></div>
+  </header>
+
+  <section class="progress" aria-live="polite">
+    <div class="progress-row"><span class="section-name" id="section"></span><span id="count"></span></div>
+    <div class="bar"><i id="bar"></i></div>
+  </section>
+
+  <section class="card" id="quiz"></section>
+
+  <p class="note">Read the chapter first: <a href="read/stains.html">Stains, free online</a>. For a practical question, please ask your rav or <a href="index.html#contact">ask Rabbi Jacobs</a>.</p>
+</main>
+
+<script>
+const BLANK='<span class="blank" aria-label="blank"></span>';
+const Q=[
+ {s: "Background", q: "The niddah state caused by finding a stain is ___ in origin.", o: ["scriptural", "rabbinic"], a: 1, p: 21},
+ {s: "General", q: "By definition, a stain, kesem, implies it was not accompanied with the sensation (hargasha) usually associated with menstruation.", o: ["true", "false"], a: 0, p: 23},
+ {s: "General", q: "Blood found on an examination cloth ___ categorized as a stain, kesem.", o: ["is", "is not"], a: 1, p: 23},
+ {s: "General", q: "Can a stain sometimes be attributed to an outside [of the body] source?", o: ["yes", "no"], a: 0, p: 23},
+ {s: "General", q: "Staining can render a woman niddah regardless of whether she is post-menopausal, pregnant, or nursing.", o: ["true", "false"], a: 0, p: 24},
+ {s: "Location", q: "Stains almost always render a wife niddah, therefore it is superfluous to ask a Rabbi concerning each incident.", o: ["true", "false"], a: 1, p: 25},
+ {s: "Size", q: "A stain, kesem, smaller than ___ does not result in the woman's becoming impure.", o: ["a pea", "a dime"], a: 1, p: 28},
+ {s: "Shape/Color", q: "Stains of these colors cause the niddah state: ___.", o: ["black/red", "yellow/green"], a: 0, p: 29},
+ {s: "Shape/Color", q: "The shape of stains determines if they are pure or impure.", o: ["true", "false"], a: 1, p: 29},
+ {s: "Background Color", q: "During the permissible times it is preferable to wear ___ underwear.", o: ["colored", "white"], a: 0, p: 29}
+];
+const L=["a","b"];
+let i=0, picks=[];
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const fmt=s=>esc(s).replace("___",BLANK);
+
+function progress(){
+  const done=picks.filter(x=>x!==undefined).length;
+  $("bar").style.width=(i>=Q.length?100:(i/Q.length*100))+"%";
+  $("section").textContent=i<Q.length?Q[i].s:"Your results";
+  $("count").textContent=i<Q.length?`Question ${i+1} of ${Q.length}`:`${done} of ${Q.length} answered`;
+}
+function render(){
+  progress();
+  if(i>=Q.length) return results();
+  const q=Q[i], picked=picks[i];
+  const answered=picked!==undefined;
+  let h=`<p class="q">${fmt(q.q)}</p><ul class="opts">`;
+  q.o.forEach((t,k)=>{
+    let cls="";
+    if(answered){ if(k===q.a) cls="correct"; else if(k===picked) cls="wrong"; }
+    h+=`<li><button class="opt ${cls}" data-k="${k}" ${answered?"disabled":""}><span class="letter">${L[k]}</span><span>${esc(t)}</span></button></li>`;
+  });
+  h+=`</ul>`;
+  if(answered){
+    const ok=picked===q.a;
+    h+=`<div class="feedback ${ok?"good":"bad"}" role="status"><strong>${ok?"Correct.":"Not quite. The answer is "+L[q.a]+": "+esc(q.o[q.a])+"."}</strong><p>Explained in <em>Family Purity</em>, page ${q.p}.</p></div>`;
+  }
+  h+=`<div class="actions"><button class="btn btn-line" id="back" ${i===0?"disabled":""}>Back</button><button class="btn btn-solid" id="next" ${answered?"":"disabled"}>${i===Q.length-1?"See results":"Next question"}</button></div>`;
+  $("quiz").innerHTML=h;
+  $("quiz").querySelectorAll(".opt").forEach(b=>b.onclick=()=>{picks[i]=+b.dataset.k;render();$("next").focus();});
+  $("back").onclick=()=>{i--;render();};
+  $("next").onclick=()=>{i++;render();};
+}
+function results(){
+  const right=Q.filter((q,k)=>picks[k]===q.a).length;
+  const pct=Math.round(right/Q.length*100);
+  const msg=pct===100?"Every answer correct. Well done.":pct>=80?"A strong result. Review the questions marked below.":"Worth another read of the chapter, then try again.";
+  let h=`<div><p class="score">${right}<small> / ${Q.length}</small></p><p class="note" style="margin-top:8px">${msg}</p></div><ul class="review">`;
+  Q.forEach((q,k)=>{
+    const ok=picks[k]===q.a;
+    h+=`<li><span class="tag ${ok?"ok":"no"}">${ok?"Correct":"Review"} · ${k+1}</span><span class="rq">${fmt(q.q)}</span><span class="ra">Answer: ${L[q.a]}. ${esc(q.o[q.a])} · <em>Family Purity</em>, p. ${q.p}</span></li>`;
+  });
+  h+=`</ul><div class="actions"><button class="btn btn-line" id="again">Start again</button><a class="btn btn-solid" style="text-decoration:none" href="read/stains.html">Read the chapter</a></div>`;
+  $("quiz").innerHTML=h;
+  $("again").onclick=()=>{i=0;picks=[];render();};
+}
+render();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8bc2fc425c042159999a4b01f919dea"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
