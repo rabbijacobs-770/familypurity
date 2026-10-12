@@ -153,7 +153,7 @@ function render(){
 function results(){
   const right=Q.filter((q,k)=>picks[k]===q.a).length;
   const pct=Math.round(right/Q.length*100);
-  const msg=pct===100?"Every answer correct. Well done.":pct>=80?"A strong result. Review the questions marked below.":"Worth another read of the chapter, then try again.";
+  const msg=pct===100?"Excellent, mazal tov! Our Sages liken one who reviews Torah to one who sows and then reaps the harvest. Keep going!":pct>=80?"Very well done! Look over the questions marked below, and you'll have it all.":"A good start! Every review brings you closer. Read the chapter again, then try once more.";
   let h=`<div><p class="score">${right}<small> / ${Q.length}</small></p><p class="note" style="margin-top:8px">${msg}</p></div><ul class="review">`;
   Q.forEach((q,k)=>{
     const ok=picks[k]===q.a;
