@@ -124,6 +124,7 @@ FOOT='''<footer class="panel on-flowers" style="margin-top:3rem">
       <li><a href="{r}index.html#resources">Free resources</a></li>
       <li><a href="{r}tools.html">Tools</a></li>
       <li><a href="{r}index.html#contact">Contact</a></li>
+      <li><a href="https://rabbijacobs.com/" target="_blank" rel="noopener">RabbiJacobs.com</a></li>
     </ul>
     <small>&copy; Family Purity <span class="credit">Photo: Hisu Lee / Unsplash</span></small>
   </div>
