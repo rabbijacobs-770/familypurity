@@ -36,7 +36,10 @@ ul{margin:0;padding:0;list-style:none}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:1.25rem}
 .eyebrow{font:600 1.08rem/1 var(--display);font-variant-caps:small-caps;letter-spacing:.09em;color:var(--gold)}
 .lede{color:var(--muted);font-size:1.125rem;max-width:36rem}
-section{padding-block:clamp(4rem,9vw,6.5rem);scroll-margin-top:5.5rem}
+section{padding-block:clamp(3rem,6vw,4.5rem);scroll-margin-top:5.5rem}
+/* A colored band already separates what's above and below it, so it needs less air around it */
+section:has(+ .band){padding-bottom:clamp(2.25rem,4.5vw,3.5rem)}
+.band + section{padding-top:clamp(2.25rem,4.5vw,3.5rem)}
 .head{display:grid;gap:.8rem;margin-bottom:clamp(2rem,4vw,3rem)}
 .head.center{text-align:center;justify-items:center}
 
