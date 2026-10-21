@@ -4,7 +4,7 @@
    python3 _build/finish_read.py"""
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from render import (ORDER, BASE, H1_TERM, H1_TITLE, crumbs_html, crumbs_ld, byline_html, quiz_html, related_html, h1_html, text_date)
+from render import (ORDER, BASE, H1_TERM, H1_TITLE, crumbs_html, crumbs_ld, byline_html, quiz_html, related_html, h1_html, text_date, faq_html)
 from build import SITE
 
 READ = os.path.join(SITE, 'read')
@@ -16,7 +16,11 @@ def sub1(s, old, new):
 def seven_white_days():
     slug, title, full = 'seven-white-days', 'The Seven White Days', 'The Seven White Days'
     p = os.path.join(READ, slug + '.html'); s = open(p).read()
-    if 'class="crumbs"' in s: return 'seven-white-days.html already done'
+    if 'class="crumbs"' in s:
+        if faq_html(slug) and 'class="faq"' not in s:          # common questions, once approved
+            s = sub1(s, '  </article>\n', '  </article>' + faq_html(slug) + '\n'); open(p, 'w').write(s)
+            return 'seven-white-days.html: common questions added'
+        return 'seven-white-days.html already done'
     desc = re.search(r'<meta name="description" content="([^"]*)"', s).group(1)
     s = sub1(s, '<meta property="og:url"', f'<meta property="og:description" content="{desc}">\n<meta property="og:url"')
     s = sub1(s, '<link rel="preconnect" href="https://fonts.googleapis.com">', '<meta name="twitter:card" content="summary_large_image">\n<link rel="preconnect" href="https://fonts.googleapis.com">')

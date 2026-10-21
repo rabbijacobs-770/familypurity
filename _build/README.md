@@ -13,3 +13,9 @@ Per-chapter corrections (typos, removed notes) live in `pages.py` (`fix_text`, `
 - The author's Nisus RTF goes in `review/sources/` (gitignored: it holds tracked changes and deleted drafts). Configure it in `CHAPTERS` in `rtf_chapter.py`.
 - `python3 _build/rtf_chapter.py` keeps only the final wording (deleted text dropped, insertions kept), places every footnote, saves diagrams to `images/chN/`, and marks the page "From the forthcoming expanded edition" (no PDF; the end card offers the current edition and Notify me).
 - Then add the slug to `ORDER` in render.py and search_index.py, run `python3 _build/render.py && python3 _build/overview.py && python3 _build/search_index.py`, and update the homepage card and sitemap.xml.
+
+## Common questions (FAQ) on chapter pages
+- Drafts live in `faq.py`: each answer is quoted word for word from the same chapter (only the questions are new).
+  `python3 _build/faq_check.py` verifies the quotes and writes `review/faq-drafts.html` for Rabbi Jacobs.
+- A page shows its "Common questions" section (with matching FAQPage data) only after its entry is set to `approved=True`;
+  then rebuild the chapter pages (see Regenerate above).

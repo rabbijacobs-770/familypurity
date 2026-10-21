@@ -2,6 +2,7 @@ import json, html, re, os, sys, urllib.parse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import blocks_for, render_body, join_lines, SITE
 from pages import PAGES
+from faq import FAQ
 
 # Reading order of everything available online (slug, label, title)
 ORDER=[('overview','Introduction','Overview'),('from-the-rebbe','Introduction','From the Rebbe'),
@@ -80,6 +81,16 @@ def related_html(slug):
         else: items.append(f'<li><a href="{r}.html">{LABEL[r]}</a><small>{num[r]}</small></li>')
     return ('<nav class="related" aria-label="Related chapters">\n  <h2>Related chapters</h2>\n  <ul>\n    '+'\n    '.join(items)+
             '\n  </ul>\n  <p><a href="index.html">All chapters and review quizzes</a></p>\n</nav>') if items else ''
+
+def faq_html(slug):
+    """Common questions for a chapter, only once Rabbi Jacobs has approved them (faq.py); '' until then."""
+    e=FAQ.get(slug)
+    if not e or not e['approved']: return ''
+    def ans(a): return ''.join('<ul>'+''.join(f'<li>{html.escape(x)}</li>' for x in p)+'</ul>' if isinstance(p,list) else f'<p>{html.escape(p)}</p>' for p in a)
+    ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans(a)}} for q,a in e['items']]}
+    qs=''.join(f'\n    <div class="qa"><h3>{html.escape(q)}</h3>{ans(a)}</div>' for q,a in e['items'])
+    return (f'\n  <section class="faq" aria-labelledby="faq-h">\n    <h2 id="faq-h">Common questions</h2>{qs}\n  </section>'
+            f'\n  <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False)}</script>')
 
 def nav(slug):
     i=[o[0] for o in ORDER].index(slug)
@@ -164,7 +175,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
 <main class="page">
   <article class="text">
     {body_html}
-  </article>
+  </article>{faq_html(slug)}
 
   <aside class="end">
     <span class="fleuron" aria-hidden="true">&#10087;</span>
