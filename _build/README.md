@@ -5,7 +5,8 @@
 - `overview.py` writes `read/overview.html` (set by hand). `read/seven-white-days.html` is hand-built.
 - `tools_build.py` writes `tools/*.html` and `tools.html` from `tools-src.html`.
 
-Regenerate: `python3 _build/render.py && python3 _build/overview.py && python3 _build/tools_build.py`
+Regenerate: `python3 _build/render.py && python3 _build/overview.py && python3 _build/rtf_chapter.py && python3 _build/finish_read.py && python3 _build/tools_build.py`
+- `finish_read.py` gives the hand-built seven-white-days.html the shared breadcrumbs, byline, quiz card and related chapters, and writes `read/index.html` (all chapters, quizzes and tools). Related chapters, link text, quiz cards, H1 terms and "Last updated" dates are set at the top of `render.py`.
 Per-chapter corrections (typos, removed notes) live in `pages.py` (`fix_text`, `fix_fn`, `fix_html`).
 
 ## Expanded-edition chapters (from the author's RTF)

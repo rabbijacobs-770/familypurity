@@ -14,6 +14,73 @@ BASE='https://www.familypurity.com'
 AMAZON_FP='https://www.amazon.com/dp/B0DGGB859Z'
 NOTIFY='https://wa.me/972587921788?text=Shalom%20Rabbi%20Jacobs%2C%20please%20let%20me%20know%20when%20the%20expanded%20edition%20of%20Family%20Purity%20is%20published.'; AMAZON_TIMES='https://www.amazon.com/dp/B0DC713M2P'
 
+# Search-friendly additions shared by every chapter page (also applied to the hand-built
+# seven-white-days.html by finish_read.py).
+# The book's own term after the chapter title in the H1, where the title alone lacks it.
+H1_TERM={'overview':None,'stains':'Kesamim','making-sure-menstruation-has-finished':'Hefsek Tahara','seven-white-days':'Shiva Nekiim',
+ 'preparing-for-immersion':'Hafifah','times-chabad':'Vestos','times-major-customs':'Vestos'}
+H1_TITLE={'overview':'Overview: The Purity Cycle'}
+# Descriptive link text for each chapter (used for related-chapter links and the chapter list).
+LABEL={'overview':'The family purity cycle, step by step','from-the-rebbe':'The Rebbe on family purity: letters and talks',
+ 'perfect-marriage':'Perfect marriage: a Torah view of marriage','niddah':'Niddah: the laws of menstruation',
+ 'source-of-niddah':'Source of niddah: uterine bleeding','gynecological-considerations':'Gynecological procedures and niddah',
+ 'stains':'The laws of stains (kesamim)','making-sure-menstruation-has-finished':'The hefsek tahara: making sure menstruation has finished',
+ 'seven-white-days':'The seven white days (shiva nekiim)','preparing-for-immersion':'Preparing for immersion in the mikveh (hafifah)',
+ 'times-chabad':'Separation dates (vestos): Chabad custom','times-major-customs':'Separation dates (vestos) for all communities'}
+CALENDAR=('../calendar.html','The purity calendar: five days, hefsek tahara and seven white days')
+RELATED={'overview':['niddah','making-sure-menstruation-has-finished','seven-white-days',CALENDAR],
+ 'from-the-rebbe':['perfect-marriage','overview','niddah'],
+ 'perfect-marriage':['from-the-rebbe','overview','niddah'],
+ 'niddah':['source-of-niddah','stains','making-sure-menstruation-has-finished'],
+ 'source-of-niddah':['niddah','gynecological-considerations','stains'],
+ 'gynecological-considerations':['source-of-niddah','niddah','stains'],
+ 'stains':['niddah','source-of-niddah','making-sure-menstruation-has-finished'],
+ 'making-sure-menstruation-has-finished':['seven-white-days','niddah','stains',CALENDAR],
+ 'seven-white-days':['making-sure-menstruation-has-finished','preparing-for-immersion','stains',CALENDAR],
+ 'preparing-for-immersion':['seven-white-days','making-sure-menstruation-has-finished','overview'],
+ 'times-chabad':['times-major-customs','niddah','overview'],
+ 'times-major-customs':['times-chabad','niddah','overview']}
+# Study Guide review quiz for each chapter: (page, questions, what it covers, button name)
+QUIZ={'niddah':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),'source-of-niddah':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),
+ 'gynecological-considerations':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),'stains':('quiz-stains.html',10,'Chapter 3, Stains','Stains'),
+ 'making-sure-menstruation-has-finished':('quiz-making-sure.html',10,'Chapter 5, Making Sure Menstruation Has Finished','Hefsek Tahara'),
+ 'seven-white-days':('quiz-seven-white-days.html',10,'Chapter 6, Seven White Days','Seven White Days'),
+ 'preparing-for-immersion':('quiz-preparing-for-immersion.html',10,'Chapter 7, Preparing for Immersion','Preparing for Immersion'),
+ 'times-chabad':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates'),
+ 'times-major-customs':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates')}
+# When each chapter's text was last changed (shown as "Last updated").
+TEXT_DATE={'preparing-for-immersion':'2026-10-05'}
+def text_date(slug): return TEXT_DATE.get(slug,'2026-10-04')
+def long_date(d):
+    y,m,dd=d.split('-'); return f"{['January','February','March','April','May','June','July','August','September','October','November','December'][int(m)-1]} {int(dd)}, {y}"
+
+def h1_html(slug,title):
+    t=html.escape(H1_TITLE.get(slug,title)); term=H1_TERM.get(slug)
+    return t+(f' <span class="h1-term">({term})</span>' if term else '')
+def crumbs_html(full):
+    return (f'<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">&rsaquo;</span>'
+            f'<a href="index.html">Read</a><span aria-hidden="true">&rsaquo;</span><span aria-current="page">{html.escape(full)}</span></nav>')
+def crumbs_ld(slug,full):
+    return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},
+        {"@type":"ListItem","position":2,"name":"Read","item":BASE+"/read/"},
+        {"@type":"ListItem","position":3,"name":full,"item":f"{BASE}/read/{slug}.html"}]}
+def byline_html(slug):
+    d=text_date(slug)
+    return f'<p class="byline">By <a href="../index.html#about">Rabbi Fishel Jacobs</a> &middot; Last updated <time datetime="{d}">{long_date(d)}</time></p>'
+def quiz_html(slug):
+    q=QUIZ.get(slug)
+    if not q: return ''
+    return (f'\n    <div class="end-card quiz-card">\n      <h2>Test yourself</h2>\n      <p>{q[1]} review questions on {q[2]}, from the <em>Study Guide for Choson &amp; Kallah</em>. Nothing you answer is saved.</p>'
+            f'\n      <div class="btn-row"><a class="btn btn-solid" href="../{q[0]}">Take the {q[3]} quiz</a></div>\n    </div>')
+def related_html(slug):
+    num={o[0]:o[1] for o in ORDER}; items=[]
+    for r in RELATED.get(slug,[]):
+        if isinstance(r,tuple): items.append(f'<li><a href="{r[0]}">{r[1]}</a><small>Interactive calendar</small></li>')
+        else: items.append(f'<li><a href="{r}.html">{LABEL[r]}</a><small>{num[r]}</small></li>')
+    return ('<nav class="related" aria-label="Related chapters">\n  <h2>Related chapters</h2>\n  <ul>\n    '+'\n    '.join(items)+
+            '\n  </ul>\n  <p><a href="index.html">All chapters and review quizzes</a></p>\n</nav>') if items else ''
+
 def nav(slug):
     i=[o[0] for o in ORDER].index(slug)
     prev=ORDER[i-1] if i>0 else None; nxt=ORDER[i+1] if i+1<len(ORDER) else None
@@ -30,11 +97,9 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
         "author":{"@type":"Person","name":"Rabbi Fishel Jacobs","url":BASE+"/#rabbi-jacobs"},
         "publisher":{"@type":"Organization","name":"Family Purity","url":BASE+"/"},
         "isPartOf":{"@type":"Book","name":book,"author":{"@type":"Person","name":"Rabbi Fishel Jacobs"},**({"bookEdition":"First expanded edition (forthcoming)"} if expanded else {})},
-        "inLanguage":"en","mainEntityOfPage":f"{BASE}/read/{slug}.html","image":BASE+"/images/family-p-copy_orig.jpg"}
-    crumbs={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Family Purity","item":BASE+"/"},
-        {"@type":"ListItem","position":2,"name":"Free resources","item":BASE+"/#resources"},
-        {"@type":"ListItem","position":3,"name":full,"item":f"{BASE}/read/{slug}.html"}]}
+        "inLanguage":"en","mainEntityOfPage":f"{BASE}/read/{slug}.html","image":BASE+"/images/family-p-copy_orig.jpg",
+        "datePublished":text_date(slug),"dateModified":text_date(slug)}
+    crumbs=crumbs_ld(slug,full)
     epi_html=''
     if epi:
         epi_html=f'''
@@ -64,6 +129,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{BASE}/read/{slug}.html">
 <meta property="og:image" content="{BASE}/images/family-p-copy_orig.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap">
@@ -77,7 +143,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
 <header class="top">
   <div class="pill">
     <a class="brand" href="../index.html" aria-label="Family Purity, home"><img src="../images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
-    <a class="ctl hide-sm" href="../index.html#resources">All chapters</a>
+    <a class="ctl hide-sm" href="index.html">All chapters</a>
     <a class="ctl" href="../search.html" aria-label="Search the chapters"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></a>
     <div class="size" role="group" aria-label="Text size">
       <button type="button" data-size="down" aria-label="Smaller text">A</button>
@@ -88,9 +154,11 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
 </header>
 
 <header class="opener">
+  {crumbs_html(full)}
   <p class="num">{html.escape(num)}</p>
   <span class="fleuron" aria-hidden="true">&#10087;</span>
-  <h1>{html.escape(title)}</h1>{chr(10)+'  <p class="opener-sub">From the forthcoming expanded edition</p>' if expanded else ''}{f'{chr(10)}  <p class="opener-sub">{html.escape(sub)}</p>' if sub else ''}{epi_html}
+  <h1>{h1_html(slug,title)}</h1>{chr(10)+'  <p class="opener-sub">From the forthcoming expanded edition</p>' if expanded else ''}{f'{chr(10)}  <p class="opener-sub">{html.escape(sub)}</p>' if sub else ''}
+  {byline_html(slug)}{epi_html}
 </header>
 
 <main class="page">
@@ -108,7 +176,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
         {f'<a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>' if pdf else f'<a class="btn btn-line" href="{NOTIFY}" target="_blank" rel="noopener">Notify me when it&rsquo;s published</a>'}
         <a class="btn btn-line" href="https://wa.me/?text={urllib.parse.quote(full+' · Family Purity by Rabbi Fishel Jacobs '+BASE+'/read/'+slug+'.html')}" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
-    </div>
+    </div>{quiz_html(slug)}
     <a class="ask" href="https://wa.me/972587921788?text={re.sub(' ','%20',html.escape(ask_text))}" target="_blank" rel="noopener">
       <img src="../images/rabbi-portrait.jpg" alt="" width="726" height="800" loading="lazy">
       <span><b>A question about this?</b><small>Ask Rabbi Jacobs privately on WhatsApp.</small></span>
@@ -116,6 +184,8 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
     <p class="correction">Spotted a typo or something unclear? <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-subject="Correction: {html.escape(full)}">Send a correction</a></p>
   </aside>
 </main>
+
+{related_html(slug)}
 
 <nav class="chapnav" aria-label="Chapters">
   {nav(slug)}
