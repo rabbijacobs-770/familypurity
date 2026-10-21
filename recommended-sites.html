@@ -33,6 +33,12 @@
 .sites b{font:500 1.3rem/1.2 var(--display);color:var(--heading)}
 .sites span{color:var(--muted);font-size:1.06rem}
 @media (max-width:760px){.sites{grid-template-columns:1fr}}
+.sites li:only-child{grid-column:1/-1}
+.sites .site a{display:inline;height:auto;border:0;border-radius:0;padding:0;background:none}
+.sites .site{display:grid;gap:.35rem;border:1px solid var(--line);border-radius:18px;padding:1.05rem 1.2rem;background:var(--surface)}
+.sites .site-name{font:500 1.4rem/1.2 var(--display);color:var(--heading);text-decoration:none;justify-self:start}
+.sites .site-name:hover{color:var(--violet);text-decoration:underline}
+.sites .site span a{color:var(--violet);font-weight:600}
 .rs .join{background:var(--tint);border-radius:20px;padding:1.4rem 1.5rem;display:grid;gap:.5rem;max-width:46rem}
 .rs .join h2{font-size:1.6rem;margin:0}
 .rs .join p{font-size:1.12rem}
@@ -62,14 +68,19 @@
     <div class="wrap">
       <p class="eyebrow">Recommended sites</p>
       <h1>More help for <em>every stage</em></h1>
-      <p class="lede">Good resources from friends who share our mission, for every stage of marriage.</p>
+      <p class="lede">Excellent resources from friends who share our mission, for every stage of marriage.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <div class="groups">
-        <p class="lede" style="max-width:46rem">Recommended sites will appear here soon.</p>
+        <ul class="sites">
+          <li class="site">
+            <a class="site-name" href="https://mikvah.org/" target="_blank" rel="noopener">Mikvah.org</a>
+            <span>Find a Mikvah or find a Kallah Teacher around the world, the PURE Helpline <a href="tel:+18334645824" style="white-space:nowrap">1-833-4-MIKVAH</a> &ndash; woman to woman Taharas Hamishpacha support. Access to the highly regarded My Mikvah Calendar (also available at <a href="https://mymikvahcalendar.org/" target="_blank" rel="noopener">mymikvahcalendar.org</a>), and to podcasts for halacha reviews and support for every stage of Jewish married life.</span>
+          </li>
+        </ul>
       </div>
       <div class="join" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
         <h2>Run a site that helps Jewish couples?</h2>
