@@ -1,14 +1,13 @@
-"""Common questions for the chapter pages, DRAFTS awaiting Rabbi Jacobs's approval.
+"""Common questions for the chapter pages. All approved by Rabbi Jacobs on 2026-10-21.
 
 Every answer is quoted word for word from the same chapter's text on the site (faq_check.py verifies this);
 only the questions are new. A page shows its Common questions section, with matching FAQPage data, only
-once its entry is marked approved=True. Until then nothing here is published.
-<!-- REVIEW: Rabbi Jacobs --> applies to every entry below.
+once its entry is marked approved=True. New questions start as approved=False until he approves them.
 
 Answer format: a list of paragraphs; a paragraph that is a list of strings becomes a bulleted list."""
 
 FAQ = {
-'overview': dict(approved=False, items=[
+'overview': dict(approved=True, items=[
   ('When does a woman become niddah?', [
     'The wife enters a niddah state (impurity) when menstruation begins.',
     'Until she immerses, all physical contact with her husband ceases.']),
@@ -24,7 +23,7 @@ FAQ = {
   ('What are separation dates?', [
     'On an ongoing basis, throughout married life, the dates when menstruation begins and finishes are recorded. From these are projected separation dates in anticipation of the upcoming menstruation.']),
 ]),
-'niddah': dict(approved=False, items=[
+'niddah': dict(approved=True, items=[
   ('What makes a woman niddah?', [
     'A woman becomes a “menstruant,” niddah in Hebrew, when blood leaves the womb.',
     'A woman becomes a niddah whenever blood leaves the womb regardless of the cause; i.e., whether related to the monthly menstruation, an internal gynecological examination which involved penetration of the uterus, giving birth or spotting.']),
@@ -42,7 +41,7 @@ FAQ = {
     'During menstruation, it is customary for women to refrain from attending synagogue, looking at a sefer Torah or praying while standing in close proximity to friends. This custom is in the category of additional purity, not based on prohibition.',
     'At home, however, even during menstruation, women may pray, make kiddush and say all the blessings.']),
 ]),
-'source-of-niddah': dict(approved=False, items=[
+'source-of-niddah': dict(approved=True, items=[
   ('Does the niddah state apply before marriage?', [
     'The other prohibitions associated with niddah, including kissing, hugging, and affectionate contact, also apply to an unmarried woman, since an unmarried woman has never left her niddah state by immersing in a mikveh.',
     'There is no minimum age for a woman to become niddah. Even a girl who has begun menstruating is in a constant niddah state until she immerses herself in a mikveh for the first time before her wedding.']),
@@ -52,7 +51,7 @@ FAQ = {
     'If she notices blood after urinating, an orthodox Rabbi who is knowledgable in these matters should be consulted.',
     'Facts which might influence his decision include: whether the blood was found in the water or on the seat, if she sat over the middle of the toilet seat or on its edge, if this is a one time experience or it repeats itself, if she felt pain or burning during urination, and if she ate some red food, such as beets, prior to this.']),
 ]),
-'gynecological-considerations': dict(approved=False, items=[
+'gynecological-considerations': dict(approved=True, items=[
   ('Does a gynecological examination make a woman niddah?', [
     'An examination using the fingers only does not render the niddah state and she is not required to examine herself following such an examination.',
     'Examining the vagina, even using an instrument, does not render the niddah state. A standard gynecological examination does not penetrate the womb or cervix.',
@@ -65,7 +64,7 @@ FAQ = {
     'Bleeding caused by scraping the inside of the cervix; an endometrial biopsy; a hysterogram or hysterosalpingogram (HSG); a hysteroscopy; a foley bulb (induction for birth) cause niddah.',
     'In light of the above, it is advisable to arrange such procedures at a time when the woman is already a niddah. If this is not possible, an orthodox Rabbi should be consulted.']),
 ]),
-'stains': dict(approved=False, items=[
+'stains': dict(approved=True, items=[
   ('Does a stain (kesem) make a woman niddah?', [
     'The impurity brought about by finding stains is rabbinic in origin. The Rabbis limited their ruling, however, by stipulating that the following three conditions must be met in order for such a stain to render a woman niddah:',
     ['Its surface area must be at least a circle 11⁄16 of an inch in diameter (17 mm.), the size of a U.S. dime.',
@@ -82,7 +81,7 @@ FAQ = {
   ('Do the laws of stains apply during pregnancy, nursing or after menopause?', [
     'The laws of staining apply to post-menopausal, pregnant, and nursing women as well.']),
 ]),
-'making-sure-menstruation-has-finished': dict(approved=False, items=[
+'making-sure-menstruation-has-finished': dict(approved=True, items=[
   ('What is a hefsek tahara?', [
     'To ascertain the complete cessation of any bleeding, the wife who is a niddah performs an internal examination called a hefsek tahara. This is an indispensable prerequisite to counting the seven white days (as explained in Chapter Six).']),
   ('When is the earliest day for the hefsek tahara?', [
@@ -94,7 +93,7 @@ FAQ = {
     'The time she performs the hefsek tahara should not be played with. She should not make calculations which day is most convenient or inconvenient for her to go to the mikveh and adjust her performing the hefsek tahara accordingly.',
     'Halachic exceptions to this should be according to the directions of an orthodox Rabbi expert in these laws.']),
 ]),
-'seven-white-days': dict(approved=False, items=[
+'seven-white-days': dict(approved=True, items=[
   ('What are the seven white days (shiva nekiim)?', [
     'After the hefsek tahara, a woman waits seven days before going to the mikveh. During this time, she checks herself and her underwear twice daily.',
     'To make sure these days are completely void of any uterine bleeding, the Talmudic Rabbis required a woman during these days to perform internal examinations twice daily, wear white underwear and sleep on white sheets. Hence the name seven white days.']),
@@ -106,7 +105,7 @@ FAQ = {
   ('Why are the first three days stricter?', [
     'Finding a stain on one of the first three days is stricter than the other days and cannot be readily dismissed as originating from an external source. However a stain smaller than the minimum size is pure even during the first three days.']),
 ]),
-'preparing-for-immersion': dict(approved=False, items=[
+'preparing-for-immersion': dict(approved=True, items=[
   ('What is hafifah?', [
     'Before immersing in the mikvah, a wife prepares her entire body and hair through a process called hafifah — ensuring that nothing intervenes between her and the mikvah water.',
     'Hafifah encompasses the entire preparation: bathing, shampooing and combing the hair, trimming and cleaning the nails, brushing and flossing the teeth, removing all jewelry and makeup, and carefully checking the body for any intervening substance.']),
@@ -120,7 +119,7 @@ FAQ = {
   ('What should be avoided on the day of immersion?', [
     'From the morning preceding immersion, foods that lodge between the teeth — meat, corn, oranges — should be avoided. Contact with sticky substances such as dough or wax should also be avoided throughout the day. Nothing should be eaten between hafifah and immersion.']),
 ]),
-'times-chabad': dict(approved=False, items=[
+'times-chabad': dict(approved=True, items=[
   ('What are separation dates (vestos)?', [
     'Based on the above verse, the Talmudic sages, of blessed memory, established a requirement that the husband and wife separate on the date(s) when the next menstrual period can be expected to appear.']),
   ('What are the three separation dates?', [
@@ -134,7 +133,7 @@ FAQ = {
   ('What is not permitted on a separation date?', [
     'This includes marital relations, kissing, hugging, affectionate touching and sleeping in the same bed. The other restrictions observed during actual menstruation do not apply.']),
 ]),
-'times-major-customs': dict(approved=False, items=[
+'times-major-customs': dict(approved=True, items=[
   ('What are separation dates (vestos)?', [
     'Based on this verse, the Talmudic sages established a requirement that the husband and wife separate on the date(s) when the next menstrual period can be expected to appear.']),
   ('What are the three separation dates?', [
@@ -149,7 +148,7 @@ FAQ = {
   ('What is not permitted on a separation date?', [
     'This includes marital relations, kissing, hugging, affectionate touching and sleeping in the same bed. The other restrictions observed during actual menstruation do not apply.']),
 ]),
-'perfect-marriage': dict(approved=False, items=[
+'perfect-marriage': dict(approved=True, items=[
   ('What is the Torah view of marriage?', [
     'Like all things so too is marriage comprised of two parts—body and soul.',
     'The body requires a vitalizing force, a spirit to enliven it. This cannot be legislated. It develops along with and to a degree due to the body of marriage. This is the emotional bond created between husband and wife.']),
@@ -161,7 +160,7 @@ FAQ = {
     'By definition, there is no perfect marriage. Perfection is without flaw. It even suggests effortlessness. Marriage is not this.',
     'The key to a harmonious and wholesome marriage lies in the couple’s realization that they must satisfy one another’s spiritual, emotional, and personal needs.']),
 ]),
-'from-the-rebbe': dict(approved=False, items=[
+'from-the-rebbe': dict(approved=True, items=[
   ('What did the Rebbe write about family purity and fertility?', [
     'It is known that the blessing for fertility lies in keeping the laws of family purity. Therefore, it is fitting for you to be exacting in your observance of these laws.']),
   ('What did the Rebbe write about family purity and the health of children?', [
