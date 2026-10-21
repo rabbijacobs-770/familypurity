@@ -24,7 +24,7 @@ PAGES={
    'drop_lines':PRINT_LINES},
  'ch._2_-_source_of_niddah':{'slug':'source-of-niddah','num':'Chapter 2','title':'Source of Niddah','pdf':'ch._2_-_source_of_niddah.pdf',
    'desc':'Chapter 2 of Family Purity: uterine bleeding, niddah before marriage, examinations, discolored urine and additional purity, with sources.',
-   'drop_lines':PRINT_LINES+['* This PDF']},
+   'drop_lines':PRINT_LINES+['* This PDF'],'fix_html':{r'close proximity to friends\(\?\?\)\.':'close proximity to friends.'}},   # editor's note left in the PDF; removed at Rabbi Jacobs's request (2026-10-21)
  'ch._2_-_gynecological_':{'slug':'gynecological-considerations','num':'Chapter 2','title':'Gynecological Considerations','pdf':'ch._2_-_gynecological_.pdf',
    'desc':'Family Purity on gynecological procedures: which procedures cause niddah, which do not, and when to consult a rabbi.',
    'drop_lines':PRINT_LINES,'body':10.6,'fnsize':10.6,'fn_any_size':True},
