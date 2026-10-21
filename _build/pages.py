@@ -30,7 +30,7 @@ PAGES={
    'drop_lines':PRINT_LINES,'body':10.6,'fnsize':10.6,'fn_any_size':True},
  'ch._3_-_stains':{'slug':'stains','num':'Chapter 3','title':'Stains','pdf':'ch._3_-_stains.pdf','add_italics':True,
    'desc':'Chapter 3 of Family Purity: the laws of stains (kesamim), the three conditions, minimum size, and how to approach a rabbi with a question.',
-   'drop_lines':PRINT_LINES},
+   'drop_lines':PRINT_LINES,'fix_html':{r'usually one found on the , bed sheet':'usually one found on the underwear, bed sheet'}},   # word missing in the PDF; Rabbi Jacobs: "underwear" (2026-10-21)
  'ch._5_-_making_sure_menstruation':{'slug':'making-sure-menstruation-has-finished','num':'Chapter 5','title':'Making Sure Menstruation Has Finished','pdf':'ch._5_-_making_sure_menstruation.pdf','add_italics':True,
    'desc':'Chapter 5 of Family Purity: the hefsek tahara, the five minimum days, and why the timing matters, with an interactive example.',
    'diagram_sizes':[6.4,7.3],'diagram_bold':True,'diagram_html':FIVE_DAYS,'drop_lines':PRINT_LINES,'fix_html':{r'<p>(And this is the law when she ceases to notice blood, after seeing it for a few days\.)</p>\s*<blockquote class="quote"><p>':r'<blockquote class="quote"><p>\1 '}},
