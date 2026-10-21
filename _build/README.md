@@ -19,3 +19,10 @@ Per-chapter corrections (typos, removed notes) live in `pages.py` (`fix_text`, `
   `python3 _build/faq_check.py` verifies the quotes and writes `review/faq-drafts.html` for Rabbi Jacobs.
 - A page shows its "Common questions" section (with matching FAQPage data) only after its entry is set to `approved=True`;
   then rebuild the chapter pages (see Regenerate above).
+
+## Questions and answers (/questions/)
+- `questions.py` holds the questions (Rabbi Jacobs writes every answer); `python3 _build/questions.py` writes
+  `questions/<slug>.html` and `questions/index.html`, then run `python3 _build/sitemap.py`.
+- Until the first answer is published the index is noindex and left out of the sitemap and menus.
+  With the first answer: add "Questions" to the site menus (index.html, start-here.html, search.html,
+  recommended-sites.html and the calendar templates in hidden-tools/).
