@@ -22,9 +22,48 @@ nav a{color:var(--violet);font-weight:700;text-decoration:none;padding:.6rem 1re
 <main>
   <a class="brand" href="/" aria-label="Family Purity, home"><img src="/images/brand/fp-wordmark.svg" alt="Family Purity" width="454" height="118"></a>
   <h1>This page has moved</h1>
-  <p>The page you were looking for isn&rsquo;t here. Try one of these.</p>
+  <p id="moved">The page you were looking for isn&rsquo;t here. Try one of these.</p>
   <nav><a href="/">Home</a><a href="/#resources">Free chapters</a><a href="/calendar.html">Calendar</a><a href="/#contact">Contact</a></nav>
 </main>
+<script>
+// Addresses from the old site. GitHub Pages cannot send real (301) redirects, so visitors who arrive
+// at an old address are sent on from here to the page that replaced it.
+(function(){
+  var p; try{p=decodeURIComponent(location.pathname).toLowerCase().replace(/\/+$/,'')||'/';}catch(e){p=location.pathname.toLowerCase();}
+  var pages={
+    '/about':'/#about','/about.html':'/#about','/author.html':'/#about','/rabbi-jacobs---about.html':'/#about','/interview.html':'/#about',
+    '/contact':'/#contact','/contact.html':'/#contact','/mailingform.html':'/#contact','/input.html':'/#contact','/your-input.html':'/#contact',
+    '/suggestions.html':'/#contact','/submissions.html':'/#contact','/requesting-submissions.html':'/#contact','/publish-here.html':'/#contact',
+    '/beginners.html':'/start-here.html','/for-beginners.html':'/start-here.html','/everything-to-know.html':'/start-here.html',
+    '/downloads':'/#resources','/downloads.html':'/#resources','/free-downloads.html':'/#resources','/free-resources.html':'/#resources','/resources.html':'/#resources',
+    '/book.html':'/#books','/order.html':'/#books','/ordering.html':'/#books','/contents.html':'/#books','/contents2.html':'/#books',
+    '/approbations.html':'/#books','/approbations2.html':'/#books','/dedications.html':'/#books','/the-series-1':'/#books',
+    '/familypurity/the_book.html':'/#books','/familypurity/the_series.html':'/#books','/family_purity/the_series.html':'/#books',
+    '/times':'/#books','/times/index.html':'/#books',
+    '/online-classes':'/#classes','/online-classes---certification.html':'/#classes','/classes---certification.html':'/#classes','/certification':'/#classes','/shluchim':'/#classes',
+    '/marriage.html':'/read/perfect-marriage.html','/marriage-overview.html':'/read/perfect-marriage.html',
+    '/blog.html':'/','/familypurity/welcome.html':'/','/family_purity/welcome.html':'/','/chochmot.html':'/','/notice.htm':'/','/עברית':'/'
+  };
+  // Files the old site kept under /uploads/...; the same files are now in /files/.
+  var files=['2025_-_2026.pdf','2026_-_2027.pdf','2027_-_2028.pdf','2028_-_2029.pdf','calendar_2025.pdf','ch._1_-_perfect_marriage.pdf',
+    'ch._2_-_gynecological_.pdf','ch._2_-_niddah.pdf','ch._2_-_source_of_niddah.pdf','ch._3_-_stains.pdf','ch._5_-_making_sure_menstruation.pdf',
+    'ch._6_-_seven_white_days.pdf','ch._from_the_rebbe.pdf','overview_us_letter.pdf','times_web_edition_chabad.pdf','times_web_edition_major_customs.pdf'];
+  // Files from the site before that (/ewExternalFiles/...).
+  var older={'2023 - 2024.pdf':'/calendar-sheet.html?year=5784','2024 - 2025.pdf':'/calendar-sheet.html?year=5785','printable 5783.pdf':'/calendar-sheet.html?year=5783',
+    'chapter 3 - stains.pdf':'/read/stains.html','chapter 3 - stains-1.pdf':'/read/stains.html',
+    'chapter 5 - making sure menstruation.pdf':'/read/making-sure-menstruation-has-finished.html',
+    'chapter 6 - seven white days (shortened) .pdf':'/read/seven-white-days.html','chapter 7 - preparation for mikveh.pdf':'/read/preparing-for-immersion.html',
+    'uterine bleeding.pdf':'/read/source-of-niddah.html','times web edition - major customs.pdf':'/read/times-major-customs.html',
+    'zemonim chabad.pdf':'/read/times-chabad.html','choson teacher certificate.pdf':'/#classes'};
+  var to=pages[p], m;
+  if(!to&&(m=p.match(/^\/uploads\/.*\/([^\/]+)$/))) to=files.indexOf(m[1])>=0?'/files/'+m[1]:m[1]==='ch._2_-_source___amount___age.pdf'?'/read/source-of-niddah.html':'/';
+  if(!to&&(m=p.match(/^\/ewexternalfiles\/(.+)$/))) to=older[m[1]]||'/#resources';
+  if(!to&&/^\/(blog|1\/post|store)(\/|$)/.test(p)) to=p.indexOf('/store')===0?'/#books':'/';
+  if(!to) return;
+  var el=document.getElementById('moved'); if(el){el.textContent='This page has moved. Taking you there now\u2026 ';var a=document.createElement('a');a.href=to;a.textContent='Go now';el.appendChild(a);}
+  location.replace(to);
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8bc2fc425c042159999a4b01f919dea"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
