@@ -120,13 +120,13 @@ h1{margin:.1em 0 0;font-weight:500;color:var(--heading);font-size:clamp(2rem,6vw
 
   <section class="card" id="quiz"></section>
 
-  <p class="note">Chapter 12, <em>Proper Times for Marital Relations</em>, is in the printed <em>Family Purity</em> and is not online yet. For a practical question, please ask your rav or <a href="index.html#contact">ask Rabbi Jacobs</a>.</p>
+  <p class="note">Read the chapter first: <a href="read/proper-times-for-marital-relations.html">Proper Times for Marital Relations, free online</a>. For a practical question, please ask your rav or <a href="index.html#contact">ask Rabbi Jacobs</a>.</p>
   <section class="reading" aria-label="Related reading">
     <h2>Related reading</h2>
     <ul>
       <li><a href="read/perfect-marriage.html">Perfect marriage: a Torah view of marriage</a></li>
       <li><a href="read/overview.html">The family purity cycle, step by step</a></li>
-      <li>Chapter 12 is in the book: <a href="index.html#books"><em>Family Purity: A Guide to Marital Fulfillment</em></a></li>
+      <li><a href="read/proper-times-for-marital-relations.html">Proper times for marital relations</a> (this chapter, free online)</li>
       <li><a href="read/index.html#quizzes">All review quizzes</a></li>
     </ul>
   </section>
@@ -189,7 +189,7 @@ function results(){
     const ok=picks[k]===q.a;
     h+=`<li><span class="tag ${ok?"ok":"no"}">${ok?"Correct":"Review"} · ${k+1}</span><span class="rq">${fmt(q.q)}</span><span class="ra">Answer: ${L[q.a]}. ${esc(q.o[q.a])} · <em>Family Purity</em>, p. ${q.p}</span></li>`;
   });
-  h+=`</ul><div class="actions"><button class="btn btn-line" id="again">Start again</button><a class="btn btn-solid" style="text-decoration:none" href="index.html#resources">All chapters and quizzes</a></div>`;
+  h+=`</ul><div class="actions"><button class="btn btn-line" id="again">Start again</button><a class="btn btn-solid" style="text-decoration:none" href="read/proper-times-for-marital-relations.html">Read the chapter</a></div>`;
   $("quiz").innerHTML=h;
   $("again").onclick=()=>{i=0;picks=[];render();};
 }
