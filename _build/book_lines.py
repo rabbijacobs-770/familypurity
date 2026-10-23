@@ -14,7 +14,9 @@ SITE = os.path.dirname(SP)
 # name: (first PDF page, last PDF page), 1-based, from FP_Text_copy.pdf (book page = PDF page - 22)
 CHAPTERS = {
     'book_ch4_absence': (54, 72),
+    'book_ch8_intervening': (117, 126),
     'book_ch9_mikveh': (127, 133),
+    'book_ch10_immersion': (134, 150),
     'book_ch11_intimate': (151, 165),
     'book_ch12_times': (166, 169),
     'book_ch13_wedding': (170, 178),
@@ -25,6 +27,8 @@ FONT = {'AppleGaramondLight-Itali': 'AppleGaramondLight-Italic'}
 
 # PDF page: [(x0, y0, x1, y1) in PDF points from the top-left, image file, alt text]
 FIGS = {
+    123: [((172, 358, 409, 480), 'torn-fingernails.png', 'Diagram 1: a fingernail torn across more than half its width. Diagram 2: a fingernail torn across less than half its width.')],
+    144: [((208, 232, 476, 251), 'tevilah-blessing-hebrew.png', 'The blessing on immersion in Hebrew.')],
     130: [((156, 282, 440, 450), 'mikveh-chabad-custom.png', 'Diagram of a mikveh built according to Chabad custom: (1) the immersion pool of tap water, (2) the otzar of rain water beneath it, (3) the two connecting apertures.')],
     132: [((143, 210, 454, 336), 'mikveh-other-poskim.png', 'Diagram of a mikveh built according to other poskim: (1) the immersion pool of tap water, (2) the otzar of rain water beside it, (3) the connecting aperture.')],
     157: [((112, 384, 482, 456), 'psalm-23-hebrew.png', 'Psalm 23 in Hebrew (Mizmor LeDovid).')],

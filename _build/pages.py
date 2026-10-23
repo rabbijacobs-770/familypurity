@@ -75,13 +75,20 @@ BOOK_FIX={
  'book_ch4_absence':{r'\(one eating meat and the other milk\)</li></ul>\s*<p>can suffice with only (.*?)</p>': r'(one eating meat and the other milk) can suffice with only \1</li></ul>'},
  'book_ch13_wedding':{r'<blockquote class="quote"><p>(Most women have a certain number of days before which their menstruation does not appear)</p><cite>(for example, twenty days following the last hefsek tahara\. These examinations are to be)</cite></blockquote>\s*<p>performed ':
      r'<p>\1—\2 performed '},
+ 'book_ch10_immersion':{r'<p><em>TISHA BEAV</em> AND<em> YOM KIPPUR \.</em> ': '<p><strong class="runin">Tisha BeAv and Yom Kippur.</strong> '},
  'book_ch15_birth':{r'^\s*<blockquote class="quote">.*?</blockquote>\s*<blockquote class="quote"><p></p>.*?</blockquote>\s*':''},
 }
-BOOK_HEAD=['FAMILY PURITY','CHAPTER 4','CHAPTER 9','CHAPTER 11','CHAPTER 12','CHAPTER 13','CHAPTER 14','CHAPTER 15']
+BOOK_HEAD=['FAMILY PURITY','CHAPTER 4','CHAPTER 8','CHAPTER 10','CHAPTER 9','CHAPTER 11','CHAPTER 12','CHAPTER 13','CHAPTER 14','CHAPTER 15']
 for _name,_slug,_num,_title,_desc,_seo in [
  ('book_ch4_absence','absence-makes-the-heart-grow-fonder','Chapter 4','Absence Makes the Heart Grow Fonder',
   'Chapter 4 of Family Purity by Rabbi Fishel Jacobs: the laws of separation while the wife is niddah, and the reasons behind them, with sources.',
   'Harchakos: The Laws of Separation (Absence Makes the Heart Grow Fonder)'),
+ ('book_ch8_intervening','intervening-substances','Chapter 8','Intervening Substances',
+  'Chapter 8 of Family Purity by Rabbi Fishel Jacobs: intervening substances (chatzitzah) that can invalidate immersion, on the body, hair, nails and teeth, with sources.',
+  'Chatzitzah: Intervening Substances and Immersion'),
+ ('book_ch10_immersion','immersion','Chapter 10','Immersion',
+  'Chapter 10 of Family Purity by Rabbi Fishel Jacobs: the immersion in the mikveh, when it takes place, the blessing, and the role of the mikveh attendant, with sources.',
+  'Tevilah: Immersion in the Mikveh'),
  ('book_ch9_mikveh','what-is-a-mikveh','Chapter 9','What Is a Mikveh?',
   'Chapter 9 of Family Purity by Rabbi Fishel Jacobs: what a mikveh is, how a kosher mikveh is built, and why its supervision matters, with sources.',
   'What Is a Mikveh? The Laws of a Kosher Mikveh'),

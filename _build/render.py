@@ -11,7 +11,7 @@ ORDER=[('overview','Introduction','Overview'),('from-the-rebbe','Introduction','
  ('absence-makes-the-heart-grow-fonder','Chapter 4','Absence Makes the Heart Grow Fonder'),
  ('making-sure-menstruation-has-finished','Chapter 5','Making Sure Menstruation Has Finished'),('seven-white-days','Chapter 6','The Seven White Days'),
  ('preparing-for-immersion','Chapter 7','Preparing for Immersion'),
- ('what-is-a-mikveh','Chapter 9','What Is a Mikveh?'),('intimate-relations','Chapter 11','Intimate Relations'),
+ ('intervening-substances','Chapter 8','Intervening Substances'),('what-is-a-mikveh','Chapter 9','What Is a Mikveh?'),('immersion','Chapter 10','Immersion'),('intimate-relations','Chapter 11','Intimate Relations'),
  ('proper-times-for-marital-relations','Chapter 12','Proper Times for Marital Relations'),('wedding-night','Chapter 13','The Wedding Night'),
  ('anticipated-menstruation','Chapter 14','Time of the Anticipated Menstruation'),('birth','Chapter 15','Birth'),
  ('times-chabad','Times','Separation Dates · Chabad Custom'),('times-major-customs','Times','Separation Dates · Major Customs')]
@@ -23,7 +23,7 @@ NOTIFY='https://wa.me/972587921788?text=Shalom%20Rabbi%20Jacobs%2C%20please%20le
 # seven-white-days.html by finish_read.py).
 # The book's own term after the chapter title in the H1, where the title alone lacks it.
 H1_TERM={'overview':None,'stains':'Kesamim','making-sure-menstruation-has-finished':'Hefsek Tahara','seven-white-days':'Shiva Nekiim',
- 'preparing-for-immersion':'Hafifah','absence-makes-the-heart-grow-fonder':'Harchakos','anticipated-menstruation':'Vestos','times-chabad':'Vestos','times-major-customs':'Vestos'}
+ 'preparing-for-immersion':'Hafifah','absence-makes-the-heart-grow-fonder':'Harchakos','anticipated-menstruation':'Vestos','intervening-substances':'Chatzitzah','immersion':'Tevilah','times-chabad':'Vestos','times-major-customs':'Vestos'}
 H1_TITLE={'overview':'Overview: The Purity Cycle'}
 # Descriptive link text for each chapter (used for related-chapter links and the chapter list).
 LABEL={'overview':'The family purity cycle, step by step','from-the-rebbe':'The Rebbe on family purity: letters and talks',
@@ -31,7 +31,7 @@ LABEL={'overview':'The family purity cycle, step by step','from-the-rebbe':'The 
  'source-of-niddah':'Source of niddah: uterine bleeding','gynecological-considerations':'Gynecological procedures and niddah',
  'stains':'The laws of stains (kesamim)','making-sure-menstruation-has-finished':'The hefsek tahara: making sure menstruation has finished',
  'seven-white-days':'The seven white days (shiva nekiim)','preparing-for-immersion':'Preparing for immersion in the mikveh (hafifah)',
- 'absence-makes-the-heart-grow-fonder':'The laws of separation (harchakos)','what-is-a-mikveh':'What is a mikveh?',
+ 'absence-makes-the-heart-grow-fonder':'The laws of separation (harchakos)','intervening-substances':'Intervening substances (chatzitzah)','immersion':'Immersion in the mikveh (tevilah)','what-is-a-mikveh':'What is a mikveh?',
  'intimate-relations':'Intimate relations in holiness','proper-times-for-marital-relations':'Proper times for marital relations',
  'wedding-night':'The wedding night','anticipated-menstruation':'Time of the anticipated menstruation (vestos)','birth':'Birth and family purity',
  'times-chabad':'Separation dates (vestos): Chabad custom','times-major-customs':'Separation dates (vestos) for all communities'}
@@ -47,7 +47,9 @@ RELATED={'overview':['niddah','making-sure-menstruation-has-finished','seven-whi
  'seven-white-days':['making-sure-menstruation-has-finished','preparing-for-immersion','stains',CALENDAR],
  'preparing-for-immersion':['seven-white-days','making-sure-menstruation-has-finished','overview'],
  'absence-makes-the-heart-grow-fonder':['niddah','making-sure-menstruation-has-finished','overview'],
- 'what-is-a-mikveh':['preparing-for-immersion','seven-white-days','overview'],
+ 'what-is-a-mikveh':['immersion','preparing-for-immersion','overview'],
+ 'intervening-substances':['preparing-for-immersion','immersion','what-is-a-mikveh'],
+ 'immersion':['preparing-for-immersion','intervening-substances','what-is-a-mikveh'],
  'intimate-relations':['proper-times-for-marital-relations','wedding-night','absence-makes-the-heart-grow-fonder'],
  'proper-times-for-marital-relations':['intimate-relations','wedding-night','overview'],
  'wedding-night':['intimate-relations','absence-makes-the-heart-grow-fonder','making-sure-menstruation-has-finished'],
@@ -62,6 +64,8 @@ QUIZ={'niddah':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),'source-of-n
  'seven-white-days':('quiz-seven-white-days.html',10,'Chapter 6, Seven White Days','Seven White Days'),
  'preparing-for-immersion':('quiz-preparing-for-immersion.html',10,'Chapter 7, Preparing for Immersion','Preparing for Immersion'),
  'absence-makes-the-heart-grow-fonder':('quiz-separation.html',10,'Chapter 4, Absence Makes the Heart Grow Fonder','Separation'),
+ 'intervening-substances':('quiz-intervening-substances.html',10,'Chapter 8, Intervening Substances','Intervening Substances'),
+ 'immersion':('quiz-immersion.html',10,'Chapter 10, Immersion','Immersion'),
  'what-is-a-mikveh':('quiz-what-is-a-mikveh.html',10,'Chapter 9, What Is a Mikveh?','Mikveh'),
  'intimate-relations':('quiz-intimate-relations.html',10,'Chapter 11, Intimate Relations','Intimate Relations'),
  'proper-times-for-marital-relations':('quiz-proper-times.html',10,'Chapter 12, Proper Times for Marital Relations','Proper Times'),
@@ -71,7 +75,7 @@ QUIZ={'niddah':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),'source-of-n
  'times-chabad':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates'),
  'times-major-customs':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates')}
 # When each chapter's text was last changed (shown as "Last updated").
-TEXT_DATE={'preparing-for-immersion':'2026-10-05',**{s:'2026-10-23' for s in ('absence-makes-the-heart-grow-fonder','what-is-a-mikveh','intimate-relations','proper-times-for-marital-relations','wedding-night','anticipated-menstruation','birth')}}
+TEXT_DATE={'preparing-for-immersion':'2026-10-05',**{s:'2026-10-23' for s in ('absence-makes-the-heart-grow-fonder','intervening-substances','immersion','what-is-a-mikveh','intimate-relations','proper-times-for-marital-relations','wedding-night','anticipated-menstruation','birth')}}
 def text_date(slug): return TEXT_DATE.get(slug,'2026-10-04')
 def long_date(d):
     y,m,dd=d.split('-'); return f"{['January','February','March','April','May','June','July','August','September','October','November','December'][int(m)-1]} {int(dd)}, {y}"

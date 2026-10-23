@@ -27,8 +27,8 @@ Per-chapter corrections (typos, removed notes) live in `pages.py` (`fix_text`, `
   With the first answer: add "Questions" to the site menus (index.html, start-here.html, search.html,
   recommended-sites.html and the calendar templates in hidden-tools/).
 
-## Chapters from the current edition's full text (4, 9, 11–15; added 2026-10-23)
+## Chapters from the current edition's full text (4, 8–15; added 2026-10-23)
 - Source: the whole book as one PDF, "FP_Text_copy.pdf" (A4, Nisus, 2010), attached by Rabbi Jacobs; not kept in the repo. Book page = PDF page − 22.
 - `python3 _build/book_lines.py /path/to/FP_Text_copy.pdf` writes `lines/book_*.json` (same format as pdflines.swift, via PyMuPDF) and crops the diagrams and the Hebrew prayers to `images/chapters/`. Page ranges, figure areas (with alt text) and the short Hebrew words (the book's Hebrew font is legacy-encoded, so they are given in Unicode by position) are set at the top of that file.
-- The configs are at the end of `pages.py` (`book_ch*`), with clean-ups in `BOOK_FIX`; then run `render.py`, `finish_read.py` and `search_index.py` as usual. Chapters 8 and 10 can be added the same way.
+- The configs are at the end of `pages.py` (`book_ch*`), with clean-ups in `BOOK_FIX`; then run `render.py`, `finish_read.py` and `search_index.py` as usual.
 - `sitemap.xml` was edited by hand for these pages (sitemap.py takes dates from git, which a shallow clone doesn't have).
