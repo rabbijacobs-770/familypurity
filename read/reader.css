@@ -203,3 +203,10 @@ mark.hit.cur{outline:2px solid var(--gold)}
 .text .diagram{margin:1.6em auto;padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:12px;text-indent:0;max-width:max-content}
 .text .diagram img{margin-inline:auto}
 .text li .more{display:block;margin-top:.35em}
+
+/* Figures cropped from the book: diagrams and the Hebrew prayers (line art on white, also in dark mode) */
+.text .book-fig{margin:1.6em auto;padding:.9rem;background:#fff;border:1px solid var(--line);border-radius:12px;text-indent:0;max-width:max-content}
+.text .book-fig img{display:block;margin-inline:auto;max-width:100%;height:auto}
+.text .he{font-family:"Frank Ruhl Libre",serif;font-weight:500;unicode-bidi:isolate}
+.text h3.prayer{text-align:center;margin-top:1.8em}
+.text .prayer-t{text-align:center;font:600 1rem/1.3 var(--display);font-variant-caps:small-caps;letter-spacing:.06em;color:var(--muted);text-indent:0;margin-bottom:.3em}
