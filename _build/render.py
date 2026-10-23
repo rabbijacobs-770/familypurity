@@ -8,8 +8,12 @@ from faq import FAQ
 ORDER=[('overview','Introduction','Overview'),('from-the-rebbe','Introduction','From the Rebbe'),
  ('perfect-marriage','Chapter 1','Perfect Marriage'),('niddah','Chapter 2','Niddah'),('source-of-niddah','Chapter 2','Source of Niddah'),
  ('gynecological-considerations','Chapter 2','Gynecological Considerations'),('stains','Chapter 3','Stains'),
+ ('absence-makes-the-heart-grow-fonder','Chapter 4','Absence Makes the Heart Grow Fonder'),
  ('making-sure-menstruation-has-finished','Chapter 5','Making Sure Menstruation Has Finished'),('seven-white-days','Chapter 6','The Seven White Days'),
  ('preparing-for-immersion','Chapter 7','Preparing for Immersion'),
+ ('what-is-a-mikveh','Chapter 9','What Is a Mikveh?'),('intimate-relations','Chapter 11','Intimate Relations'),
+ ('proper-times-for-marital-relations','Chapter 12','Proper Times for Marital Relations'),('wedding-night','Chapter 13','The Wedding Night'),
+ ('anticipated-menstruation','Chapter 14','Time of the Anticipated Menstruation'),('birth','Chapter 15','Birth'),
  ('times-chabad','Times','Separation Dates · Chabad Custom'),('times-major-customs','Times','Separation Dates · Major Customs')]
 BASE='https://www.familypurity.com'
 AMAZON_FP='https://www.amazon.com/dp/B0DGGB859Z'
@@ -19,7 +23,7 @@ NOTIFY='https://wa.me/972587921788?text=Shalom%20Rabbi%20Jacobs%2C%20please%20le
 # seven-white-days.html by finish_read.py).
 # The book's own term after the chapter title in the H1, where the title alone lacks it.
 H1_TERM={'overview':None,'stains':'Kesamim','making-sure-menstruation-has-finished':'Hefsek Tahara','seven-white-days':'Shiva Nekiim',
- 'preparing-for-immersion':'Hafifah','times-chabad':'Vestos','times-major-customs':'Vestos'}
+ 'preparing-for-immersion':'Hafifah','absence-makes-the-heart-grow-fonder':'Harchakos','anticipated-menstruation':'Vestos','times-chabad':'Vestos','times-major-customs':'Vestos'}
 H1_TITLE={'overview':'Overview: The Purity Cycle'}
 # Descriptive link text for each chapter (used for related-chapter links and the chapter list).
 LABEL={'overview':'The family purity cycle, step by step','from-the-rebbe':'The Rebbe on family purity: letters and talks',
@@ -27,6 +31,9 @@ LABEL={'overview':'The family purity cycle, step by step','from-the-rebbe':'The 
  'source-of-niddah':'Source of niddah: uterine bleeding','gynecological-considerations':'Gynecological procedures and niddah',
  'stains':'The laws of stains (kesamim)','making-sure-menstruation-has-finished':'The hefsek tahara: making sure menstruation has finished',
  'seven-white-days':'The seven white days (shiva nekiim)','preparing-for-immersion':'Preparing for immersion in the mikveh (hafifah)',
+ 'absence-makes-the-heart-grow-fonder':'The laws of separation (harchakos)','what-is-a-mikveh':'What is a mikveh?',
+ 'intimate-relations':'Intimate relations in holiness','proper-times-for-marital-relations':'Proper times for marital relations',
+ 'wedding-night':'The wedding night','anticipated-menstruation':'Time of the anticipated menstruation (vestos)','birth':'Birth and family purity',
  'times-chabad':'Separation dates (vestos): Chabad custom','times-major-customs':'Separation dates (vestos) for all communities'}
 CALENDAR=('../calendar.html','The purity calendar: five days, hefsek tahara and seven white days')
 RELATED={'overview':['niddah','making-sure-menstruation-has-finished','seven-white-days',CALENDAR],
@@ -39,6 +46,13 @@ RELATED={'overview':['niddah','making-sure-menstruation-has-finished','seven-whi
  'making-sure-menstruation-has-finished':['seven-white-days','niddah','stains',CALENDAR],
  'seven-white-days':['making-sure-menstruation-has-finished','preparing-for-immersion','stains',CALENDAR],
  'preparing-for-immersion':['seven-white-days','making-sure-menstruation-has-finished','overview'],
+ 'absence-makes-the-heart-grow-fonder':['niddah','making-sure-menstruation-has-finished','overview'],
+ 'what-is-a-mikveh':['preparing-for-immersion','seven-white-days','overview'],
+ 'intimate-relations':['proper-times-for-marital-relations','wedding-night','absence-makes-the-heart-grow-fonder'],
+ 'proper-times-for-marital-relations':['intimate-relations','wedding-night','overview'],
+ 'wedding-night':['intimate-relations','absence-makes-the-heart-grow-fonder','making-sure-menstruation-has-finished'],
+ 'anticipated-menstruation':['times-chabad','times-major-customs','niddah'],
+ 'birth':['niddah','absence-makes-the-heart-grow-fonder','seven-white-days'],
  'times-chabad':['times-major-customs','niddah','overview'],
  'times-major-customs':['times-chabad','niddah','overview']}
 # Study Guide review quiz for each chapter: (page, questions, what it covers, button name)
@@ -47,10 +61,17 @@ QUIZ={'niddah':('quiz-niddah.html',21,'Chapter 2, Niddah','Niddah'),'source-of-n
  'making-sure-menstruation-has-finished':('quiz-making-sure.html',10,'Chapter 5, Making Sure Menstruation Has Finished','Hefsek Tahara'),
  'seven-white-days':('quiz-seven-white-days.html',10,'Chapter 6, Seven White Days','Seven White Days'),
  'preparing-for-immersion':('quiz-preparing-for-immersion.html',10,'Chapter 7, Preparing for Immersion','Preparing for Immersion'),
+ 'absence-makes-the-heart-grow-fonder':('quiz-separation.html',10,'Chapter 4, Absence Makes the Heart Grow Fonder','Separation'),
+ 'what-is-a-mikveh':('quiz-what-is-a-mikveh.html',10,'Chapter 9, What Is a Mikveh?','Mikveh'),
+ 'intimate-relations':('quiz-intimate-relations.html',10,'Chapter 11, Intimate Relations','Intimate Relations'),
+ 'proper-times-for-marital-relations':('quiz-proper-times.html',10,'Chapter 12, Proper Times for Marital Relations','Proper Times'),
+ 'wedding-night':('quiz-wedding-night.html',10,'Chapter 13, The Wedding Night','Wedding Night'),
+ 'anticipated-menstruation':('quiz-anticipated-menstruation.html',10,'Chapter 14, Time of the Anticipated Menstruation','Anticipated Menstruation'),
+ 'birth':('quiz-birth.html',10,'Chapter 15, Birth','Birth'),
  'times-chabad':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates'),
  'times-major-customs':('quiz-anticipated-menstruation.html',10,'separation dates (Chapter 14, Time of the Anticipated Menstruation)','Separation Dates')}
 # When each chapter's text was last changed (shown as "Last updated").
-TEXT_DATE={'preparing-for-immersion':'2026-10-05'}
+TEXT_DATE={'preparing-for-immersion':'2026-10-05',**{s:'2026-10-23' for s in ('absence-makes-the-heart-grow-fonder','what-is-a-mikveh','intimate-relations','proper-times-for-marital-relations','wedding-night','anticipated-menstruation','birth')}}
 def text_date(slug): return TEXT_DATE.get(slug,'2026-10-04')
 def long_date(d):
     y,m,dd=d.split('-'); return f"{['January','February','March','April','May','June','July','August','September','October','November','December'][int(m)-1]} {int(dd)}, {y}"
@@ -184,7 +205,7 @@ def page(slug,num,title,sub,desc,pdf,epi,body_html,is_times=False,seo=None,expan
       <p>{end_p}</p>
       <div class="btn-row">
         <a class="btn btn-solid" href="{amazon}" target="_blank" rel="noopener">{'Get the current edition' if expanded else 'Get the book'}</a>
-        {f'<a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>' if pdf else f'<a class="btn btn-line" href="{NOTIFY}" target="_blank" rel="noopener">Notify me when it&rsquo;s published</a>'}
+        {f'<a class="btn btn-line" href="../files/{pdf}" target="_blank" rel="noopener">Download PDF</a>' if pdf else (f'<a class="btn btn-line" href="{NOTIFY}" target="_blank" rel="noopener">Notify me when it&rsquo;s published</a>' if expanded else '')}
         <a class="btn btn-line" href="https://wa.me/?text={urllib.parse.quote(full+' · Family Purity by Rabbi Fishel Jacobs '+BASE+'/read/'+slug+'.html')}" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
     </div>{quiz_html(slug)}

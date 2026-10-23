@@ -79,13 +79,20 @@ def blocks_for(name, cfg):
         xs=collections.Counter(round(l[0].get('x',-1)) for p,l in L if p%2==par and dom(l)[1]==body and 'x' in l[0])
         if xs: marg[par]=xs.most_common(1)[0][0]
 
-    blocks=[]; para=[]; fns={}; cur_fn=None; last_fn=0; last_page=None; diag_on_page=set()
+    blocks=[]; para=[]; fns={}; cur_fn=None; last_fn=0; last_page=None; diag_on_page=set(); pending_figs=[]
     def flush():
-        nonlocal para
+        nonlocal para, pending_figs
         if para: blocks.append({'type':'p','lines':para}); para=[]
+        for fg in pending_figs: blocks.append({'type':'figure','src':fg})
+        pending_figs=[]
     for idx,(p,l) in enumerate(L):
         t=T(l).strip(); f,s=dom(l)
         if p!=last_page: cur_fn=None; last_page=p
+        if f=='FIGURE':
+            # a cropped figure (book_lines.py): place it after the sentence it interrupts
+            if para and not re.search(r'[\.!?:”’\)]$',T(para[-1]).rstrip()): pending_figs.append(t)
+            else: flush(); blocks.append({'type':'figure','src':t})
+            continue
         nxt=L[idx+1][0] if idx+1<len(L) else None
         if re.fullmatch(r'\d{1,3}',t) and (s!=body or 'Corsiva' in f or nxt!=p): continue          # page numbers
         if 'Corsiva' in f: continue
@@ -175,6 +182,7 @@ def seg_html(segs, add_italics=False, sources=False):
     for sg in segs:
         t=html.escape(sg['t'],quote=False)
         if sg['f']=='RUNIN': out.append(f'<strong class="runin">{t}.</strong> '); continue
+        if sg['f']=='HEB': out.append(f'<span class="he" lang="he" dir="rtl">{t}</span>'); continue
         if italic(sg['f']) and t.strip(): out.append(f'<em>{t}</em>')
         else: out.append(t)
     h=''.join(out)
@@ -286,6 +294,12 @@ def render_body(blocks, fns, body, cfg):
             out.append(f'<blockquote class="quote"><p>{t}</p><cite>{html.escape(b["cite"])}</cite></blockquote>')
         elif b['type']=='diagram':
             out.append(cfg.get('diagram_html',''))
+        elif b['type']=='figure':
+            alt=cfg.get('fig_alts',{}).get(b['src'],'')
+            from PIL import Image
+            w,h=Image.open(os.path.join(SITE,'images','chapters',b['src'])).size
+            k=72/200*1.4   # 200 dpi crop shown at about 1.4 CSS px per book point
+            out.append(f'<figure class="book-fig"><img src="../images/chapters/{b["src"]}" alt="{html.escape(alt)}" width="{round(w*k)}" height="{round(h*k)}" loading="lazy"></figure>')
     return '\n    '.join(out)
 
 SMALL={'a','an','and','as','at','but','by','for','in','of','on','or','the','to','with','from','which','do','not'}
