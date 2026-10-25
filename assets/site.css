@@ -144,6 +144,10 @@ section:has(+ .band){padding-bottom:clamp(2.25rem,4.5vw,3.5rem)}
 .book .info{display:grid;gap:.35rem;padding-inline:.25rem}
 .book .info p{color:var(--muted)}
 .book .btn{justify-self:start;margin-top:.5rem}
+/* Hebrew sefer: a small, distinct call-out on an English site */
+.he-book .stage{background:var(--tint);border-color:var(--gold);border-style:dashed}
+.he-tag{justify-self:start;display:inline-flex;align-items:center;gap:.35rem;padding:.18rem .7rem;border:1px solid var(--gold);border-radius:999px;font:600 .8rem/1.3 var(--body);letter-spacing:.06em;font-variant-caps:small-caps;color:var(--gold)}
+.he-tag [lang="he"]{font-family:var(--hebrew);font-variant-caps:normal;letter-spacing:0;font-size:1.05em}
 .soon{display:inline-block;margin-top:.6rem;font-size:.9rem;font-weight:600;color:var(--muted)}
 @media (max-width:860px){.books{grid-template-columns:1fr}.book{grid-template-columns:8.5rem minmax(0,1fr);align-items:center}.stage{padding:1rem .75rem}.stage img{height:9.5rem}}
 
