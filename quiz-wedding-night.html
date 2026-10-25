@@ -166,13 +166,13 @@ function render(){
   let h=`<p class="q">${fmt(q.q)}</p><ul class="opts">`;
   q.o.forEach((t,k)=>{
     let cls="";
-    if(answered){ if(k===q.a) cls="correct"; else if(k===picked) cls="wrong"; }
+    if(answered){ if(k===picked) cls=(k===q.a)?"correct":"wrong"; }
     h+=`<li><button class="opt ${cls}" data-k="${k}" ${answered?"disabled":""}><span class="letter">${L[k]}</span><span>${esc(t)}</span></button></li>`;
   });
   h+=`</ul>`;
   if(answered){
     const ok=picked===q.a;
-    h+=`<div class="feedback ${ok?"good":"bad"}" role="status"><strong>${ok?"Correct.":"Not quite. The answer is "+L[q.a]+": "+esc(q.o[q.a])+"."}</strong><p>Explained in <em>Family Purity</em>, page ${q.p}.</p></div>`;
+    h+=`<div class="feedback ${ok?"good":"bad"}" role="status"><strong>${ok?"Correct! Keep going.":"Not quite. You'll meet it again in the next round."}</strong><p>Explained in <em>Family Purity</em>, page ${q.p}.</p></div>`;
   }
   h+=`<div class="actions"><button class="btn btn-line" id="back" ${i===0?"disabled":""}>Back</button><button class="btn btn-solid" id="next" ${answered?"":"disabled"}>${i===Q.length-1?"See results":"Next question"}</button></div>`;
   $("quiz").innerHTML=h;
@@ -187,9 +187,9 @@ function results(){
   let h=`<div><p class="score">${right}<small> / ${Q.length}</small></p><p class="note" style="margin-top:8px">${msg}</p></div><ul class="review">`;
   Q.forEach((q,k)=>{
     const ok=picks[k]===q.a;
-    h+=`<li><span class="tag ${ok?"ok":"no"}">${ok?"Correct":"Review"} · ${k+1}</span><span class="rq">${fmt(q.q)}</span><span class="ra">Answer: ${L[q.a]}. ${esc(q.o[q.a])} · <em>Family Purity</em>, p. ${q.p}</span></li>`;
+    h+=`<li><span class="tag ${ok?"ok":"no"}">${ok?"Correct":"Review"} · ${k+1}</span><span class="rq">${fmt(q.q)}</span><span class="ra">${ok?`Answer: ${L[q.a]}. ${esc(q.o[q.a])} · `:"Explained in "}<em>Family Purity</em>, p. ${q.p}</span></li>`;
   });
-  h+=`</ul><div class="actions"><button class="btn btn-line" id="again">Start again</button><a class="btn btn-solid" style="text-decoration:none" href="read/wedding-night.html">Read the chapter</a></div>`;
+  h+=`</ul><div class="actions"><button class="btn btn-line" id="again">${right===Q.length?"Start again":"Try all "+Q.length+" again"}</button><a class="btn btn-solid" style="text-decoration:none" href="read/wedding-night.html">Read the chapter</a></div>`;
   $("quiz").innerHTML=h;
   $("again").onclick=()=>{i=0;picks=[];render();};
 }
