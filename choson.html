@@ -153,7 +153,7 @@
     <div class="wrap">
       <div class="intro">
         <h2 class="intro-h">Your chapters</h2>
-        <p>These are the chapters, and this is the material we recommend for you. For each one: open the chapter and read it, then answer its 10 questions right below. Tap an answer to see whether it's right and the page in <i>Family Purity</i> where it's explained. If it isn't right, the question stays open so you can try again. When all of a chapter's questions are answered correctly, the chapter is complete. Complete every chapter for a mazal tov keepsake.</p>
+        <p>These are the chapters, and this is the material we recommend for you. For each one: open the chapter and read it, then answer its 10 questions right below. Tap an answer to see whether it's right and the page in <i>Family Purity</i> where it's explained. If it isn't right, it's marked, and the right answer isn't shown. After all 10, you can try the whole chapter again; when all 10 are right in one round, the chapter is complete. Complete every chapter for a mazal tov keepsake.</p>
         <div class="callout">
           <b>New to it all?</b>
           <p>Start with the <a href="read/overview.html">one-page overview of the month</a> or the <a href="start-here.html">beginner's guide</a>. They show the whole cycle, including the kallah's part, before you go into the details.</p>
@@ -263,7 +263,7 @@
         <div class="cert-lock">
           <p class="eyebrow">A mazal tov keepsake</p>
           <h2 id="cert-h">Complete every chapter for your mazal tov keepsake</h2>
-          <p>A chapter is complete when all 10 of its questions are answered correctly. <span class="cert-n">0 of 8</span> chapters complete. Your progress is saved on this device.</p>
+          <p>A chapter is complete when all 10 of its questions are answered correctly in one round. <span class="cert-n">0 of 8</span> chapters complete. Your progress is saved on this device.</p>
           <div class="cert-bar" aria-hidden="true"><span></span></div>
           <nav class="cert-dots" aria-label="Chapters"><a href="#ch2">2</a><a href="#ch3">3</a><a href="#ch4">4</a><a href="#ch11">11</a><a href="#ch12">12</a><a href="#ch13">13</a><a href="#ch14">14</a><a href="#ch15">15</a></nav>
         </div>
@@ -333,14 +333,22 @@ function markRight(li,b,quiet){
   fb.querySelector('.hint').textContent='';fb.hidden=false;li.dataset.done='1';
 }
 function update(card,announce){
-  const all=card.querySelectorAll('.q'),right=card.querySelectorAll('.q[data-done="1"]');
-  card.querySelector('.count').textContent=`${right.length} of ${all.length} correct`;
-  const r=card.querySelector('.result'),full=right.length===all.length;
+  const all=card.querySelectorAll('.q'),right=card.querySelectorAll('.q[data-done="1"]'),answered=card.querySelectorAll('.q[data-done]');
+  card.querySelector('.count').textContent=`${answered.length} of ${all.length} answered · ${right.length} correct`;
+  const r=card.querySelector('.result'),full=right.length===all.length,finished=answered.length===all.length;
   card.classList.toggle('complete',full);
   if(full){
+    if(saved[card.id]!==true){saved[card.id]=true;save()}
     const next=card.querySelector('a.next-ch');
     r.innerHTML=`<b>Congratulations! All ${all.length} correct.</b> ${CONGRATS} `+(next?'On to the next chapter!':'Well done!')+` <button type="button" class="redo">Do this chapter again</button>`;
     r.classList.add('done');r.hidden=false;
+    r.querySelector('.redo').onclick=()=>reset(card);
+  } else if(finished){
+    const pct=right.length/all.length;
+    const msg=pct>=.8?"Very well done! Look over the questions marked above, and you'll have it all."
+      :'A good start! Every review brings you closer. Read the chapter again, then try once more.';
+    r.innerHTML=`<b>${right.length} of ${all.length} correct.</b> ${msg} When you're ready, answer all ${all.length} again; when every one is right, the chapter is complete. <button type="button" class="redo">Try all ${all.length} again</button>`;
+    r.classList.remove('done');r.hidden=false;
     r.querySelector('.redo').onclick=()=>reset(card);
   } else {r.hidden=true;r.classList.remove('done')}
   certUpdate(announce&&full);
@@ -380,21 +388,23 @@ cards.forEach(card=>{
   const qs=[...card.querySelectorAll('.q')];
   qs.forEach((li,i)=>{
     li.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+      if(li.dataset.done)return;
       if(b.dataset.ok==='1'){
         markRight(li,b);
-        (saved[card.id]=saved[card.id]||[]).includes(i)||saved[card.id].push(i);save();
-        update(card,true);
       } else {
-        li.querySelectorAll('.opt').forEach(o=>o.classList.remove('tried'));
-        void b.offsetWidth;b.classList.add('tried');
+        li.querySelectorAll('.opt').forEach(o=>o.disabled=true);
+        b.classList.add('tried');
         const fb=li.querySelector('.fb'),v=fb.querySelector('.verdict');
         v.textContent='Not quite.';v.className='verdict no';
-        fb.querySelector('.hint').textContent='The question stays open, so have another look and try again.';
-        fb.hidden=false;
+        fb.querySelector('.hint').textContent='You'll meet it again in the next round.';
+        fb.hidden=false;li.dataset.done='0';
       }
+      update(card,true);
     }));
-    if((saved[card.id]||[]).includes(i))markRight(li,null,true);
   });
+  const sv=saved[card.id];
+  if(sv===true||(Array.isArray(sv)&&sv.length===qs.length))qs.forEach(li=>markRight(li,null,true));
+  else if(sv!==undefined){delete saved[card.id];save()}
   update(card);
 });
 certUpdate();
