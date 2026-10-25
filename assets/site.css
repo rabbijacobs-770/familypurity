@@ -284,3 +284,6 @@ footer small .credit{font-size:.68rem;opacity:.6;margin-left:.4rem}
 .expanded-note{margin-top:.8rem;padding:.75rem .9rem;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:1rem;color:var(--muted)}
 .expanded-note b{color:var(--heading);font-weight:600}
 .expanded-note a{font-weight:600;white-space:nowrap}
+.appr-link{margin-top:clamp(1.6rem,3vw,2.2rem);text-align:center;font-size:1.08rem}
+.appr-link a{color:var(--muted);text-decoration-color:var(--line);text-underline-offset:.2em}
+.appr-link a:hover{color:var(--violet)}
