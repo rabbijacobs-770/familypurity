@@ -8,7 +8,7 @@ from finish_read import QUIZZES
 from questions import published
 from build import SITE
 
-PAGES = ([('index.html', '', 'weekly', '1.0'), ('start-here.html', 'start-here.html', 'monthly', '0.9'), ('choson.html', 'choson.html', 'monthly', '0.9'), ('kallah.html', 'kallah.html', 'monthly', '0.9'), ('postpartum.html', 'postpartum.html', 'monthly', '0.8'), ('read/index.html', 'read/', 'monthly', '0.9')] +
+PAGES = ([('index.html', '', 'weekly', '1.0'), ('start-here.html', 'start-here.html', 'monthly', '0.9'), ('choson.html', 'choson.html', 'monthly', '0.9'), ('kallah.html', 'kallah.html', 'monthly', '0.9'), ('postpartum.html', 'postpartum.html', 'monthly', '0.8'), ('approbations.html', 'approbations.html', 'yearly', '0.5'), ('read/index.html', 'read/', 'monthly', '0.9')] +
          [(f'read/{o[0]}.html', f'read/{o[0]}.html', 'monthly', '0.8') for o in ORDER] +
          [('calendar.html', 'calendar.html', 'monthly', '0.8'), ('calendar-sheet.html', 'calendar-sheet.html', 'monthly', '0.7')] +
          [(q[0], q[0], 'monthly', '0.6') for q in sorted(QUIZZES, key=lambda q: q[1])] +
