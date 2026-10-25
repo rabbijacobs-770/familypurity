@@ -396,7 +396,7 @@ cards.forEach(card=>{
         b.classList.add('tried');
         const fb=li.querySelector('.fb'),v=fb.querySelector('.verdict');
         v.textContent='Not quite.';v.className='verdict no';
-        fb.querySelector('.hint').textContent='You'll meet it again in the next round.';
+        fb.querySelector('.hint').textContent="You'll meet it again in the next round.";
         fb.hidden=false;li.dataset.done='0';
       }
       update(card,true);
