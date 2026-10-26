@@ -61,6 +61,8 @@ a{color:var(--violet)}
 .crumbs a:hover{border-bottom-color:var(--gold-light)}
 .opener h1 .h1-term{display:block;margin-top:.3em;font-size:.48em;font-style:italic;font-variant-caps:normal;letter-spacing:.02em;color:var(--gold-light)}
 .byline{margin:.9rem 0 0;font:400 1.02rem/1.4 var(--body);color:#d6cff2}
+.readtime{display:flex;justify-content:center;align-items:center;gap:.4rem;margin:.45rem 0 0;font:400 1rem/1.4 var(--body);color:#d6cff2}
+.readtime svg{color:var(--gold-light);flex:none}
 .byline a{color:#fff;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}
 .fleuron{font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--gold-light);display:block;margin:.9rem auto}
 .opener h1{margin:0;font:500 clamp(2.4rem,6vw,3.8rem)/1.05 var(--display);font-variant-caps:small-caps;letter-spacing:.03em;text-wrap:balance}

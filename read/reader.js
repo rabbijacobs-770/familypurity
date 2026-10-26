@@ -80,4 +80,19 @@
       setTimeout(go,300);
     }
   }
+
+  // Reading time under the byline. Minutes per page, worked out from the text at 150 words a minute plus
+  // 30 seconds a diagram (chapters rounded to 5 minutes), the same figures as the choson/kallah/postpartum pages.
+  // Update this list if a chapter's text changes.
+  (function(){
+    const MIN={"absence-makes-the-heart-grow-fonder": 40, "anticipated-menstruation": 25, "birth": 10, "from-the-rebbe": 11, "gynecological-considerations": 10, "immersion": 40, "intervening-substances": 20, "intimate-relations": 35, "making-sure-menstruation-has-finished": 5, "niddah": 25, "overview": 3, "perfect-marriage": 10, "preparing-for-immersion": 75, "proper-times-for-marital-relations": 10, "seven-white-days": 5, "source-of-niddah": 15, "stains": 10, "wedding-night": 20, "what-is-a-mikveh": 15};
+    const by=document.querySelector('.opener .byline'), key=location.pathname.split('/').pop().replace(/\.html$/,'');
+    const t=MIN[key]; if(!by||!t) return;
+    let label;
+    if(t<60) label=t+' minutes';
+    else{const h=Math.round(t/15)/4,w=Math.floor(h),f={0:'',0.25:'\u00bc',0.5:'\u00bd',0.75:'\u00be'}[h-w];label=w+f+(w===1&&!f?' hour':' hours');}
+    const p=document.createElement('p'); p.className='readtime';
+    p.innerHTML='<svg aria-hidden="true" viewBox="0 0 16 16" width="15" height="15"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.4V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>About '+label+' to read</span>';
+    by.after(p);
+  })();
 })();
