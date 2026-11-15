@@ -96,3 +96,6 @@
     by.after(p);
   })();
 })();
+
+// Count PDF downloads (see assets/downloads.js)
+(function(){var s=document.createElement('script');s.src='/assets/downloads.js';s.defer=true;document.head.appendChild(s);})();
