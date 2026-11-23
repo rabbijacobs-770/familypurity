@@ -28,7 +28,7 @@ TOOLS=[
  dict(slug='mikveh-night-calculator',sec='mikveh',short='Mikveh night',card='From the day it began to the night of immersion.',
   title='Mikveh Night Calculator: Hefsek & Seven Clean Days',h1='Mikveh night calculator',
   lede='Find the earliest hefsek tahara, the seven white days and the night of immersion, in English and Hebrew dates.',
-  desc='Free mikveh night calculator. Enter the day the niddah state began to find the earliest hefsek tahara, the seven white days and mikveh night. Private, based on Rabbi Fishel Jacobs’s Family Purity.',
+  desc='Free mikveh night calculator. Enter the day the niddah state began to find the earliest hefsek tahara, the seven white days and mikveh night. Private, based on Rabbi Fishel Jacobs’ Family Purity.',
   how=['The day the niddah state began counts as day one, whether it began in the daytime or the night before.',
        'The <em>hefsek tahara</em> can be done from the fifth day, before sunset. <span class="src">Family Purity, <a href="../read/making-sure-menstruation-has-finished.html">Chapter 5</a>; Ramo 196:11</span>',
        'The seven white days begin the day after the <em>hefsek tahara</em>, with examinations twice daily. <span class="src"><a href="../read/seven-white-days.html">Chapter 6</a></span>',
@@ -91,7 +91,7 @@ TOOLS=[
   related=['vestos-calculator','mikveh-night-calculator','hebrew-date-converter'],chapters=[('making-sure-menstruation-has-finished','Chapter 5: Making Sure Menstruation Has Finished')]),
  dict(slug='family-purity-glossary',sec='glossary',short='Glossary',card='The Hebrew terms, in plain English.',
   title='Family Purity Glossary: Niddah, Mikveh & More',h1='Family purity glossary',
-  lede='The Hebrew terms used in Rabbi Jacobs’s books, explained in plain English.',
+  lede='The Hebrew terms used in Rabbi Jacobs’ books, explained in plain English.',
   desc='A plain-English glossary of Jewish family purity terms: niddah, hefsek tahara, moch dochuk, seven white days, mikveh, kesamim, vestos, onah beinonis and more.',
   how=None,example=None,faq=None,
   related=['mikveh-night-calculator','vestos-calculator','seven-white-days-checklist'],chapters=[('overview','Overview: the purity cycle step by step')]),
@@ -216,7 +216,7 @@ for t in TOOLS:
     </section>
 
     <div class="disclaimer">
-      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
+      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo; books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
       <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
     </div>
     <p class="correction-line">Spotted a typo or something unclear? <a href="#" data-em="RabbiJacobs|FamilyPurity.com" data-subject="Correction: {t['short']}">Send a correction</a></p>
@@ -248,7 +248,7 @@ hub=head('Free Family Purity Calculators & Tools | Family Purity','Free, private
     <div class="wrap">
       <p class="eyebrow">Free tools</p>
       <h1>Free family purity calculators</h1>
-      <p class="lede">Plan dates, keep track and look things up, based on Rabbi Jacobs&rsquo;s books.</p>
+      <p class="lede">Plan dates, keep track and look things up, based on Rabbi Jacobs&rsquo; books.</p>
       <span class="private">Private: nothing you enter leaves your device</span>
     </div>
   </section>
@@ -257,7 +257,7 @@ hub=head('Free Family Purity Calculators & Tools | Family Purity','Free, private
       <div class="tool-cards">{cards([t['slug'] for t in TOOLS],'')}</div>
     </section>
     <div class="disclaimer">
-      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo;s books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
+      <p>These tools follow the common case as described in Rabbi Jacobs&rsquo; books. Almost every detail can have exceptions. For your own situation, ask a rabbi.</p>
       <a class="btn btn-solid" href="https://wa.me/972587921788" target="_blank" rel="noopener">Ask Rabbi Jacobs, free</a>
     </div>
   </div>
